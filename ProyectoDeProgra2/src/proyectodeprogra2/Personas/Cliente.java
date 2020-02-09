@@ -5,13 +5,14 @@
  */
 package proyectodeprogra2.Personas;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author daba5
  */
-public class Cliente extends PersonaNatural {
+public class Cliente extends PersonaNatural implements Serializable{
     
     public Cliente(String nickname, String password, String pais, Date birthday, String correo, String nombre) {
         super(nickname, password, pais, birthday, correo, nombre);
