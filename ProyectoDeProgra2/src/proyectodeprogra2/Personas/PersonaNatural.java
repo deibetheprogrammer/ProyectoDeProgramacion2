@@ -5,6 +5,8 @@
  */
 package proyectodeprogra2.Personas;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -13,12 +15,17 @@ import java.util.Date;
  */
 public abstract class PersonaNatural extends Persona {
     
-    private String nickname;
-    private String password;
-    private String pais;
-    private Date birthday;
+    protected String nickname;
+    protected String password;
+    protected String pais;
+    protected String birthday;
+    
+    
+    public PersonaNatural() {
+       
+    }
 
-    public PersonaNatural(String nickname, String password, String pais, Date birthday, String correo, String nombre) {
+    public PersonaNatural(String nickname, String password, String pais, String birthday, String correo, String nombre) {
         super(correo, nombre);
         this.nickname = nickname;
         this.password = password;
@@ -50,11 +57,15 @@ public abstract class PersonaNatural extends Persona {
         this.pais = pais;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
+        /*SimpleDateFormat tiempo = new SimpleDateFormat("EEE MMM dd hh:mm:ss z yyyy");
+        Date date = tiempo.parse(this.birthday);
+        return date;
+        */
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
     

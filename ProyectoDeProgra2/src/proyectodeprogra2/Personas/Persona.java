@@ -12,8 +12,12 @@ package proyectodeprogra2.Personas;
 public abstract class Persona {
     
     //Falta ubicación geográfica
-    private String correo;
-    private String nombre;
+    protected String correo;
+    protected String nombre;
+    
+    public Persona() {
+        
+    }
 
     public Persona(String correo, String nombre) {
         this.correo = correo;
