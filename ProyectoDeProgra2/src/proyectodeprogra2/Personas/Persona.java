@@ -5,11 +5,13 @@
  */
 package proyectodeprogra2.Personas;
 
+import java.io.Serializable;
+
 /**
  *
  * @author daba5
  */
-public abstract class Persona {
+public abstract class Persona implements Serializable{
     
     //Falta ubicación geográfica
     protected String correo;

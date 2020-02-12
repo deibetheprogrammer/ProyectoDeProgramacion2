@@ -5,6 +5,7 @@
  */
 package proyectodeprogra2.Personas;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,7 +14,7 @@ import java.util.Date;
  *
  * @author daba5
  */
-public abstract class PersonaNatural extends Persona {
+public abstract class PersonaNatural extends Persona implements Serializable {
     
     protected String nickname;
     protected String password;
