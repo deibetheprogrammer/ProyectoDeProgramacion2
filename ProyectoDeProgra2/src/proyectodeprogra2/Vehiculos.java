@@ -64,6 +64,8 @@ public class Vehiculos extends javax.swing.JFrame {
         TF_Correo_RetrievePassword = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         L_Password_RetrievePassword = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        L_Nickname_RetrievePassword = new javax.swing.JLabel();
         D_MembresiaOfertador = new javax.swing.JDialog();
         P_MembresiaOfertador = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -74,14 +76,42 @@ public class Vehiculos extends javax.swing.JFrame {
         B_Renta_MembresiaOfertador = new javax.swing.JRadioButton();
         B_Carwash_MembresiaOfertador = new javax.swing.JRadioButton();
         D_MenuOfertador = new javax.swing.JDialog();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        P_MenuOfertador = new javax.swing.JPanel();
+        TB_MenuOfertador = new javax.swing.JTabbedPane();
+        P_PaginaPrincipal_MenuOfertador = new javax.swing.JPanel();
         B_VentaDirecta_MenuOfertador = new javax.swing.JButton();
         B_VentaSubasta_MenuOfertador = new javax.swing.JButton();
         B_Renta_MenuOfertador = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         B_Carwash_MenuOfertador = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        P_ModificarDatos_MenuOfertador = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        PF_password_MenuOfertador_Modificar = new javax.swing.JPasswordField();
+        jLabel19 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        L_PaisDeNacimiento_MenuOfertador_Modificar = new javax.swing.JList<>();
+        jLabel20 = new javax.swing.JLabel();
+        DC_Birthday_MenuOfertador_Modificar = new com.toedter.calendar.JDateChooser();
+        jLabel21 = new javax.swing.JLabel();
+        TF_Correo_MenuOfertador_Modificar = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        TF_Nickname_MenuOfertador_Modificar = new javax.swing.JTextField();
+        TF_NombreCompleto_MenuOfertador_Modificar = new javax.swing.JTextField();
+        B_ModificarDatos_MenuOfertador_Modificar = new javax.swing.JButton();
+        P_Membresia_MenuOfertador = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        B_VentaDirecta_Membresia_MenuOfertador = new javax.swing.JRadioButton();
+        B_VentaSubasta_Membresia_MenuOfertador = new javax.swing.JRadioButton();
+        B_Renta_Membresia_MenuOfertador = new javax.swing.JRadioButton();
+        B_Carwash_Membresia_MenuOfertador = new javax.swing.JRadioButton();
+        P_Facturas_MenuOfertador = new javax.swing.JPanel();
+        B_PDF_Facturas_MenuOfertador = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        T_HistorialFacturas_Facturas_MenuOfertador = new javax.swing.JTable();
+        P_InformacionEmpresa_MenuOfertador = new javax.swing.JPanel();
+        MB_MenuOfertador = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
@@ -211,7 +241,7 @@ public class Vehiculos extends javax.swing.JFrame {
                                     .addComponent(jScrollPane1)
                                     .addComponent(PF_password_RegisterNaA)
                                     .addComponent(TF_Nickname_RegisterNaA))))
-                        .addGap(0, 35, Short.MAX_VALUE))
+                        .addGap(0, 80, Short.MAX_VALUE))
                     .addGroup(P_RegisterNaALayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)))
@@ -236,7 +266,7 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addGroup(P_RegisterNaALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(P_RegisterNaALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_RegisterNaALayout.createSequentialGroup()
                         .addComponent(jLabel7)
@@ -262,10 +292,9 @@ public class Vehiculos extends javax.swing.JFrame {
         D_RegisterNaA.getContentPane().setLayout(D_RegisterNaALayout);
         D_RegisterNaALayout.setHorizontalGroup(
             D_RegisterNaALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, D_RegisterNaALayout.createSequentialGroup()
+            .addGroup(D_RegisterNaALayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(P_RegisterNaA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(P_RegisterNaA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         D_RegisterNaALayout.setVerticalGroup(
             D_RegisterNaALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,6 +314,10 @@ public class Vehiculos extends javax.swing.JFrame {
 
         L_Password_RetrievePassword.setText("Lol xdxdxd");
 
+        jLabel26.setText("Su Nickname es:");
+
+        L_Nickname_RetrievePassword.setText("lol 2 xdxdxd");
+
         javax.swing.GroupLayout P_RetrievePasswordLayout = new javax.swing.GroupLayout(P_RetrievePassword);
         P_RetrievePassword.setLayout(P_RetrievePasswordLayout);
         P_RetrievePasswordLayout.setHorizontalGroup(
@@ -298,11 +331,13 @@ public class Vehiculos extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addGroup(P_RetrievePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel13))
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel26))
                         .addGap(68, 68, 68)
                         .addGroup(P_RetrievePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(L_Password_RetrievePassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TF_Correo_RetrievePassword, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))))
+                            .addComponent(TF_Correo_RetrievePassword, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                            .addComponent(L_Nickname_RetrievePassword))))
                 .addContainerGap(187, Short.MAX_VALUE))
         );
         P_RetrievePasswordLayout.setVerticalGroup(
@@ -318,7 +353,11 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addGroup(P_RetrievePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(L_Password_RetrievePassword))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addGroup(P_RetrievePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(L_Nickname_RetrievePassword))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout D_RetrievePasswordLayout = new javax.swing.GroupLayout(D_RetrievePassword.getContentPane());
@@ -428,30 +467,28 @@ public class Vehiculos extends javax.swing.JFrame {
 
         B_Carwash_MenuOfertador.setText("Lavado por cita");
 
-        javax.swing.GroupLayout P_MenuOfertadorLayout = new javax.swing.GroupLayout(P_MenuOfertador);
-        P_MenuOfertador.setLayout(P_MenuOfertadorLayout);
-        P_MenuOfertadorLayout.setHorizontalGroup(
-            P_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_MenuOfertadorLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel17)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_MenuOfertadorLayout.createSequentialGroup()
-                .addGap(0, 366, Short.MAX_VALUE)
-                .addGroup(P_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+        javax.swing.GroupLayout P_PaginaPrincipal_MenuOfertadorLayout = new javax.swing.GroupLayout(P_PaginaPrincipal_MenuOfertador);
+        P_PaginaPrincipal_MenuOfertador.setLayout(P_PaginaPrincipal_MenuOfertadorLayout);
+        P_PaginaPrincipal_MenuOfertadorLayout.setHorizontalGroup(
+            P_PaginaPrincipal_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_PaginaPrincipal_MenuOfertadorLayout.createSequentialGroup()
+                .addGap(0, 482, Short.MAX_VALUE)
+                .addGroup(P_PaginaPrincipal_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(B_Renta_MenuOfertador)
-                    .addGroup(P_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_PaginaPrincipal_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(B_Carwash_MenuOfertador)
                         .addComponent(B_VentaSubasta_MenuOfertador)
-                        .addComponent(B_VentaDirecta_MenuOfertador)))
+                        .addGroup(P_PaginaPrincipal_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel17)
+                            .addComponent(B_VentaDirecta_MenuOfertador))))
                 .addGap(86, 86, 86))
         );
-        P_MenuOfertadorLayout.setVerticalGroup(
-            P_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_MenuOfertadorLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+        P_PaginaPrincipal_MenuOfertadorLayout.setVerticalGroup(
+            P_PaginaPrincipal_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_PaginaPrincipal_MenuOfertadorLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
+                .addGap(18, 18, 18)
                 .addComponent(B_VentaDirecta_MenuOfertador)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(B_VentaSubasta_MenuOfertador)
@@ -459,18 +496,222 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addComponent(B_Renta_MenuOfertador)
                 .addGap(18, 18, 18)
                 .addComponent(B_Carwash_MenuOfertador)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(310, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Pagina principal", P_MenuOfertador);
+        TB_MenuOfertador.addTab("Pagina principal", P_PaginaPrincipal_MenuOfertador);
+
+        jLabel18.setText("Password");
+
+        PF_password_MenuOfertador_Modificar.setText("jPasswordField1");
+
+        jLabel19.setText("Pais de Nacimiento");
+
+        L_PaisDeNacimiento_MenuOfertador_Modificar.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(L_PaisDeNacimiento_MenuOfertador_Modificar);
+
+        jLabel20.setText("Fecha de nacimiento");
+
+        jLabel21.setText("Correo");
+
+        jLabel23.setText("Nickname");
+
+        jLabel24.setText("Nombre completo");
+
+        B_ModificarDatos_MenuOfertador_Modificar.setText("Modificar datos");
+
+        javax.swing.GroupLayout P_ModificarDatos_MenuOfertadorLayout = new javax.swing.GroupLayout(P_ModificarDatos_MenuOfertador);
+        P_ModificarDatos_MenuOfertador.setLayout(P_ModificarDatos_MenuOfertadorLayout);
+        P_ModificarDatos_MenuOfertadorLayout.setHorizontalGroup(
+            P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
+                        .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel18))
+                        .addGap(58, 58, 58)
+                        .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PF_password_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
+                                .addComponent(TF_Nickname_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
+                                .addComponent(B_ModificarDatos_MenuOfertador_Modificar))))
+                    .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
+                        .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel24))
+                        .addGap(30, 30, 30)
+                        .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TF_NombreCompleto_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TF_Correo_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DC_Birthday_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(49, 49, 49))
+        );
+        P_ModificarDatos_MenuOfertadorLayout.setVerticalGroup(
+            P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(TF_Nickname_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B_ModificarDatos_MenuOfertador_Modificar))
+                .addGap(24, 24, 24)
+                .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(PF_password_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20)
+                    .addComponent(DC_Birthday_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel21))
+                    .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(TF_Correo_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23)
+                .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel24)
+                    .addComponent(TF_NombreCompleto_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
+        );
+
+        TB_MenuOfertador.addTab("Modificar datos", P_ModificarDatos_MenuOfertador);
+
+        jLabel22.setText("Elija su(s) membresía(s): ");
+
+        jLabel25.setText("Realice su pago: ");
+
+        B_VentaDirecta_Membresia_MenuOfertador.setText("Venta directa");
+
+        B_VentaSubasta_Membresia_MenuOfertador.setText("Venta por subasta");
+
+        B_Renta_Membresia_MenuOfertador.setText("Renta de vehículos");
+
+        B_Carwash_Membresia_MenuOfertador.setText("Lavado por cita");
+
+        javax.swing.GroupLayout P_Membresia_MenuOfertadorLayout = new javax.swing.GroupLayout(P_Membresia_MenuOfertador);
+        P_Membresia_MenuOfertador.setLayout(P_Membresia_MenuOfertadorLayout);
+        P_Membresia_MenuOfertadorLayout.setHorizontalGroup(
+            P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Membresia_MenuOfertadorLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel22)
+                    .addGroup(P_Membresia_MenuOfertadorLayout.createSequentialGroup()
+                        .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(B_VentaDirecta_Membresia_MenuOfertador)
+                            .addComponent(B_Renta_Membresia_MenuOfertador))
+                        .addGap(68, 68, 68)
+                        .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(B_Carwash_Membresia_MenuOfertador)
+                            .addComponent(B_VentaSubasta_Membresia_MenuOfertador))))
+                .addContainerGap(290, Short.MAX_VALUE))
+        );
+        P_Membresia_MenuOfertadorLayout.setVerticalGroup(
+            P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Membresia_MenuOfertadorLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel22)
+                .addGap(57, 57, 57)
+                .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(B_VentaDirecta_Membresia_MenuOfertador)
+                    .addComponent(B_VentaSubasta_Membresia_MenuOfertador))
+                .addGap(36, 36, 36)
+                .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(B_Renta_Membresia_MenuOfertador)
+                    .addComponent(B_Carwash_Membresia_MenuOfertador))
+                .addGap(48, 48, 48)
+                .addComponent(jLabel25)
+                .addContainerGap(279, Short.MAX_VALUE))
+        );
+
+        TB_MenuOfertador.addTab("Membresía", P_Membresia_MenuOfertador);
+
+        P_Facturas_MenuOfertador.setToolTipText("");
+
+        B_PDF_Facturas_MenuOfertador.setText("Exportar a PDF");
+
+        jLabel27.setText("Facturas: ");
+
+        T_HistorialFacturas_Facturas_MenuOfertador.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(T_HistorialFacturas_Facturas_MenuOfertador);
+
+        javax.swing.GroupLayout P_Facturas_MenuOfertadorLayout = new javax.swing.GroupLayout(P_Facturas_MenuOfertador);
+        P_Facturas_MenuOfertador.setLayout(P_Facturas_MenuOfertadorLayout);
+        P_Facturas_MenuOfertadorLayout.setHorizontalGroup(
+            P_Facturas_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Facturas_MenuOfertadorLayout.createSequentialGroup()
+                .addGroup(P_Facturas_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_Facturas_MenuOfertadorLayout.createSequentialGroup()
+                        .addGap(302, 302, 302)
+                        .addComponent(B_PDF_Facturas_MenuOfertador))
+                    .addGroup(P_Facturas_MenuOfertadorLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(P_Facturas_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel27)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(64, Short.MAX_VALUE))
+        );
+        P_Facturas_MenuOfertadorLayout.setVerticalGroup(
+            P_Facturas_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Facturas_MenuOfertadorLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83)
+                .addComponent(B_PDF_Facturas_MenuOfertador)
+                .addGap(100, 100, 100))
+        );
+
+        TB_MenuOfertador.addTab("Facturas", P_Facturas_MenuOfertador);
+
+        javax.swing.GroupLayout P_InformacionEmpresa_MenuOfertadorLayout = new javax.swing.GroupLayout(P_InformacionEmpresa_MenuOfertador);
+        P_InformacionEmpresa_MenuOfertador.setLayout(P_InformacionEmpresa_MenuOfertadorLayout);
+        P_InformacionEmpresa_MenuOfertadorLayout.setHorizontalGroup(
+            P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 716, Short.MAX_VALUE)
+        );
+        P_InformacionEmpresa_MenuOfertadorLayout.setVerticalGroup(
+            P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 539, Short.MAX_VALUE)
+        );
+
+        TB_MenuOfertador.addTab("Información general de la empresa", P_InformacionEmpresa_MenuOfertador);
 
         jMenu1.setText("Log Out");
-        jMenuBar1.add(jMenu1);
+        MB_MenuOfertador.add(jMenu1);
 
         jMenu2.setText("Ayuda");
-        jMenuBar1.add(jMenu2);
+        MB_MenuOfertador.add(jMenu2);
 
-        D_MenuOfertador.setJMenuBar(jMenuBar1);
+        D_MenuOfertador.setJMenuBar(MB_MenuOfertador);
 
         javax.swing.GroupLayout D_MenuOfertadorLayout = new javax.swing.GroupLayout(D_MenuOfertador.getContentPane());
         D_MenuOfertador.getContentPane().setLayout(D_MenuOfertadorLayout);
@@ -480,7 +721,7 @@ public class Vehiculos extends javax.swing.JFrame {
             .addGroup(D_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(D_MenuOfertadorLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+                    .addComponent(TB_MenuOfertador)
                     .addContainerGap()))
         );
         D_MenuOfertadorLayout.setVerticalGroup(
@@ -489,7 +730,7 @@ public class Vehiculos extends javax.swing.JFrame {
             .addGroup(D_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(D_MenuOfertadorLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                    .addComponent(TB_MenuOfertador)
                     .addContainerGap()))
         );
 
@@ -623,16 +864,23 @@ public class Vehiculos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton B_Carwash_MembresiaOfertador;
+    private javax.swing.JRadioButton B_Carwash_Membresia_MenuOfertador;
     private javax.swing.JButton B_Carwash_MenuOfertador;
     private javax.swing.JButton B_LogIn;
+    private javax.swing.JButton B_ModificarDatos_MenuOfertador_Modificar;
+    private javax.swing.JButton B_PDF_Facturas_MenuOfertador;
     private javax.swing.JButton B_Register;
     private javax.swing.JButton B_Register_RegisterNaA;
     private javax.swing.JRadioButton B_Renta_MembresiaOfertador;
+    private javax.swing.JRadioButton B_Renta_Membresia_MenuOfertador;
     private javax.swing.JButton B_Renta_MenuOfertador;
     private javax.swing.JRadioButton B_VentaDirecta_MembresiaOfertador;
+    private javax.swing.JRadioButton B_VentaDirecta_Membresia_MenuOfertador;
     private javax.swing.JButton B_VentaDirecta_MenuOfertador;
     private javax.swing.JRadioButton B_VentaSubasta_MembresiaOfertador;
+    private javax.swing.JRadioButton B_VentaSubasta_Membresia_MenuOfertador;
     private javax.swing.JButton B_VentaSubasta_MenuOfertador;
+    private com.toedter.calendar.JDateChooser DC_Birthday_MenuOfertador_Modificar;
     private com.toedter.calendar.JDateChooser DC_Birthday_RegisterNaA;
     private javax.swing.JDialog D_LogIn;
     private javax.swing.JDialog D_MembresiaOfertador;
@@ -640,23 +888,36 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JDialog D_RegisterNaA;
     private javax.swing.JDialog D_RetrievePassword;
     private javax.swing.JLabel L_Nickname;
+    private javax.swing.JLabel L_Nickname_RetrievePassword;
+    private javax.swing.JList<String> L_PaisDeNacimiento_MenuOfertador_Modificar;
     private javax.swing.JList<String> L_PaisDeNacimiento_RegisterNaA;
     private javax.swing.JLabel L_Password_RetrievePassword;
     private javax.swing.JLabel L_SignIn;
+    private javax.swing.JMenuBar MB_MenuOfertador;
     private javax.swing.JPasswordField PF_Password;
+    private javax.swing.JPasswordField PF_password_MenuOfertador_Modificar;
     private javax.swing.JPasswordField PF_password_RegisterNaA;
+    private javax.swing.JPanel P_Facturas_MenuOfertador;
+    private javax.swing.JPanel P_InformacionEmpresa_MenuOfertador;
     private javax.swing.JPanel P_LogIn;
     private javax.swing.JPanel P_MembresiaOfertador;
-    private javax.swing.JPanel P_MenuOfertador;
+    private javax.swing.JPanel P_Membresia_MenuOfertador;
+    private javax.swing.JPanel P_ModificarDatos_MenuOfertador;
+    private javax.swing.JPanel P_PaginaPrincipal_MenuOfertador;
     private javax.swing.JPanel P_RegisterNaA;
     private javax.swing.JPanel P_RetrievePassword;
     private javax.swing.JSpinner S_Usuario;
     private javax.swing.JSpinner S_Usuario_RegisterNaA;
+    private javax.swing.JTabbedPane TB_MenuOfertador;
+    private javax.swing.JTextField TF_Correo_MenuOfertador_Modificar;
     private javax.swing.JTextField TF_Correo_RegisterNaA;
     private javax.swing.JTextField TF_Correo_RetrievePassword;
     private javax.swing.JTextField TF_Nickname;
+    private javax.swing.JTextField TF_Nickname_MenuOfertador_Modificar;
     private javax.swing.JTextField TF_Nickname_RegisterNaA;
+    private javax.swing.JTextField TF_NombreCompleto_MenuOfertador_Modificar;
     private javax.swing.JTextField TF_NombreCompleto_RegisterNaA;
+    private javax.swing.JTable T_HistorialFacturas_Facturas_MenuOfertador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -666,7 +927,17 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -676,10 +947,10 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
     private ArrayList<Cliente> clientes = new ArrayList<>();
 }   
