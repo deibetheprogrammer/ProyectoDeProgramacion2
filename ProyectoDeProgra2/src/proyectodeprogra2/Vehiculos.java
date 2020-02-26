@@ -68,9 +68,22 @@ public class Vehiculos extends javax.swing.JFrame {
         P_MembresiaOfertador = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         jLabel16 = new javax.swing.JLabel();
+        B_VentaDirecta_MembresiaOfertador = new javax.swing.JRadioButton();
+        B_VentaSubasta_MembresiaOfertador = new javax.swing.JRadioButton();
+        B_Renta_MembresiaOfertador = new javax.swing.JRadioButton();
+        B_Carwash_MembresiaOfertador = new javax.swing.JRadioButton();
+        D_MenuOfertador = new javax.swing.JDialog();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        P_MenuOfertador = new javax.swing.JPanel();
+        B_VentaDirecta_MenuOfertador = new javax.swing.JButton();
+        B_VentaSubasta_MenuOfertador = new javax.swing.JButton();
+        B_Renta_MenuOfertador = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        B_Carwash_MenuOfertador = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         B_LogIn = new javax.swing.JButton();
         L_SignIn = new javax.swing.JLabel();
@@ -326,16 +339,17 @@ public class Vehiculos extends javax.swing.JFrame {
 
         jLabel14.setText("Elija una membresía");
 
-        jLabel15.setText("Tipo de membresia");
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList1);
+        jLabel15.setText("Tipo de membresia (puede seleccionar más de una):");
 
         jLabel16.setText("Realice su pago: ");
+
+        B_VentaDirecta_MembresiaOfertador.setText("Venta directa");
+
+        B_VentaSubasta_MembresiaOfertador.setText("Venta por subasta");
+
+        B_Renta_MembresiaOfertador.setText("Renta de vehículos");
+
+        B_Carwash_MembresiaOfertador.setText("Lavado por cita");
 
         javax.swing.GroupLayout P_MembresiaOfertadorLayout = new javax.swing.GroupLayout(P_MembresiaOfertador);
         P_MembresiaOfertador.setLayout(P_MembresiaOfertadorLayout);
@@ -347,14 +361,20 @@ public class Vehiculos extends javax.swing.JFrame {
                         .addGap(188, 188, 188)
                         .addComponent(jLabel14))
                     .addGroup(P_MembresiaOfertadorLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
+                        .addGap(47, 47, 47)
                         .addGroup(P_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16)
+                            .addComponent(jLabel15)
                             .addGroup(P_MembresiaOfertadorLayout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addGap(61, 61, 61)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(132, Short.MAX_VALUE))
+                                .addGap(4, 4, 4)
+                                .addGroup(P_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(B_VentaDirecta_MembresiaOfertador)
+                                    .addComponent(B_Renta_MembresiaOfertador))
+                                .addGap(99, 99, 99)
+                                .addGroup(P_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(B_Carwash_MembresiaOfertador)
+                                    .addComponent(B_VentaSubasta_MembresiaOfertador)))
+                            .addComponent(jLabel16))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         P_MembresiaOfertadorLayout.setVerticalGroup(
             P_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,10 +382,16 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel14)
                 .addGap(52, 52, 52)
-                .addGroup(P_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addComponent(jLabel15)
+                .addGap(37, 37, 37)
+                .addGroup(P_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(B_VentaDirecta_MembresiaOfertador)
+                    .addComponent(B_VentaSubasta_MembresiaOfertador))
+                .addGap(44, 44, 44)
+                .addGroup(P_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(B_Renta_MembresiaOfertador)
+                    .addComponent(B_Carwash_MembresiaOfertador))
+                .addGap(28, 28, 28)
                 .addComponent(jLabel16)
                 .addContainerGap(169, Short.MAX_VALUE))
         );
@@ -374,7 +400,7 @@ public class Vehiculos extends javax.swing.JFrame {
         D_MembresiaOfertador.getContentPane().setLayout(D_MembresiaOfertadorLayout);
         D_MembresiaOfertadorLayout.setHorizontalGroup(
             D_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, D_MembresiaOfertadorLayout.createSequentialGroup()
+            .addGroup(D_MembresiaOfertadorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(P_MembresiaOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -385,6 +411,86 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(P_MembresiaOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+        );
+
+        B_VentaDirecta_MenuOfertador.setText("Venta directa");
+        B_VentaDirecta_MenuOfertador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_VentaDirecta_MenuOfertadorActionPerformed(evt);
+            }
+        });
+
+        B_VentaSubasta_MenuOfertador.setText("Venta por subasta");
+
+        B_Renta_MenuOfertador.setText("Renta de vehículos");
+
+        jLabel17.setText("Menu Ofertador");
+
+        B_Carwash_MenuOfertador.setText("Lavado por cita");
+
+        javax.swing.GroupLayout P_MenuOfertadorLayout = new javax.swing.GroupLayout(P_MenuOfertador);
+        P_MenuOfertador.setLayout(P_MenuOfertadorLayout);
+        P_MenuOfertadorLayout.setHorizontalGroup(
+            P_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_MenuOfertadorLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel17)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_MenuOfertadorLayout.createSequentialGroup()
+                .addGap(0, 366, Short.MAX_VALUE)
+                .addGroup(P_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(B_Renta_MenuOfertador)
+                    .addGroup(P_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(B_Carwash_MenuOfertador)
+                        .addComponent(B_VentaSubasta_MenuOfertador)
+                        .addComponent(B_VentaDirecta_MenuOfertador)))
+                .addGap(86, 86, 86))
+        );
+        P_MenuOfertadorLayout.setVerticalGroup(
+            P_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_MenuOfertadorLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(B_VentaDirecta_MenuOfertador)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(B_VentaSubasta_MenuOfertador)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(B_Renta_MenuOfertador)
+                .addGap(18, 18, 18)
+                .addComponent(B_Carwash_MenuOfertador)
+                .addContainerGap(148, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Pagina principal", P_MenuOfertador);
+
+        jMenu1.setText("Log Out");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Ayuda");
+        jMenuBar1.add(jMenu2);
+
+        D_MenuOfertador.setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout D_MenuOfertadorLayout = new javax.swing.GroupLayout(D_MenuOfertador.getContentPane());
+        D_MenuOfertador.getContentPane().setLayout(D_MenuOfertadorLayout);
+        D_MenuOfertadorLayout.setHorizontalGroup(
+            D_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 652, Short.MAX_VALUE)
+            .addGroup(D_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(D_MenuOfertadorLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        D_MenuOfertadorLayout.setVerticalGroup(
+            D_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 451, Short.MAX_VALUE)
+            .addGroup(D_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(D_MenuOfertadorLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -404,6 +510,11 @@ public class Vehiculos extends javax.swing.JFrame {
         L_SignIn.setText("Sign In");
 
         B_Register.setText("Registrarse");
+        B_Register.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_RegisterMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -412,25 +523,25 @@ public class Vehiculos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(B_Register, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(B_LogIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(222, 222, 222)
-                        .addComponent(L_SignIn)))
-                .addContainerGap(249, Short.MAX_VALUE))
+                        .addComponent(L_SignIn))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(B_LogIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(B_Register, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(L_SignIn)
-                .addGap(93, 93, 93)
-                .addComponent(B_LogIn)
                 .addGap(69, 69, 69)
+                .addComponent(B_LogIn)
+                .addGap(73, 73, 73)
                 .addComponent(B_Register)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -454,6 +565,7 @@ public class Vehiculos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void B_LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_LogInMouseClicked
+        D_LogIn.pack();
         D_LogIn.setVisible(true);
         
     }//GEN-LAST:event_B_LogInMouseClicked
@@ -461,6 +573,15 @@ public class Vehiculos extends javax.swing.JFrame {
     private void B_LogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_LogInActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_B_LogInActionPerformed
+
+    private void B_RegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_RegisterMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_B_RegisterMouseClicked
+
+    private void B_VentaDirecta_MenuOfertadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_VentaDirecta_MenuOfertadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B_VentaDirecta_MenuOfertadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -501,12 +622,21 @@ public class Vehiculos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton B_Carwash_MembresiaOfertador;
+    private javax.swing.JButton B_Carwash_MenuOfertador;
     private javax.swing.JButton B_LogIn;
     private javax.swing.JButton B_Register;
     private javax.swing.JButton B_Register_RegisterNaA;
+    private javax.swing.JRadioButton B_Renta_MembresiaOfertador;
+    private javax.swing.JButton B_Renta_MenuOfertador;
+    private javax.swing.JRadioButton B_VentaDirecta_MembresiaOfertador;
+    private javax.swing.JButton B_VentaDirecta_MenuOfertador;
+    private javax.swing.JRadioButton B_VentaSubasta_MembresiaOfertador;
+    private javax.swing.JButton B_VentaSubasta_MenuOfertador;
     private com.toedter.calendar.JDateChooser DC_Birthday_RegisterNaA;
     private javax.swing.JDialog D_LogIn;
     private javax.swing.JDialog D_MembresiaOfertador;
+    private javax.swing.JDialog D_MenuOfertador;
     private javax.swing.JDialog D_RegisterNaA;
     private javax.swing.JDialog D_RetrievePassword;
     private javax.swing.JLabel L_Nickname;
@@ -517,6 +647,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JPasswordField PF_password_RegisterNaA;
     private javax.swing.JPanel P_LogIn;
     private javax.swing.JPanel P_MembresiaOfertador;
+    private javax.swing.JPanel P_MenuOfertador;
     private javax.swing.JPanel P_RegisterNaA;
     private javax.swing.JPanel P_RetrievePassword;
     private javax.swing.JSpinner S_Usuario;
@@ -534,6 +665,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -542,10 +674,12 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
     private ArrayList<Cliente> clientes = new ArrayList<>();
 }   
