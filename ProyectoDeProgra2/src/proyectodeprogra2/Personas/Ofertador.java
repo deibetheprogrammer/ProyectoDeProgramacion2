@@ -63,5 +63,4 @@ public class Ofertador extends PersonaNatural implements Serializable {
         this.membresia_Carwash = membresia_Carwash;
     }
     
-    
 }

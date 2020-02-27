@@ -37,6 +37,7 @@ public class Vehiculos extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         TF_Nickname = new javax.swing.JTextField();
         PF_Password = new javax.swing.JPasswordField();
+        B_RetrievePassword_Login = new javax.swing.JButton();
         S_Usuario = new javax.swing.JSpinner();
         D_RegisterNaA = new javax.swing.JDialog();
         P_RegisterNaA = new javax.swing.JPanel();
@@ -114,6 +115,49 @@ public class Vehiculos extends javax.swing.JFrame {
         MB_MenuOfertador = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        D_MembresiaCliente = new javax.swing.JDialog();
+        P_MembresiaCliente = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        D_MenuCliente = new javax.swing.JDialog();
+        TP_MenuCliente = new javax.swing.JTabbedPane();
+        P_PaginaPrincipal_MenuCliente = new javax.swing.JPanel();
+        P_Modificar_MenuCliente = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        TF_NombreCompleto_MenuCliente_Modificar = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        L_PaisDeNacimiento_MenuCliente_Modificar = new javax.swing.JList<>();
+        jLabel31 = new javax.swing.JLabel();
+        DC_Birthday_MenuCliente_Modificar = new com.toedter.calendar.JDateChooser();
+        jLabel32 = new javax.swing.JLabel();
+        TF_Correo_MenuCliente_Modificar = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        PF_password_MenuCliente_Modificar = new javax.swing.JPasswordField();
+        TF_Nickname_MenuCliente_Modificar = new javax.swing.JTextField();
+        B_ModificarDatos_Modificar_MenuCliente = new javax.swing.JButton();
+        P_Facturas_MenuCliente = new javax.swing.JPanel();
+        B_PDF_Facturas_MenuCliente = new javax.swing.JButton();
+        jLabel36 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        T_HistorialFacturas_Facturas_MenuCliente = new javax.swing.JTable();
+        P_CompraDirecta_MenuCliente = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        T_Vehiculos_CompraDirecta_MenuCliente = new javax.swing.JTable();
+        SP_Posicion_CompraDirecta_MenuCliente = new javax.swing.JSpinner();
+        jLabel37 = new javax.swing.JLabel();
+        P_Subasta_MenuCliente = new javax.swing.JPanel();
+        P_Renta_MenuCliente = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        T_Vehiculos_Renta_MenuCliente1 = new javax.swing.JTable();
+        jLabel38 = new javax.swing.JLabel();
+        SP_Posicion_Renta_MenuCliente = new javax.swing.JSpinner();
+        P_Carwash_MenuCliente = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        T_Vehiculos_Carwash_MenuCliente = new javax.swing.JTable();
+        jLabel39 = new javax.swing.JLabel();
+        SP_Posicion_Carwash_MenuCliente = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
         B_LogIn = new javax.swing.JButton();
         L_SignIn = new javax.swing.JLabel();
@@ -125,6 +169,8 @@ public class Vehiculos extends javax.swing.JFrame {
 
         jLabel3.setText("Log In");
 
+        B_RetrievePassword_Login.setText("Recuperar contraseña");
+
         javax.swing.GroupLayout P_LogInLayout = new javax.swing.GroupLayout(P_LogIn);
         P_LogIn.setLayout(P_LogInLayout);
         P_LogInLayout.setHorizontalGroup(
@@ -132,7 +178,7 @@ public class Vehiculos extends javax.swing.JFrame {
             .addGroup(P_LogInLayout.createSequentialGroup()
                 .addGap(250, 250, 250)
                 .addComponent(jLabel3)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(P_LogInLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(P_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +186,10 @@ public class Vehiculos extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(86, 86, 86)
                 .addGroup(P_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TF_Nickname, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                    .addGroup(P_LogInLayout.createSequentialGroup()
+                        .addComponent(B_RetrievePassword_Login)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(TF_Nickname)
                     .addComponent(PF_Password)))
         );
         P_LogInLayout.setVerticalGroup(
@@ -156,7 +205,9 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addGroup(P_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(PF_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addComponent(B_RetrievePassword_Login)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout D_LogInLayout = new javax.swing.GroupLayout(D_LogIn.getContentPane());
@@ -167,8 +218,8 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(P_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
-                .addComponent(S_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addComponent(S_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         D_LogInLayout.setVerticalGroup(
             D_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -683,9 +734,9 @@ public class Vehiculos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Facturas_MenuOfertadorLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel27)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(B_PDF_Facturas_MenuOfertador)
                 .addGap(100, 100, 100))
         );
@@ -732,6 +783,380 @@ public class Vehiculos extends javax.swing.JFrame {
                     .addContainerGap()
                     .addComponent(TB_MenuOfertador)
                     .addContainerGap()))
+        );
+
+        jLabel28.setText("Membresia de Cliente");
+
+        jLabel29.setText("Pagar membresia:");
+
+        javax.swing.GroupLayout P_MembresiaClienteLayout = new javax.swing.GroupLayout(P_MembresiaCliente);
+        P_MembresiaCliente.setLayout(P_MembresiaClienteLayout);
+        P_MembresiaClienteLayout.setHorizontalGroup(
+            P_MembresiaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_MembresiaClienteLayout.createSequentialGroup()
+                .addGroup(P_MembresiaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_MembresiaClienteLayout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addComponent(jLabel28))
+                    .addGroup(P_MembresiaClienteLayout.createSequentialGroup()
+                        .addGap(234, 234, 234)
+                        .addComponent(jLabel29)))
+                .addContainerGap(243, Short.MAX_VALUE))
+        );
+        P_MembresiaClienteLayout.setVerticalGroup(
+            P_MembresiaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_MembresiaClienteLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jLabel28)
+                .addGap(116, 116, 116)
+                .addComponent(jLabel29)
+                .addContainerGap(236, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout D_MembresiaClienteLayout = new javax.swing.GroupLayout(D_MembresiaCliente.getContentPane());
+        D_MembresiaCliente.getContentPane().setLayout(D_MembresiaClienteLayout);
+        D_MembresiaClienteLayout.setHorizontalGroup(
+            D_MembresiaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, D_MembresiaClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(P_MembresiaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        D_MembresiaClienteLayout.setVerticalGroup(
+            D_MembresiaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(D_MembresiaClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(P_MembresiaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout P_PaginaPrincipal_MenuClienteLayout = new javax.swing.GroupLayout(P_PaginaPrincipal_MenuCliente);
+        P_PaginaPrincipal_MenuCliente.setLayout(P_PaginaPrincipal_MenuClienteLayout);
+        P_PaginaPrincipal_MenuClienteLayout.setHorizontalGroup(
+            P_PaginaPrincipal_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 848, Short.MAX_VALUE)
+        );
+        P_PaginaPrincipal_MenuClienteLayout.setVerticalGroup(
+            P_PaginaPrincipal_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 495, Short.MAX_VALUE)
+        );
+
+        TP_MenuCliente.addTab("Pagina Principal", P_PaginaPrincipal_MenuCliente);
+
+        jLabel30.setText("Pais de Nacimiento");
+
+        L_PaisDeNacimiento_MenuCliente_Modificar.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(L_PaisDeNacimiento_MenuCliente_Modificar);
+
+        jLabel31.setText("Fecha de nacimiento");
+
+        jLabel32.setText("Correo");
+
+        jLabel33.setText("Nickname");
+
+        jLabel34.setText("Password");
+
+        jLabel35.setText("Nombre completo");
+
+        PF_password_MenuCliente_Modificar.setText("jPasswordField1");
+
+        B_ModificarDatos_Modificar_MenuCliente.setText("Modificar Datos");
+
+        javax.swing.GroupLayout P_Modificar_MenuClienteLayout = new javax.swing.GroupLayout(P_Modificar_MenuCliente);
+        P_Modificar_MenuCliente.setLayout(P_Modificar_MenuClienteLayout);
+        P_Modificar_MenuClienteLayout.setHorizontalGroup(
+            P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel33)
+                            .addComponent(jLabel34))
+                        .addGap(58, 58, 58)
+                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PF_password_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                                .addComponent(TF_Nickname_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 339, Short.MAX_VALUE)
+                                .addComponent(B_ModificarDatos_Modificar_MenuCliente))))
+                    .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel30)
+                            .addComponent(jLabel31)
+                            .addComponent(jLabel32)
+                            .addComponent(jLabel35))
+                        .addGap(30, 30, 30)
+                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TF_NombreCompleto_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TF_Correo_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DC_Birthday_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(86, 86, 86))
+        );
+        P_Modificar_MenuClienteLayout.setVerticalGroup(
+            P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel33)
+                            .addComponent(TF_Nickname_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(B_ModificarDatos_Modificar_MenuCliente)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(PF_password_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel30)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                        .addComponent(jLabel31)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel32))
+                    .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                        .addComponent(DC_Birthday_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(TF_Correo_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel35)
+                    .addComponent(TF_NombreCompleto_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(77, 77, 77))
+        );
+
+        TP_MenuCliente.addTab("Modificar datos", P_Modificar_MenuCliente);
+
+        B_PDF_Facturas_MenuCliente.setText("Exportar a PDF");
+
+        jLabel36.setText("Facturas: ");
+
+        T_HistorialFacturas_Facturas_MenuCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(T_HistorialFacturas_Facturas_MenuCliente);
+
+        javax.swing.GroupLayout P_Facturas_MenuClienteLayout = new javax.swing.GroupLayout(P_Facturas_MenuCliente);
+        P_Facturas_MenuCliente.setLayout(P_Facturas_MenuClienteLayout);
+        P_Facturas_MenuClienteLayout.setHorizontalGroup(
+            P_Facturas_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Facturas_MenuClienteLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(P_Facturas_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel36)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(196, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Facturas_MenuClienteLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(B_PDF_Facturas_MenuCliente)
+                .addGap(263, 263, 263))
+        );
+        P_Facturas_MenuClienteLayout.setVerticalGroup(
+            P_Facturas_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Facturas_MenuClienteLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel36)
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(B_PDF_Facturas_MenuCliente)
+                .addContainerGap(72, Short.MAX_VALUE))
+        );
+
+        TP_MenuCliente.addTab("Factura", P_Facturas_MenuCliente);
+
+        T_Vehiculos_CompraDirecta_MenuCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Posicion", "Marca", "Modelo", "Año", "Cilindraje", "Tipo", "Transmisión"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(T_Vehiculos_CompraDirecta_MenuCliente);
+
+        jLabel37.setText("Elija la posición");
+
+        javax.swing.GroupLayout P_CompraDirecta_MenuClienteLayout = new javax.swing.GroupLayout(P_CompraDirecta_MenuCliente);
+        P_CompraDirecta_MenuCliente.setLayout(P_CompraDirecta_MenuClienteLayout);
+        P_CompraDirecta_MenuClienteLayout.setHorizontalGroup(
+            P_CompraDirecta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_CompraDirecta_MenuClienteLayout.createSequentialGroup()
+                .addGroup(P_CompraDirecta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_CompraDirecta_MenuClienteLayout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(jLabel37)
+                        .addGap(81, 81, 81)
+                        .addComponent(SP_Posicion_CompraDirecta_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(P_CompraDirecta_MenuClienteLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+        P_CompraDirecta_MenuClienteLayout.setVerticalGroup(
+            P_CompraDirecta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_CompraDirecta_MenuClienteLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(P_CompraDirecta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SP_Posicion_CompraDirecta_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel37))
+                .addContainerGap(133, Short.MAX_VALUE))
+        );
+
+        TP_MenuCliente.addTab("Compra de Vehiculos", P_CompraDirecta_MenuCliente);
+
+        javax.swing.GroupLayout P_Subasta_MenuClienteLayout = new javax.swing.GroupLayout(P_Subasta_MenuCliente);
+        P_Subasta_MenuCliente.setLayout(P_Subasta_MenuClienteLayout);
+        P_Subasta_MenuClienteLayout.setHorizontalGroup(
+            P_Subasta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 848, Short.MAX_VALUE)
+        );
+        P_Subasta_MenuClienteLayout.setVerticalGroup(
+            P_Subasta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 495, Short.MAX_VALUE)
+        );
+
+        TP_MenuCliente.addTab("Subasta de Vehiculos", P_Subasta_MenuCliente);
+
+        T_Vehiculos_Renta_MenuCliente1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Posicion", "Marca", "Modelo", "Año", "Cilindraje", "Tipo", "Transmisión"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane8.setViewportView(T_Vehiculos_Renta_MenuCliente1);
+
+        jLabel38.setText("Elija la posición");
+
+        javax.swing.GroupLayout P_Renta_MenuClienteLayout = new javax.swing.GroupLayout(P_Renta_MenuCliente);
+        P_Renta_MenuCliente.setLayout(P_Renta_MenuClienteLayout);
+        P_Renta_MenuClienteLayout.setHorizontalGroup(
+            P_Renta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Renta_MenuClienteLayout.createSequentialGroup()
+                .addContainerGap(56, Short.MAX_VALUE)
+                .addGroup(P_Renta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_Renta_MenuClienteLayout.createSequentialGroup()
+                        .addComponent(jLabel38)
+                        .addGap(81, 81, 81)
+                        .addComponent(SP_Posicion_Renta_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53))
+        );
+        P_Renta_MenuClienteLayout.setVerticalGroup(
+            P_Renta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Renta_MenuClienteLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(P_Renta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SP_Posicion_Renta_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel38))
+                .addContainerGap(122, Short.MAX_VALUE))
+        );
+
+        TP_MenuCliente.addTab("Renta de Vehiculos", P_Renta_MenuCliente);
+
+        T_Vehiculos_Carwash_MenuCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Posicion", "Marca", "Modelo", "Año", "Cilindraje", "Tipo", "Transmisión"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane7.setViewportView(T_Vehiculos_Carwash_MenuCliente);
+
+        jLabel39.setText("Elija la posición");
+
+        javax.swing.GroupLayout P_Carwash_MenuClienteLayout = new javax.swing.GroupLayout(P_Carwash_MenuCliente);
+        P_Carwash_MenuCliente.setLayout(P_Carwash_MenuClienteLayout);
+        P_Carwash_MenuClienteLayout.setHorizontalGroup(
+            P_Carwash_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Carwash_MenuClienteLayout.createSequentialGroup()
+                .addContainerGap(56, Short.MAX_VALUE)
+                .addGroup(P_Carwash_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_Carwash_MenuClienteLayout.createSequentialGroup()
+                        .addComponent(jLabel39)
+                        .addGap(81, 81, 81)
+                        .addComponent(SP_Posicion_Carwash_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53))
+        );
+        P_Carwash_MenuClienteLayout.setVerticalGroup(
+            P_Carwash_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Carwash_MenuClienteLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(P_Carwash_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SP_Posicion_Carwash_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel39))
+                .addContainerGap(122, Short.MAX_VALUE))
+        );
+
+        TP_MenuCliente.addTab("Carwash", P_Carwash_MenuCliente);
+
+        javax.swing.GroupLayout D_MenuClienteLayout = new javax.swing.GroupLayout(D_MenuCliente.getContentPane());
+        D_MenuCliente.getContentPane().setLayout(D_MenuClienteLayout);
+        D_MenuClienteLayout.setHorizontalGroup(
+            D_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(D_MenuClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TP_MenuCliente)
+                .addContainerGap())
+        );
+        D_MenuClienteLayout.setVerticalGroup(
+            D_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, D_MenuClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TP_MenuCliente)
+                .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -868,56 +1293,83 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JButton B_Carwash_MenuOfertador;
     private javax.swing.JButton B_LogIn;
     private javax.swing.JButton B_ModificarDatos_MenuOfertador_Modificar;
+    private javax.swing.JButton B_ModificarDatos_Modificar_MenuCliente;
+    private javax.swing.JButton B_PDF_Facturas_MenuCliente;
     private javax.swing.JButton B_PDF_Facturas_MenuOfertador;
     private javax.swing.JButton B_Register;
     private javax.swing.JButton B_Register_RegisterNaA;
     private javax.swing.JRadioButton B_Renta_MembresiaOfertador;
     private javax.swing.JRadioButton B_Renta_Membresia_MenuOfertador;
     private javax.swing.JButton B_Renta_MenuOfertador;
+    private javax.swing.JButton B_RetrievePassword_Login;
     private javax.swing.JRadioButton B_VentaDirecta_MembresiaOfertador;
     private javax.swing.JRadioButton B_VentaDirecta_Membresia_MenuOfertador;
     private javax.swing.JButton B_VentaDirecta_MenuOfertador;
     private javax.swing.JRadioButton B_VentaSubasta_MembresiaOfertador;
     private javax.swing.JRadioButton B_VentaSubasta_Membresia_MenuOfertador;
     private javax.swing.JButton B_VentaSubasta_MenuOfertador;
+    private com.toedter.calendar.JDateChooser DC_Birthday_MenuCliente_Modificar;
     private com.toedter.calendar.JDateChooser DC_Birthday_MenuOfertador_Modificar;
     private com.toedter.calendar.JDateChooser DC_Birthday_RegisterNaA;
     private javax.swing.JDialog D_LogIn;
+    private javax.swing.JDialog D_MembresiaCliente;
     private javax.swing.JDialog D_MembresiaOfertador;
+    private javax.swing.JDialog D_MenuCliente;
     private javax.swing.JDialog D_MenuOfertador;
     private javax.swing.JDialog D_RegisterNaA;
     private javax.swing.JDialog D_RetrievePassword;
     private javax.swing.JLabel L_Nickname;
     private javax.swing.JLabel L_Nickname_RetrievePassword;
+    private javax.swing.JList<String> L_PaisDeNacimiento_MenuCliente_Modificar;
     private javax.swing.JList<String> L_PaisDeNacimiento_MenuOfertador_Modificar;
     private javax.swing.JList<String> L_PaisDeNacimiento_RegisterNaA;
     private javax.swing.JLabel L_Password_RetrievePassword;
     private javax.swing.JLabel L_SignIn;
     private javax.swing.JMenuBar MB_MenuOfertador;
     private javax.swing.JPasswordField PF_Password;
+    private javax.swing.JPasswordField PF_password_MenuCliente_Modificar;
     private javax.swing.JPasswordField PF_password_MenuOfertador_Modificar;
     private javax.swing.JPasswordField PF_password_RegisterNaA;
+    private javax.swing.JPanel P_Carwash_MenuCliente;
+    private javax.swing.JPanel P_CompraDirecta_MenuCliente;
+    private javax.swing.JPanel P_Facturas_MenuCliente;
     private javax.swing.JPanel P_Facturas_MenuOfertador;
     private javax.swing.JPanel P_InformacionEmpresa_MenuOfertador;
     private javax.swing.JPanel P_LogIn;
+    private javax.swing.JPanel P_MembresiaCliente;
     private javax.swing.JPanel P_MembresiaOfertador;
     private javax.swing.JPanel P_Membresia_MenuOfertador;
     private javax.swing.JPanel P_ModificarDatos_MenuOfertador;
+    private javax.swing.JPanel P_Modificar_MenuCliente;
+    private javax.swing.JPanel P_PaginaPrincipal_MenuCliente;
     private javax.swing.JPanel P_PaginaPrincipal_MenuOfertador;
     private javax.swing.JPanel P_RegisterNaA;
+    private javax.swing.JPanel P_Renta_MenuCliente;
     private javax.swing.JPanel P_RetrievePassword;
+    private javax.swing.JPanel P_Subasta_MenuCliente;
+    private javax.swing.JSpinner SP_Posicion_Carwash_MenuCliente;
+    private javax.swing.JSpinner SP_Posicion_CompraDirecta_MenuCliente;
+    private javax.swing.JSpinner SP_Posicion_Renta_MenuCliente;
     private javax.swing.JSpinner S_Usuario;
     private javax.swing.JSpinner S_Usuario_RegisterNaA;
     private javax.swing.JTabbedPane TB_MenuOfertador;
+    private javax.swing.JTextField TF_Correo_MenuCliente_Modificar;
     private javax.swing.JTextField TF_Correo_MenuOfertador_Modificar;
     private javax.swing.JTextField TF_Correo_RegisterNaA;
     private javax.swing.JTextField TF_Correo_RetrievePassword;
     private javax.swing.JTextField TF_Nickname;
+    private javax.swing.JTextField TF_Nickname_MenuCliente_Modificar;
     private javax.swing.JTextField TF_Nickname_MenuOfertador_Modificar;
     private javax.swing.JTextField TF_Nickname_RegisterNaA;
+    private javax.swing.JTextField TF_NombreCompleto_MenuCliente_Modificar;
     private javax.swing.JTextField TF_NombreCompleto_MenuOfertador_Modificar;
     private javax.swing.JTextField TF_NombreCompleto_RegisterNaA;
+    private javax.swing.JTabbedPane TP_MenuCliente;
+    private javax.swing.JTable T_HistorialFacturas_Facturas_MenuCliente;
     private javax.swing.JTable T_HistorialFacturas_Facturas_MenuOfertador;
+    private javax.swing.JTable T_Vehiculos_Carwash_MenuCliente;
+    private javax.swing.JTable T_Vehiculos_CompraDirecta_MenuCliente;
+    private javax.swing.JTable T_Vehiculos_Renta_MenuCliente1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -938,7 +1390,19 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -951,6 +1415,11 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     // End of variables declaration//GEN-END:variables
     private ArrayList<Cliente> clientes = new ArrayList<>();
 }   
