@@ -5,8 +5,16 @@
  */
 package proyectodeprogra2;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import proyectodeprogra2.Personas.Administrador;
 import proyectodeprogra2.Personas.Cliente;
+import proyectodeprogra2.Personas.Ofertador;
 
 /**
  *
@@ -38,7 +46,8 @@ public class Vehiculos extends javax.swing.JFrame {
         TF_Nickname = new javax.swing.JTextField();
         PF_Password = new javax.swing.JPasswordField();
         B_RetrievePassword_Login = new javax.swing.JButton();
-        S_Usuario = new javax.swing.JSpinner();
+        B_LogIn_LogIn = new javax.swing.JButton();
+        CB_TipoUsuario_LogIn = new javax.swing.JComboBox<>();
         D_RegisterNaA = new javax.swing.JDialog();
         P_RegisterNaA = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -206,44 +215,68 @@ public class Vehiculos extends javax.swing.JFrame {
         jLabel3.setText("Log In");
 
         B_RetrievePassword_Login.setText("Recuperar contraseña");
+        B_RetrievePassword_Login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_RetrievePassword_LoginActionPerformed(evt);
+            }
+        });
+
+        B_LogIn_LogIn.setText("Log In");
+        B_LogIn_LogIn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_LogIn_LogInMouseClicked(evt);
+            }
+        });
+
+        CB_TipoUsuario_LogIn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Ofertador", "Administrador" }));
 
         javax.swing.GroupLayout P_LogInLayout = new javax.swing.GroupLayout(P_LogIn);
         P_LogIn.setLayout(P_LogInLayout);
         P_LogInLayout.setHorizontalGroup(
             P_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P_LogInLayout.createSequentialGroup()
-                .addGap(250, 250, 250)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(P_LogInLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(P_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(L_Nickname)
                     .addComponent(jLabel2))
                 .addGap(86, 86, 86)
+                .addGroup(P_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(B_RetrievePassword_Login)
+                    .addComponent(TF_Nickname, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                    .addComponent(PF_Password))
+                .addGap(34, 34, 34)
+                .addComponent(CB_TipoUsuario_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 25, Short.MAX_VALUE))
+            .addGroup(P_LogInLayout.createSequentialGroup()
                 .addGroup(P_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_LogInLayout.createSequentialGroup()
-                        .addComponent(B_RetrievePassword_Login)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(TF_Nickname)
-                    .addComponent(PF_Password)))
+                        .addGap(250, 250, 250)
+                        .addComponent(jLabel3))
+                    .addGroup(P_LogInLayout.createSequentialGroup()
+                        .addGap(247, 247, 247)
+                        .addComponent(B_LogIn_LogIn)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         P_LogInLayout.setVerticalGroup(
             P_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P_LogInLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(jLabel3)
-                .addGap(68, 68, 68)
+                .addGap(67, 67, 67)
                 .addGroup(P_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(L_Nickname)
-                    .addComponent(TF_Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                    .addGroup(P_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(TF_Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CB_TipoUsuario_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 34, 34)
                 .addGroup(P_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(PF_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(B_LogIn_LogIn)
+                .addGap(18, 18, 18)
                 .addComponent(B_RetrievePassword_Login)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout D_LogInLayout = new javax.swing.GroupLayout(D_LogIn.getContentPane());
@@ -251,11 +284,8 @@ public class Vehiculos extends javax.swing.JFrame {
         D_LogInLayout.setHorizontalGroup(
             D_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(D_LogInLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(P_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(S_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addComponent(P_LogIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         D_LogInLayout.setVerticalGroup(
             D_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,10 +293,6 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(P_LogIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(D_LogInLayout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(S_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setText("Registrarse");
@@ -1500,6 +1526,7 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void B_LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_LogInMouseClicked
         D_LogIn.pack();
+        D_LogIn.setModal(true);
         D_LogIn.setVisible(true);
         
     }//GEN-LAST:event_B_LogInMouseClicked
@@ -1516,6 +1543,55 @@ public class Vehiculos extends javax.swing.JFrame {
     private void B_VentaDirecta_MenuOfertadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_VentaDirecta_MenuOfertadorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_B_VentaDirecta_MenuOfertadorActionPerformed
+
+    private void B_RetrievePassword_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RetrievePassword_LoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B_RetrievePassword_LoginActionPerformed
+
+    private void B_LogIn_LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_LogIn_LogInMouseClicked
+        // TODO add your handling code here:
+        if(CB_TipoUsuario_LogIn.getSelectedItem().equals("Cliente")) {
+            for (Cliente cliente : clientes) {
+                if (cliente.getNickname().equals(TF_Nickname.getText())) {
+                    if (cliente.getPassword().equals(PF_Password.getText())) {
+                        D_MenuCliente.pack();
+                        D_MenuCliente.setModal(true);
+                        D_MenuCliente.setVisible(true);
+                        break;
+                    }
+                } 
+            }
+            JOptionPane.showMessageDialog(this, "Nickname o contraseña incorrectos(s)");
+        }
+        else if (CB_TipoUsuario_LogIn.getSelectedItem().equals("Ofertador")) {
+            for (Ofertador ofertador : ofertadores) {
+                if (ofertador.getNickname().equals(TF_Nickname.getText())) {
+                    if (ofertador.getPassword().equals(PF_Password.getText())) {
+                        D_MenuOfertador.pack();
+                        D_MenuOfertador.setModal(true);
+                        D_MenuOfertador.setVisible(true);
+                        break;
+                    } 
+                } 
+            }
+            JOptionPane.showMessageDialog(this, "Nickname o contraseña incorrectos(s)");
+        }
+        
+        else {
+            for (Administrador administrador : administradores) {
+                if (administrador.getNickname().equals(TF_Nickname.getText())) {
+                    if (administrador.getPassword().equals(PF_Password.getText())) {
+                        D_MenuAdmin.pack();
+                        D_MenuAdmin.setModal(true);
+                        D_MenuAdmin.setVisible(true);
+                        break;
+                    }
+                }
+            }
+            JOptionPane.showMessageDialog(this, "Nickname o contraseña incorrectos(s)");
+        }
+        
+    }//GEN-LAST:event_B_LogIn_LogInMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1560,6 +1636,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JRadioButton B_Carwash_Membresia_MenuOfertador;
     private javax.swing.JButton B_Carwash_MenuOfertador;
     private javax.swing.JButton B_LogIn;
+    private javax.swing.JButton B_LogIn_LogIn;
     private javax.swing.JButton B_ModificarDatos_MenuOfertador_Modificar;
     private javax.swing.JButton B_ModificarDatos_Modificar_MenuCliente;
     private javax.swing.JButton B_PDF_Facturas_MenuCliente;
@@ -1576,6 +1653,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JRadioButton B_VentaSubasta_MembresiaOfertador;
     private javax.swing.JRadioButton B_VentaSubasta_Membresia_MenuOfertador;
     private javax.swing.JButton B_VentaSubasta_MenuOfertador;
+    private javax.swing.JComboBox<String> CB_TipoUsuario_LogIn;
     private com.toedter.calendar.JDateChooser DC_Birthday_MenuCliente_Modificar;
     private com.toedter.calendar.JDateChooser DC_Birthday_MenuOfertador_Modificar;
     private com.toedter.calendar.JDateChooser DC_Birthday_RegisterNaA;
@@ -1635,7 +1713,6 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JSpinner SP_Posicion_Carwash_MenuCliente;
     private javax.swing.JSpinner SP_Posicion_CompraDirecta_MenuCliente;
     private javax.swing.JSpinner SP_Posicion_Renta_MenuCliente;
-    private javax.swing.JSpinner S_Usuario;
     private javax.swing.JSpinner S_Usuario_RegisterNaA;
     private javax.swing.JTextArea TA_Ojetivos_Empresa_MenuAdmin;
     private javax.swing.JTextArea TA_Politicas_Empresa_MenuAdmin;
@@ -1725,5 +1802,41 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     // End of variables declaration//GEN-END:variables
+    
+    //Variables
     private ArrayList<Cliente> clientes = new ArrayList<>();
+    private ArrayList<Ofertador> ofertadores = new ArrayList<>();
+    private ArrayList<Administrador> administradores = new ArrayList<>();
+    
+    //Metodos
+    public static int guardarOfertadores(ArrayList<Ofertador> ofertadores) {
+        int count = 0;
+        try (
+                FileOutputStream f = new FileOutputStream("Ofertadores.txt");
+                ObjectOutput o = new ObjectOutputStream(f);) {
+            for (Ofertador ofertador : ofertadores) {
+                o.writeObject(ofertador);
+                count++;
+            }
+        } catch (Exception e) {
+            System.out.println("Exception");
+        }
+        return count;
+    }
+    
+    public static int leerOfertadores(ArrayList<Ofertador> ofertadores) {
+        int count = 0;
+        try (
+                FileInputStream fi = new FileInputStream("Ofertadores.txt");
+                ObjectInputStream oi = new ObjectInputStream(fi);) {
+            while (true) {
+                ofertadores.add((Ofertador) oi.readObject());
+                count++;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Exception");
+        }
+        return count;
+    }
 }   
