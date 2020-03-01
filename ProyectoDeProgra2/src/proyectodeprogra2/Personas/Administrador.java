@@ -5,15 +5,18 @@
  */
 package proyectodeprogra2.Personas;
 
+import java.io.Serializable;
 /**
  *
  * @author daba5
  */
-public class Administrador extends Persona {
+public class Administrador extends PersonaNatural implements Serializable {
 
-    public Administrador(String correo, String nombre) {
-        super(correo, nombre);
+    public Administrador() {
     }
 
-   
+    public Administrador(String nickname, String password, String pais, String birthday, String correo, String nombre) {
+        super(nickname, password, pais, birthday, correo, nombre);
+    }
+
 }
