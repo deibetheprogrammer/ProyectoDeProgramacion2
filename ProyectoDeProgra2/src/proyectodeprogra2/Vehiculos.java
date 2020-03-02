@@ -208,6 +208,7 @@ public class Vehiculos extends javax.swing.JFrame {
         B_LogIn = new javax.swing.JButton();
         L_SignIn = new javax.swing.JLabel();
         B_Register = new javax.swing.JButton();
+        B_Salir = new javax.swing.JButton();
 
         L_Nickname.setText("Nickname");
 
@@ -1488,20 +1489,31 @@ public class Vehiculos extends javax.swing.JFrame {
             }
         });
 
+        B_Salir.setText("Salir");
+        B_Salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_SalirMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(B_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(222, 222, 222)
+                                .addComponent(L_SignIn))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(193, 193, 193)
+                                .addComponent(B_Register))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(L_SignIn))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(B_LogIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(B_Register, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(213, 213, 213)
+                        .addComponent(B_Salir)))
                 .addContainerGap(221, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -1509,11 +1521,13 @@ public class Vehiculos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(L_SignIn)
-                .addGap(69, 69, 69)
+                .addGap(38, 38, 38)
                 .addComponent(B_LogIn)
-                .addGap(73, 73, 73)
+                .addGap(39, 39, 39)
                 .addComponent(B_Register)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(B_Salir)
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1624,12 +1638,25 @@ public class Vehiculos extends javax.swing.JFrame {
         if (CB_TipoUsuario_RegisterNaA.getSelectedItem().equals("Ofertador")) {
 
             ofertadores.add(new Ofertador(nickname, password, pais, birthday, correo, nombre));
+            
+            D_MembresiaOfertador.pack();
+            D_MembresiaOfertador.setModal(true);
+            D_MembresiaOfertador.setVisible(true);
 
         } else {
             
             clientes.add(new Cliente(nickname, password, pais, birthday, correo, nombre));
+            
+            D_MembresiaCliente.pack();
+            D_MembresiaCliente.setModal(true);
+            D_MembresiaCliente.setVisible(true);
         }
     }//GEN-LAST:event_B_Register_RegisterNaAMouseClicked
+
+    private void B_SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_SalirMouseClicked
+        // TODO add your handling code here:
+        guardarOfertadores(ofertadores);
+    }//GEN-LAST:event_B_SalirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1689,6 +1716,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JRadioButton B_Renta_Membresia_MenuOfertador;
     private javax.swing.JButton B_Renta_MenuOfertador;
     private javax.swing.JButton B_RetrievePassword_Login;
+    private javax.swing.JButton B_Salir;
     private javax.swing.JRadioButton B_VentaDirecta_MembresiaOfertador;
     private javax.swing.JRadioButton B_VentaDirecta_Membresia_MenuOfertador;
     private javax.swing.JButton B_VentaDirecta_MenuOfertador;
@@ -1856,6 +1884,11 @@ public class Vehiculos extends javax.swing.JFrame {
     private static int numOfertadores;
     private static int numClientes;
     private static int numAdministradores;
+    
+    //Personas
+    private static Cliente clienteActual;
+    private static Ofertador ofertadorActual;
+    private static Administrador adminActual;
     
     //METODOS
     
