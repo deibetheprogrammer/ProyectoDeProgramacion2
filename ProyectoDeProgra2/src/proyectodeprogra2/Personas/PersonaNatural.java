@@ -19,14 +19,14 @@ public abstract class PersonaNatural extends Persona implements Serializable {
     protected String nickname;
     protected String password;
     protected String pais;
-    protected String birthday;
+    protected Date birthday;
     
     
     public PersonaNatural() {
        
     }
 
-    public PersonaNatural(String nickname, String password, String pais, String birthday, String correo, String nombre) {
+    public PersonaNatural(String nickname, String password, String pais, Date birthday, String correo, String nombre) {
         super(correo, nombre);
         this.nickname = nickname;
         this.password = password;
@@ -58,18 +58,12 @@ public abstract class PersonaNatural extends Persona implements Serializable {
         this.pais = pais;
     }
 
-    public String getBirthday() {
-        /*SimpleDateFormat tiempo = new SimpleDateFormat("EEE MMM dd hh:mm:ss z yyyy");
-        Date date = tiempo.parse(this.birthday);
-        return date;
-        */
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
-    
-    
 
 }

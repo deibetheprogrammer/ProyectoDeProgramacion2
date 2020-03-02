@@ -21,8 +21,8 @@ public class Ofertador extends PersonaNatural implements Serializable {
 
     public Ofertador() {
     }
-  
-    public Ofertador(String nickname, String password, String pais, String birthday, String correo, String nombre) {
+
+    public Ofertador(String nickname, String password, String pais, Date birthday, String correo, String nombre) {
         super(nickname, password, pais, birthday, correo, nombre);
     }
     

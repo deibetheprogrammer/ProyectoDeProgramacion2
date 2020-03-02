@@ -11,6 +11,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import proyectodeprogra2.Personas.Administrador;
 import proyectodeprogra2.Personas.Cliente;
@@ -66,7 +67,7 @@ public class Vehiculos extends javax.swing.JFrame {
         TF_NombreCompleto_RegisterNaA = new javax.swing.JTextField();
         B_Register_RegisterNaA = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        S_Usuario_RegisterNaA = new javax.swing.JSpinner();
+        CB_TipoUsuario_RegisterNaA = new javax.swing.JComboBox<>();
         D_RetrievePassword = new javax.swing.JDialog();
         P_RetrievePassword = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -301,12 +302,16 @@ public class Vehiculos extends javax.swing.JFrame {
 
         jLabel5.setText("Password");
 
-        PF_password_RegisterNaA.setText("jPasswordField1");
+        PF_password_RegisterNaA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PF_password_RegisterNaAActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Pais de Nacimiento");
 
         L_PaisDeNacimiento_RegisterNaA.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "Honduras", "El Salvador", "Guatemala", "Nicaragua", "Costa Rica", "Panama" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -319,8 +324,15 @@ public class Vehiculos extends javax.swing.JFrame {
         jLabel9.setText("Nombre completo");
 
         B_Register_RegisterNaA.setText("Registrarse");
+        B_Register_RegisterNaA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_Register_RegisterNaAMouseClicked(evt);
+            }
+        });
 
         jLabel10.setText("Tipo de usuario");
+
+        CB_TipoUsuario_RegisterNaA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Ofertador" }));
 
         javax.swing.GroupLayout P_RegisterNaALayout = new javax.swing.GroupLayout(P_RegisterNaA);
         P_RegisterNaA.setLayout(P_RegisterNaALayout);
@@ -343,7 +355,7 @@ public class Vehiculos extends javax.swing.JFrame {
                                         .addComponent(TF_NombreCompleto_RegisterNaA, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                                         .addComponent(TF_Correo_RegisterNaA))
                                     .addComponent(DC_Birthday_RegisterNaA, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(S_Usuario_RegisterNaA, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(CB_TipoUsuario_RegisterNaA, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, P_RegisterNaALayout.createSequentialGroup()
                                 .addGroup(P_RegisterNaALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
@@ -353,7 +365,7 @@ public class Vehiculos extends javax.swing.JFrame {
                                 .addGroup(P_RegisterNaALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jScrollPane1)
                                     .addComponent(PF_password_RegisterNaA)
-                                    .addComponent(TF_Nickname_RegisterNaA))))
+                                    .addComponent(TF_Nickname_RegisterNaA, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 80, Short.MAX_VALUE))
                     .addGroup(P_RegisterNaALayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -397,7 +409,7 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addGroup(P_RegisterNaALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(B_Register_RegisterNaA)
                     .addComponent(jLabel10)
-                    .addComponent(S_Usuario_RegisterNaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CB_TipoUsuario_RegisterNaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
 
@@ -1537,7 +1549,9 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void B_RegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_RegisterMouseClicked
         // TODO add your handling code here:
-        
+        D_RegisterNaA.pack();
+        D_RegisterNaA.setModal(true);
+        D_RegisterNaA.setVisible(true);
     }//GEN-LAST:event_B_RegisterMouseClicked
 
     private void B_VentaDirecta_MenuOfertadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_VentaDirecta_MenuOfertadorActionPerformed
@@ -1593,6 +1607,30 @@ public class Vehiculos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_B_LogIn_LogInMouseClicked
 
+    private void PF_password_RegisterNaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_password_RegisterNaAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PF_password_RegisterNaAActionPerformed
+
+    private void B_Register_RegisterNaAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Register_RegisterNaAMouseClicked
+        // TODO add your handling code here:
+        
+        String nickname = TF_Nickname_RegisterNaA.getText();
+        String password = PF_password_RegisterNaA.getText();
+        String pais = L_PaisDeNacimiento_RegisterNaA.getSelectedValue();
+        Date birthday = DC_Birthday_RegisterNaA.getDate();
+        String correo = TF_Correo_RegisterNaA.getText();
+        String nombre = TF_NombreCompleto_RegisterNaA.getText();
+        
+        if (CB_TipoUsuario_RegisterNaA.getSelectedItem().equals("Ofertador")) {
+
+            ofertadores.add(new Ofertador(nickname, password, pais, birthday, correo, nombre));
+
+        } else {
+            
+            clientes.add(new Cliente(nickname, password, pais, birthday, correo, nombre));
+        }
+    }//GEN-LAST:event_B_Register_RegisterNaAMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1602,6 +1640,10 @@ public class Vehiculos extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
+        //Leer los ofertadores existentes
+        numOfertadores = leerOfertadores(ofertadores);
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -1654,6 +1696,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JRadioButton B_VentaSubasta_Membresia_MenuOfertador;
     private javax.swing.JButton B_VentaSubasta_MenuOfertador;
     private javax.swing.JComboBox<String> CB_TipoUsuario_LogIn;
+    private javax.swing.JComboBox<String> CB_TipoUsuario_RegisterNaA;
     private com.toedter.calendar.JDateChooser DC_Birthday_MenuCliente_Modificar;
     private com.toedter.calendar.JDateChooser DC_Birthday_MenuOfertador_Modificar;
     private com.toedter.calendar.JDateChooser DC_Birthday_RegisterNaA;
@@ -1713,7 +1756,6 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JSpinner SP_Posicion_Carwash_MenuCliente;
     private javax.swing.JSpinner SP_Posicion_CompraDirecta_MenuCliente;
     private javax.swing.JSpinner SP_Posicion_Renta_MenuCliente;
-    private javax.swing.JSpinner S_Usuario_RegisterNaA;
     private javax.swing.JTextArea TA_Ojetivos_Empresa_MenuAdmin;
     private javax.swing.JTextArea TA_Politicas_Empresa_MenuAdmin;
     private javax.swing.JTextArea TA_Telefonos_Empresa_MenuAdmin;
@@ -1803,16 +1845,25 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     // End of variables declaration//GEN-END:variables
     
-    //Variables
-    private ArrayList<Cliente> clientes = new ArrayList<>();
-    private ArrayList<Ofertador> ofertadores = new ArrayList<>();
-    private ArrayList<Administrador> administradores = new ArrayList<>();
+    //VARIABLES
     
-    //Metodos
+    //Listas
+    private static ArrayList<Cliente> clientes = new ArrayList<>();
+    private static ArrayList<Ofertador> ofertadores = new ArrayList<>();
+    private static ArrayList<Administrador> administradores = new ArrayList<>();
+    
+    //Contadores
+    private static int numOfertadores;
+    private static int numClientes;
+    private static int numAdministradores;
+    
+    //METODOS
+    
+    //Guardar ofertadores
     public static int guardarOfertadores(ArrayList<Ofertador> ofertadores) {
         int count = 0;
         try (
-                FileOutputStream f = new FileOutputStream("Ofertadores.txt");
+                FileOutputStream f = new FileOutputStream("Ofertadores");
                 ObjectOutput o = new ObjectOutputStream(f);) {
             for (Ofertador ofertador : ofertadores) {
                 o.writeObject(ofertador);
@@ -1827,7 +1878,7 @@ public class Vehiculos extends javax.swing.JFrame {
     public static int leerOfertadores(ArrayList<Ofertador> ofertadores) {
         int count = 0;
         try (
-                FileInputStream fi = new FileInputStream("Ofertadores.txt");
+                FileInputStream fi = new FileInputStream("Ofertadores");
                 ObjectInputStream oi = new ObjectInputStream(fi);) {
             while (true) {
                 ofertadores.add((Ofertador) oi.readObject());
@@ -1839,4 +1890,6 @@ public class Vehiculos extends javax.swing.JFrame {
         }
         return count;
     }
+    
+    //Guardar clientes
 }   

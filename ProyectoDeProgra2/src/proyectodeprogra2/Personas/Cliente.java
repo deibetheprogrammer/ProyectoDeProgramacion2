@@ -14,12 +14,22 @@ import java.util.Date;
  */
 public class Cliente extends PersonaNatural implements Serializable {
     
+    private boolean membresia;
+    
     public Cliente() {
         
     }
 
-    public Cliente(String nickname, String password, String pais, String birthday, String correo, String nombre) {
+    public Cliente(String nickname, String password, String pais, Date birthday, String correo, String nombre) {
         super(nickname, password, pais, birthday, correo, nombre);
+    }
+
+    public boolean isMembresia() {
+        return membresia;
+    }
+
+    public void setMembresia(boolean membresia) {
+        this.membresia = membresia;
     }
 
     @Override
