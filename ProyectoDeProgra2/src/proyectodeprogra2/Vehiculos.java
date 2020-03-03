@@ -1551,6 +1551,9 @@ public class Vehiculos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void B_LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_LogInMouseClicked
+        //Leer los ofertadores existentes
+        numOfertadores = leerOfertadores(ofertadores);
+        
         D_LogIn.pack();
         D_LogIn.setModal(true);
         D_LogIn.setVisible(true);
@@ -1578,6 +1581,7 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void B_LogIn_LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_LogIn_LogInMouseClicked
         // TODO add your handling code here:
+        boolean reject = true;
         if(CB_TipoUsuario_LogIn.getSelectedItem().equals("Cliente")) {
             for (Cliente cliente : clientes) {
                 if (cliente.getNickname().equals(TF_Nickname.getText())) {
@@ -1585,11 +1589,14 @@ public class Vehiculos extends javax.swing.JFrame {
                         D_MenuCliente.pack();
                         D_MenuCliente.setModal(true);
                         D_MenuCliente.setVisible(true);
+                        reject = false;
                         break;
                     }
                 } 
             }
-            JOptionPane.showMessageDialog(this, "Nickname o contraseña incorrectos(s)");
+            if(reject){
+                JOptionPane.showMessageDialog(this, "Nickname o contraseña incorrectos(s)");  
+            }
         }
         else if (CB_TipoUsuario_LogIn.getSelectedItem().equals("Ofertador")) {
             for (Ofertador ofertador : ofertadores) {
@@ -1598,11 +1605,14 @@ public class Vehiculos extends javax.swing.JFrame {
                         D_MenuOfertador.pack();
                         D_MenuOfertador.setModal(true);
                         D_MenuOfertador.setVisible(true);
+                        reject = false;
                         break;
                     } 
                 } 
             }
-            JOptionPane.showMessageDialog(this, "Nickname o contraseña incorrectos(s)");
+            if(reject) {
+               JOptionPane.showMessageDialog(this, "Nickname o contraseña incorrectos(s)"); 
+            }
         }
         
         else {
@@ -1612,11 +1622,14 @@ public class Vehiculos extends javax.swing.JFrame {
                         D_MenuAdmin.pack();
                         D_MenuAdmin.setModal(true);
                         D_MenuAdmin.setVisible(true);
+                        reject = false;
                         break;
                     }
                 }
             }
-            JOptionPane.showMessageDialog(this, "Nickname o contraseña incorrectos(s)");
+            if(reject) {
+                JOptionPane.showMessageDialog(this, "Nickname o contraseña incorrectos(s)");
+            }
         }
         
     }//GEN-LAST:event_B_LogIn_LogInMouseClicked
@@ -1667,9 +1680,6 @@ public class Vehiculos extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        
-        //Leer los ofertadores existentes
-        numOfertadores = leerOfertadores(ofertadores);
         
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1919,7 +1929,7 @@ public class Vehiculos extends javax.swing.JFrame {
             }
 
         } catch (Exception e) {
-            System.out.println("Exception");
+            e.printStackTrace();
         }
         return count;
     }
