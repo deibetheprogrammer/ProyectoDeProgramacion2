@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import proyectodeprogra2.Personas.Administrador;
 import proyectodeprogra2.Personas.Cliente;
@@ -1271,7 +1273,7 @@ public class Vehiculos extends javax.swing.JFrame {
         P_PaginaPrincipal_MenuAdmin.setLayout(P_PaginaPrincipal_MenuAdminLayout);
         P_PaginaPrincipal_MenuAdminLayout.setHorizontalGroup(
             P_PaginaPrincipal_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 934, Short.MAX_VALUE)
+            .addGap(0, 940, Short.MAX_VALUE)
         );
         P_PaginaPrincipal_MenuAdminLayout.setVerticalGroup(
             P_PaginaPrincipal_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1339,7 +1341,7 @@ public class Vehiculos extends javax.swing.JFrame {
                         .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TF_Correo_Empresa_MenuAdmin)
                             .addComponent(TF_Direccion_Empresa_MenuAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))))
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         P_Empresa_MenuAdminLayout.setVerticalGroup(
             P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1393,7 +1395,7 @@ public class Vehiculos extends javax.swing.JFrame {
         P_Cliente_AdminUsuario_MenuAdmin.setLayout(P_Cliente_AdminUsuario_MenuAdminLayout);
         P_Cliente_AdminUsuario_MenuAdminLayout.setHorizontalGroup(
             P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 912, Short.MAX_VALUE)
+            .addGap(0, 918, Short.MAX_VALUE)
         );
         P_Cliente_AdminUsuario_MenuAdminLayout.setVerticalGroup(
             P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1406,7 +1408,7 @@ public class Vehiculos extends javax.swing.JFrame {
         P_Ofertador_AdminUsuario_MenuAdmin.setLayout(P_Ofertador_AdminUsuario_MenuAdminLayout);
         P_Ofertador_AdminUsuario_MenuAdminLayout.setHorizontalGroup(
             P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 912, Short.MAX_VALUE)
+            .addGap(0, 918, Short.MAX_VALUE)
         );
         P_Ofertador_AdminUsuario_MenuAdminLayout.setVerticalGroup(
             P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1419,7 +1421,7 @@ public class Vehiculos extends javax.swing.JFrame {
         P_Administrador_AdminUsuario_MenuAdmin.setLayout(P_Administrador_AdminUsuario_MenuAdminLayout);
         P_Administrador_AdminUsuario_MenuAdminLayout.setHorizontalGroup(
             P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 912, Short.MAX_VALUE)
+            .addGap(0, 918, Short.MAX_VALUE)
         );
         P_Administrador_AdminUsuario_MenuAdminLayout.setVerticalGroup(
             P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1520,7 +1522,7 @@ public class Vehiculos extends javax.swing.JFrame {
                             .addComponent(jScrollPane12)
                             .addComponent(PF_password_RegistrarAdmin)
                             .addComponent(TF_Nickname_RegistrarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(506, Short.MAX_VALUE))
+                .addContainerGap(512, Short.MAX_VALUE))
         );
         P_RegistrarAdmin_MenuAdminLayout.setVerticalGroup(
             P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1537,7 +1539,7 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addGroup(P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel50)
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_RegistrarAdmin_MenuAdminLayout.createSequentialGroup()
                         .addComponent(jLabel51)
@@ -1562,7 +1564,7 @@ public class Vehiculos extends javax.swing.JFrame {
         P_Subasta_MenuAdmin.setLayout(P_Subasta_MenuAdminLayout);
         P_Subasta_MenuAdminLayout.setHorizontalGroup(
             P_Subasta_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 934, Short.MAX_VALUE)
+            .addGap(0, 940, Short.MAX_VALUE)
         );
         P_Subasta_MenuAdminLayout.setVerticalGroup(
             P_Subasta_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1571,6 +1573,7 @@ public class Vehiculos extends javax.swing.JFrame {
 
         TB_MenuAdmin.addTab("Subastas", P_Subasta_MenuAdmin);
 
+        M_MenuAdmin.setIcon(new javax.swing.ImageIcon("/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/Icons/027-menu.png")); // NOI18N
         M_MenuAdmin.setText("Menu");
 
         MI_LogOut_MenuAdmin.setIcon(new javax.swing.ImageIcon("/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/Icons/logout.png")); // NOI18N
@@ -1716,6 +1719,7 @@ public class Vehiculos extends javax.swing.JFrame {
                         D_MenuCliente.pack();
                         D_MenuCliente.setModal(true);
                         D_MenuCliente.setVisible(true);
+                        clienteActual = cliente;
                         reject = false;
                         break;
                     }
@@ -1732,6 +1736,7 @@ public class Vehiculos extends javax.swing.JFrame {
                         D_MenuOfertador.pack();
                         D_MenuOfertador.setModal(true);
                         D_MenuOfertador.setVisible(true);
+                        ofertadorActual = ofertador;
                         reject = false;
                         break;
                     } 
@@ -1749,6 +1754,7 @@ public class Vehiculos extends javax.swing.JFrame {
                         D_MenuAdmin.pack();
                         D_MenuAdmin.setModal(true);
                         D_MenuAdmin.setVisible(true);
+                        adminActual = administrador;
                         reject = false;
                         break;
                     }
@@ -1775,23 +1781,66 @@ public class Vehiculos extends javax.swing.JFrame {
         String correo = TF_Correo_RegisterNaA.getText();
         String nombre = TF_NombreCompleto_RegisterNaA.getText();
         
+        boolean correct;
         
+        String mail = "\\S+(@{1})\\S+(.{1})\\S+";
         
-        if (CB_TipoUsuario_RegisterNaA.getSelectedItem().equals("Ofertador")) {
+        Pattern p = Pattern.compile(mail);
+        Matcher m = p.matcher(correo);
+        
+        correct = m.matches();
+        
+        if(correct){
+        
+            //Se verifica que el usuario no exista
+            boolean pass = true;
 
-            ofertadores.add(new Ofertador(nickname, password, pais, birthday, correo, nombre));
-            
-            D_MembresiaOfertador.pack();
-            D_MembresiaOfertador.setModal(true);
-            D_MembresiaOfertador.setVisible(true);
+            for (Ofertador ofertador : ofertadores) {
+                if (ofertador.getNickname().equals(nickname)) {
+                    pass = false;
+                    JOptionPane.showMessageDialog(this, "Su nickname no está disponible");
+                    break;
+                } else if (ofertador.getCorreo().equals(correo)) {
+                    pass = false;
+                    JOptionPane.showMessageDialog(this, "Su correo ya está ocupado");
+                    break;
+                }
+            }
 
-        } else {
-            
-            clientes.add(new Cliente(nickname, password, pais, birthday, correo, nombre));
-            
-            D_MembresiaCliente.pack();
-            D_MembresiaCliente.setModal(true);
-            D_MembresiaCliente.setVisible(true);
+            for (Cliente cliente : clientes) {
+                if (cliente.getNickname().equals(nickname)) {
+                    pass = false;
+                    JOptionPane.showMessageDialog(this, "Su nickname no está disponible");
+                    break;
+                } else if (cliente.getCorreo().equals(correo)) {
+                    pass = false;
+                    JOptionPane.showMessageDialog(this, "Su correo ya está ocupado");
+                    break;
+                }
+            }
+            if (pass) {
+
+                if (CB_TipoUsuario_RegisterNaA.getSelectedItem().equals("Ofertador")) {
+
+                    ofertadores.add(new Ofertador(nickname, password, pais, birthday, correo, nombre));
+
+                    D_MembresiaOfertador.pack();
+                    D_MembresiaOfertador.setModal(true);
+                    D_MembresiaOfertador.setVisible(true);
+
+                } else {
+
+                    clientes.add(new Cliente(nickname, password, pais, birthday, correo, nombre));
+
+                    D_MembresiaCliente.pack();
+                    D_MembresiaCliente.setModal(true);
+                    D_MembresiaCliente.setVisible(true);
+                }
+            }
+
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Correo invalido");
         }
     }//GEN-LAST:event_B_Register_RegisterNaAMouseClicked
 
@@ -1803,6 +1852,43 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void B_Register_RegistrarAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Register_RegistrarAdminMouseClicked
         // TODO add your handling code here:
+        
+        String nickname = TF_Nickname_RegistrarAdmin.getText();
+        String password = PF_password_RegistrarAdmin.getText();
+        String pais = L_PaisDeNacimiento_RegistrarAdmin.getSelectedValue();
+        Date birthDate = DC_Birthday_RegistrarAdmin.getDate();
+        String correo = TF_Correo_RegistrarAdmin.getText();
+        String nombre = TF_NombreCompleto_RegistrarAdmin.getText();
+        
+        boolean correct;
+        
+        String mail = "\\S+(@{1})\\S+(.{1})\\S+";
+        
+        Pattern p = Pattern.compile(mail);
+        Matcher m = p.matcher(correo);
+        
+        correct = m.matches();
+        
+        if (correct) {
+       
+            //Se verifica que dicho administrador no exista en el sistema
+            boolean pass = true;
+
+            for (Administrador administrador : administradores) {
+                if (administrador.getNickname().equals(nickname)) {
+                    pass = false;
+                    JOptionPane.showMessageDialog(this, "Su Nickname no está disponible");
+                    break;
+                } else if (administrador.getCorreo().equals(correo)) {
+                    pass = false;
+                    JOptionPane.showMessageDialog(this, "Su correo ya está ocupado");
+                    break;
+                }
+            }
+            if (pass) {
+                administradores.add(new Administrador(nickname, password, pais, birthDate, correo, nombre));
+            }
+        }
     }//GEN-LAST:event_B_Register_RegistrarAdminMouseClicked
 
     private void PF_password_RegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_password_RegistrarAdminActionPerformed
@@ -2050,6 +2136,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private static ArrayList<Cliente> clientes = new ArrayList<>();
     private static ArrayList<Ofertador> ofertadores = new ArrayList<>();
     private static ArrayList<Administrador> administradores = new ArrayList<>();
+    private static ArrayList<Vehiculo> vehiculos = new ArrayList<>();
     
     //Contadores
     private static int numOfertadores;
