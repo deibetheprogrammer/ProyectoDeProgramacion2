@@ -5,13 +5,22 @@
  */
 package proyectodeprogra2;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyectodeprogra2.Personas.Administrador;
 import proyectodeprogra2.Personas.Cliente;
@@ -200,9 +209,25 @@ public class Vehiculos extends javax.swing.JFrame {
         P_Cliente_AdminUsuario_MenuAdmin = new javax.swing.JPanel();
         P_Ofertador_AdminUsuario_MenuAdmin = new javax.swing.JPanel();
         P_Administrador_AdminUsuario_MenuAdmin = new javax.swing.JPanel();
+        P_RegistrarAdmin_MenuAdmin = new javax.swing.JPanel();
+        jLabel48 = new javax.swing.JLabel();
+        B_Register_RegistrarAdmin = new javax.swing.JButton();
+        PF_password_RegistrarAdmin = new javax.swing.JPasswordField();
+        jLabel50 = new javax.swing.JLabel();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        L_PaisDeNacimiento_RegistrarAdmin = new javax.swing.JList<>();
+        jLabel51 = new javax.swing.JLabel();
+        DC_Birthday_RegistrarAdmin = new com.toedter.calendar.JDateChooser();
+        jLabel52 = new javax.swing.JLabel();
+        TF_Correo_RegistrarAdmin = new javax.swing.JTextField();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        TF_Nickname_RegistrarAdmin = new javax.swing.JTextField();
+        TF_NombreCompleto_RegistrarAdmin = new javax.swing.JTextField();
         P_Subasta_MenuAdmin = new javax.swing.JPanel();
         MB_Admin = new javax.swing.JMenuBar();
         M_MenuAdmin = new javax.swing.JMenu();
+        MI_LogOut_MenuAdmin = new javax.swing.JMenuItem();
         M_AyudaAdmin = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         B_LogIn = new javax.swing.JButton();
@@ -1250,7 +1275,7 @@ public class Vehiculos extends javax.swing.JFrame {
         );
         P_PaginaPrincipal_MenuAdminLayout.setVerticalGroup(
             P_PaginaPrincipal_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 586, Short.MAX_VALUE)
+            .addGap(0, 588, Short.MAX_VALUE)
         );
 
         TB_MenuAdmin.addTab("Pagina principal", P_PaginaPrincipal_MenuAdmin);
@@ -1357,7 +1382,7 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel45)
                     .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         TB_MenuAdmin.addTab("Empresa", P_Empresa_MenuAdmin);
@@ -1372,7 +1397,7 @@ public class Vehiculos extends javax.swing.JFrame {
         );
         P_Cliente_AdminUsuario_MenuAdminLayout.setVerticalGroup(
             P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
+            .addGap(0, 535, Short.MAX_VALUE)
         );
 
         TP_ClienteOfertador_MenuAdmin.addTab("Clientes", P_Cliente_AdminUsuario_MenuAdmin);
@@ -1385,7 +1410,7 @@ public class Vehiculos extends javax.swing.JFrame {
         );
         P_Ofertador_AdminUsuario_MenuAdminLayout.setVerticalGroup(
             P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
+            .addGap(0, 535, Short.MAX_VALUE)
         );
 
         TP_ClienteOfertador_MenuAdmin.addTab("Ofertadores", P_Ofertador_AdminUsuario_MenuAdmin);
@@ -1398,7 +1423,7 @@ public class Vehiculos extends javax.swing.JFrame {
         );
         P_Administrador_AdminUsuario_MenuAdminLayout.setVerticalGroup(
             P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
+            .addGap(0, 535, Short.MAX_VALUE)
         );
 
         TP_ClienteOfertador_MenuAdmin.addTab("Administrador", P_Administrador_AdminUsuario_MenuAdmin);
@@ -1434,6 +1459,105 @@ public class Vehiculos extends javax.swing.JFrame {
 
         TB_MenuAdmin.addTab("Administrar usuarios", P_AministrarUsuario_MenuAdmin);
 
+        jLabel48.setText("Password");
+
+        B_Register_RegistrarAdmin.setText("Registrar Administrador");
+        B_Register_RegistrarAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_Register_RegistrarAdminMouseClicked(evt);
+            }
+        });
+
+        PF_password_RegistrarAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PF_password_RegistrarAdminActionPerformed(evt);
+            }
+        });
+
+        jLabel50.setText("Pais de Nacimiento");
+
+        L_PaisDeNacimiento_RegistrarAdmin.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Honduras", "El Salvador", "Guatemala", "Nicaragua", "Costa Rica", "Panama" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane12.setViewportView(L_PaisDeNacimiento_RegistrarAdmin);
+
+        jLabel51.setText("Fecha de nacimiento");
+
+        jLabel52.setText("Correo");
+
+        jLabel53.setText("Nickname");
+
+        jLabel54.setText("Nombre completo");
+
+        javax.swing.GroupLayout P_RegistrarAdmin_MenuAdminLayout = new javax.swing.GroupLayout(P_RegistrarAdmin_MenuAdmin);
+        P_RegistrarAdmin_MenuAdmin.setLayout(P_RegistrarAdmin_MenuAdminLayout);
+        P_RegistrarAdmin_MenuAdminLayout.setHorizontalGroup(
+            P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_RegistrarAdmin_MenuAdminLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addGroup(P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, P_RegistrarAdmin_MenuAdminLayout.createSequentialGroup()
+                        .addGroup(P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel51)
+                            .addComponent(jLabel52)
+                            .addComponent(jLabel54))
+                        .addGap(18, 18, 18)
+                        .addGroup(P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(TF_NombreCompleto_RegistrarAdmin)
+                                .addComponent(TF_Correo_RegistrarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(DC_Birthday_RegistrarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(B_Register_RegistrarAdmin)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, P_RegistrarAdmin_MenuAdminLayout.createSequentialGroup()
+                        .addGroup(P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel53)
+                            .addComponent(jLabel48)
+                            .addComponent(jLabel50))
+                        .addGap(41, 41, 41)
+                        .addGroup(P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane12)
+                            .addComponent(PF_password_RegistrarAdmin)
+                            .addComponent(TF_Nickname_RegistrarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(506, Short.MAX_VALUE))
+        );
+        P_RegistrarAdmin_MenuAdminLayout.setVerticalGroup(
+            P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_RegistrarAdmin_MenuAdminLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel53)
+                    .addComponent(TF_Nickname_RegistrarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel48)
+                    .addComponent(PF_password_RegistrarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel50)
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_RegistrarAdmin_MenuAdminLayout.createSequentialGroup()
+                        .addComponent(jLabel51)
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel52))
+                    .addGroup(P_RegistrarAdmin_MenuAdminLayout.createSequentialGroup()
+                        .addComponent(DC_Birthday_RegistrarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(TF_Correo_RegistrarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addGroup(P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel54)
+                    .addComponent(TF_NombreCompleto_RegistrarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
+                .addComponent(B_Register_RegistrarAdmin)
+                .addGap(55, 55, 55))
+        );
+
+        TB_MenuAdmin.addTab("Registrar Admin", P_RegistrarAdmin_MenuAdmin);
+
         javax.swing.GroupLayout P_Subasta_MenuAdminLayout = new javax.swing.GroupLayout(P_Subasta_MenuAdmin);
         P_Subasta_MenuAdmin.setLayout(P_Subasta_MenuAdminLayout);
         P_Subasta_MenuAdminLayout.setHorizontalGroup(
@@ -1442,12 +1566,17 @@ public class Vehiculos extends javax.swing.JFrame {
         );
         P_Subasta_MenuAdminLayout.setVerticalGroup(
             P_Subasta_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 586, Short.MAX_VALUE)
+            .addGap(0, 588, Short.MAX_VALUE)
         );
 
         TB_MenuAdmin.addTab("Subastas", P_Subasta_MenuAdmin);
 
         M_MenuAdmin.setText("Menu");
+
+        MI_LogOut_MenuAdmin.setIcon(new javax.swing.ImageIcon("/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/Icons/logout.png")); // NOI18N
+        MI_LogOut_MenuAdmin.setText("Log out");
+        M_MenuAdmin.add(MI_LogOut_MenuAdmin);
+
         MB_Admin.add(M_MenuAdmin);
 
         M_AyudaAdmin.setText("Ayuda");
@@ -1551,9 +1680,7 @@ public class Vehiculos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void B_LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_LogInMouseClicked
-        //Leer los ofertadores existentes
-        numOfertadores = leerOfertadores(ofertadores);
-        
+
         D_LogIn.pack();
         D_LogIn.setModal(true);
         D_LogIn.setVisible(true);
@@ -1648,6 +1775,8 @@ public class Vehiculos extends javax.swing.JFrame {
         String correo = TF_Correo_RegisterNaA.getText();
         String nombre = TF_NombreCompleto_RegisterNaA.getText();
         
+        
+        
         if (CB_TipoUsuario_RegisterNaA.getSelectedItem().equals("Ofertador")) {
 
             ofertadores.add(new Ofertador(nickname, password, pais, birthday, correo, nombre));
@@ -1669,7 +1798,16 @@ public class Vehiculos extends javax.swing.JFrame {
     private void B_SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_SalirMouseClicked
         // TODO add your handling code here:
         guardarOfertadores(ofertadores);
+        guardarClientes(clientes);
     }//GEN-LAST:event_B_SalirMouseClicked
+
+    private void B_Register_RegistrarAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Register_RegistrarAdminMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B_Register_RegistrarAdminMouseClicked
+
+    private void PF_password_RegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_password_RegistrarAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PF_password_RegistrarAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1703,6 +1841,13 @@ public class Vehiculos extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
+        //Leer Ofertadores existentes
+        numOfertadores = leerOfertadores(ofertadores);
+        
+        //Leer Clientes existentes
+        numClientes = leerClientes(clientes);
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Vehiculos().setVisible(true);
@@ -1722,6 +1867,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JButton B_PDF_Facturas_MenuOfertador;
     private javax.swing.JButton B_Register;
     private javax.swing.JButton B_Register_RegisterNaA;
+    private javax.swing.JButton B_Register_RegistrarAdmin;
     private javax.swing.JRadioButton B_Renta_MembresiaOfertador;
     private javax.swing.JRadioButton B_Renta_Membresia_MenuOfertador;
     private javax.swing.JButton B_Renta_MenuOfertador;
@@ -1738,6 +1884,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser DC_Birthday_MenuCliente_Modificar;
     private com.toedter.calendar.JDateChooser DC_Birthday_MenuOfertador_Modificar;
     private com.toedter.calendar.JDateChooser DC_Birthday_RegisterNaA;
+    private com.toedter.calendar.JDateChooser DC_Birthday_RegistrarAdmin;
     private javax.swing.JDialog D_LogIn;
     private javax.swing.JDialog D_MembresiaCliente;
     private javax.swing.JDialog D_MembresiaOfertador;
@@ -1752,11 +1899,13 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JList<String> L_PaisDeNacimiento_MenuCliente_Modificar;
     private javax.swing.JList<String> L_PaisDeNacimiento_MenuOfertador_Modificar;
     private javax.swing.JList<String> L_PaisDeNacimiento_RegisterNaA;
+    private javax.swing.JList<String> L_PaisDeNacimiento_RegistrarAdmin;
     private javax.swing.JLabel L_Password_RetrievePassword;
     private javax.swing.JLabel L_SignIn;
     private javax.swing.JMenuBar MB_Admin;
     private javax.swing.JMenuBar MB_Cliente;
     private javax.swing.JMenuBar MB_Ofertador;
+    private javax.swing.JMenuItem MI_LogOut_MenuAdmin;
     private javax.swing.JMenu M_AyudaAdmin;
     private javax.swing.JMenu M_AyudaCliente;
     private javax.swing.JMenu M_AyudaOfertador;
@@ -1767,6 +1916,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JPasswordField PF_password_MenuCliente_Modificar;
     private javax.swing.JPasswordField PF_password_MenuOfertador_Modificar;
     private javax.swing.JPasswordField PF_password_RegisterNaA;
+    private javax.swing.JPasswordField PF_password_RegistrarAdmin;
     private javax.swing.JPanel P_Administrador_AdminUsuario_MenuAdmin;
     private javax.swing.JPanel P_AministrarUsuario_MenuAdmin;
     private javax.swing.JPanel P_Carwash_MenuCliente;
@@ -1787,6 +1937,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JPanel P_PaginaPrincipal_MenuCliente;
     private javax.swing.JPanel P_PaginaPrincipal_MenuOfertador;
     private javax.swing.JPanel P_RegisterNaA;
+    private javax.swing.JPanel P_RegistrarAdmin_MenuAdmin;
     private javax.swing.JPanel P_Renta_MenuCliente;
     private javax.swing.JPanel P_RetrievePassword;
     private javax.swing.JPanel P_Subasta_MenuAdmin;
@@ -1803,6 +1954,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Correo_MenuCliente_Modificar;
     private javax.swing.JTextField TF_Correo_MenuOfertador_Modificar;
     private javax.swing.JTextField TF_Correo_RegisterNaA;
+    private javax.swing.JTextField TF_Correo_RegistrarAdmin;
     private javax.swing.JTextField TF_Correo_RetrievePassword;
     private javax.swing.JTextField TF_Direccion_Empresa_MenuAdmin;
     private javax.swing.JTextField TF_Mision_Empresa_MenuAdmin;
@@ -1810,9 +1962,11 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Nickname_MenuCliente_Modificar;
     private javax.swing.JTextField TF_Nickname_MenuOfertador_Modificar;
     private javax.swing.JTextField TF_Nickname_RegisterNaA;
+    private javax.swing.JTextField TF_Nickname_RegistrarAdmin;
     private javax.swing.JTextField TF_NombreCompleto_MenuCliente_Modificar;
     private javax.swing.JTextField TF_NombreCompleto_MenuOfertador_Modificar;
     private javax.swing.JTextField TF_NombreCompleto_RegisterNaA;
+    private javax.swing.JTextField TF_NombreCompleto_RegistrarAdmin;
     private javax.swing.JTextField TF_Nombre_Empresa_MenuAdmin;
     private javax.swing.JTextField TF_Vision_Empresa_MenuAdmin;
     private javax.swing.JTabbedPane TP_ClienteOfertador_MenuAdmin;
@@ -1864,7 +2018,13 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1873,6 +2033,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1912,8 +2073,8 @@ public class Vehiculos extends javax.swing.JFrame {
                 o.writeObject(ofertador);
                 count++;
             }
-        } catch (Exception e) {
-            System.out.println("Exception");
+        } catch (IOException ex) { 
+            Logger.getLogger(Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return count;
     }
@@ -1926,13 +2087,54 @@ public class Vehiculos extends javax.swing.JFrame {
             while (true) {
                 ofertadores.add((Ofertador) oi.readObject());
                 count++;
+                System.out.println(count);
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Registros leidos" + count);
+        return count;
+    }
+        
+    //Guardar clientes
+    public static int guardarClientes(ArrayList<Cliente> clientes) {
+        int count = 0;
+        try (FileWriter fw = new FileWriter("Clientes.txt")) {
+            for (Cliente cliente : clientes) {
+                String sp = ",";
+                String linea = cliente.getNickname() + sp + cliente.getPassword() + sp + cliente.getPais() + sp + cliente.getBirthday() + sp + cliente.getCorreo() + sp + cliente.getNombre() + "\n";
+                fw.write(linea);
+                count++;
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return count;
     }
     
-    //Guardar clientes
+    public static int leerClientes(ArrayList<Cliente> clientes) {
+        int count = 0;
+        try(BufferedReader br = new BufferedReader(new FileReader("Clientes.txt"))) {
+            String line;
+            String[] tokens;
+            SimpleDateFormat time = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+            while ((line = br.readLine()) != null) {                
+                tokens = line.split(";");
+                Date birthday = time.parse(tokens[3]);
+                clientes.add(new Cliente(tokens[0], tokens[1], tokens[2], birthday, tokens[4], tokens[5]));
+                count++;
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(Vehiculos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return count;
+    }
 }   
