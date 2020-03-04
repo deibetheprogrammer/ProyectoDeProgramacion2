@@ -655,16 +655,17 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="482" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="0" pref="653" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="B_Renta_MenuOfertador" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="B_Carwash_MenuOfertador" min="-2" max="-2" attributes="0"/>
-                                  <Component id="B_VentaSubasta_MenuOfertador" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                              <Component id="B_Carwash_MenuOfertador" min="-2" max="-2" attributes="0"/>
+                              <Component id="B_VentaSubasta_MenuOfertador" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="B_VentaDirecta_MenuOfertador" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -679,13 +680,13 @@
                           <Component id="jLabel17" min="-2" pref="27" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="B_VentaDirecta_MenuOfertador" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           <Component id="B_VentaSubasta_MenuOfertador" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           <Component id="B_Renta_MenuOfertador" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                           <Component id="B_Carwash_MenuOfertador" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="310" max="32767" attributes="0"/>
+                          <EmptySpace pref="205" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -906,21 +907,49 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="B_VentaDirecta_Membresia_MenuOfertador" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="B_Renta_Membresia_MenuOfertador" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="RB_VentaDirecta_Membresia_MenuOfertador" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="RB_Renta_Membresia_MenuOfertador" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="B_Carwash_Membresia_MenuOfertador" min="-2" max="-2" attributes="0"/>
-                                      <Component id="B_VentaSubasta_Membresia_MenuOfertador" min="-2" max="-2" attributes="0"/>
+                                      <Component id="RB_Carwash_Membresia_MenuOfertador" min="-2" max="-2" attributes="0"/>
+                                      <Component id="RB_VentaSubasta_Membresia_MenuOfertador" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="TF_Nombre_Membresia_MenuOfertador" pref="155" max="32767" attributes="0"/>
+                                              <Component id="TF_Tarjeta_Membresia_MenuOfertador" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="jLabel55" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel56" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel57" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="TF_FechaV_Membresia_MenuOfertador" max="32767" attributes="0"/>
+                                      <Component id="TF_Codigo_Membresia_MenuOfertador" pref="139" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="290" max="32767" attributes="0"/>
+                          <EmptySpace pref="106" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="B_PagarMembresia_MenuOfertador" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="347" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -931,17 +960,33 @@
                           <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="B_VentaDirecta_Membresia_MenuOfertador" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="B_VentaSubasta_Membresia_MenuOfertador" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="RB_VentaDirecta_Membresia_MenuOfertador" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="RB_VentaSubasta_Membresia_MenuOfertador" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="B_Renta_Membresia_MenuOfertador" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="B_Carwash_Membresia_MenuOfertador" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="RB_Renta_Membresia_MenuOfertador" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="RB_Carwash_Membresia_MenuOfertador" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                           <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="279" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel49" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TF_Tarjeta_Membresia_MenuOfertador" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel56" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TF_FechaV_Membresia_MenuOfertador" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel55" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TF_Nombre_Membresia_MenuOfertador" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel57" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TF_Codigo_Membresia_MenuOfertador" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="89" max="32767" attributes="0"/>
+                          <Component id="B_PagarMembresia_MenuOfertador" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -957,25 +1002,61 @@
                     <Property name="text" type="java.lang.String" value="Realice su pago: "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="B_VentaDirecta_Membresia_MenuOfertador">
+                <Component class="javax.swing.JRadioButton" name="RB_VentaDirecta_Membresia_MenuOfertador">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Venta directa"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="B_VentaSubasta_Membresia_MenuOfertador">
+                <Component class="javax.swing.JRadioButton" name="RB_VentaSubasta_Membresia_MenuOfertador">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Venta por subasta"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="B_Renta_Membresia_MenuOfertador">
+                <Component class="javax.swing.JRadioButton" name="RB_Renta_Membresia_MenuOfertador">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Renta de veh&#xed;culos"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="B_Carwash_Membresia_MenuOfertador">
+                <Component class="javax.swing.JRadioButton" name="RB_Carwash_Membresia_MenuOfertador">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Lavado por cita"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="B_PagarMembresia_MenuOfertador">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Pagar membres&#xed;a"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="B_PagarMembresia_MenuOfertadorMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel49">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Trajeta"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="TF_Tarjeta_Membresia_MenuOfertador">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel55">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nombre"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="TF_Nombre_Membresia_MenuOfertador">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel56">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Fecha de vencimiento"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="TF_FechaV_Membresia_MenuOfertador">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel57">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="C&#xf3;digo de seguridad"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="TF_Codigo_Membresia_MenuOfertador">
                 </Component>
               </SubComponents>
             </Container>
@@ -1088,8 +1169,21 @@
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="M_MenuOfertador">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Log Out"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/Icons/027-menu.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Menu"/>
               </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="MI_LogOut_MenuOfertador">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="2" name="/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/Icons/logout.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Log Out"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="M_AyudaOfertador">
               <Properties>
@@ -1130,16 +1224,19 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
-                              <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="236" max="-2" attributes="0"/>
                               <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="B_Pagar_MembresiaCliente" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="243" max="32767" attributes="0"/>
+                      <EmptySpace pref="241" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1148,9 +1245,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                       <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="236" max="32767" attributes="0"/>
+                      <EmptySpace pref="223" max="32767" attributes="0"/>
+                      <Component id="B_Pagar_MembresiaCliente" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1165,6 +1264,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pagar membresia:"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="B_Pagar_MembresiaCliente">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pagar membres&#xed;a"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="B_Pagar_MembresiaClienteMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -1209,7 +1316,29 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="848" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="875" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="473" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+            </Container>
+            <Container class="javax.swing.JPanel" name="P_Membresia_MenuCliente">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Membresia">
+                    <Property name="tabTitle" type="java.lang.String" value="Membresia"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="875" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -1244,7 +1373,7 @@
                                       <Component id="PF_password_MenuCliente_Modificar" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="TF_Nickname_MenuCliente_Modificar" min="-2" pref="135" max="-2" attributes="0"/>
-                                          <EmptySpace pref="339" max="32767" attributes="0"/>
+                                          <EmptySpace pref="366" max="32767" attributes="0"/>
                                           <Component id="B_ModificarDatos_Modificar_MenuCliente" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1412,7 +1541,7 @@
                               <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane5" alignment="0" min="-2" pref="592" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="196" max="32767" attributes="0"/>
+                          <EmptySpace pref="223" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
@@ -1494,7 +1623,7 @@
                                   <Component id="jScrollPane6" min="-2" pref="739" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="48" max="32767" attributes="0"/>
+                          <EmptySpace pref="75" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1601,7 +1730,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="848" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="875" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -1624,7 +1753,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="56" max="32767" attributes="0"/>
+                          <EmptySpace pref="83" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
@@ -1741,7 +1870,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="56" max="32767" attributes="0"/>
+                          <EmptySpace pref="83" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
@@ -1851,8 +1980,21 @@
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="M_MenuCliente">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/Icons/027-menu.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Menu"/>
               </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="MI_LogOut_MenuCliente">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="2" name="/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/Icons/logout.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Log Out"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="M_AyudaCliente">
               <Properties>
