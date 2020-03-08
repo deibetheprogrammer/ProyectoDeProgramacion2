@@ -6,11 +6,13 @@
 package Banco;
 import java.net.*; 
 import java.io.*; 
+import java.util.Random;
 /**
  *
  * @author davidbendeck
  */
 public class Banco {
+    Random rand = new Random();
     
     // A Java program for a Server 
     //initialize socket and input stream 
@@ -25,6 +27,8 @@ public class Banco {
         try {
             server = new ServerSocket(port);
             System.out.println("Server started");
+            
+            int autorizacion = 1;
 
             while (true) {
                 
@@ -43,17 +47,26 @@ public class Banco {
                 String line = "";
 
                 String[] tarjetas = {"11921019;eri;09/21;1234", "0801199922654;david,12/20,1844"};
+                
+                boolean match = false;
+                
 
                 // reads message from client until "Over" is sent 
                 try {
                     line = in.readUTF().toLowerCase();
-                    if (line.equals((tarjetas[0]).toLowerCase())) {
-                        out.writeUTF("5");
-                    } else {
+                    for (int i = 0; i < tarjetas.length; i++) {
+                        if (line.equals((tarjetas[i]).toLowerCase())) {
+                            out.writeUTF("" + autorizacion);
+                            autorizacion++;
+                            match = true;
+                            break;
+                        }
+                    }
+                    if(!match) {
                         out.writeUTF("-1");
                     }
                     out.flush();
-                    System.out.println(">" + line + "<" + tarjetas[0]);
+                    System.out.println(">" + line + "< " + tarjetas[0]);
 
                 } catch (IOException i) {
                     System.out.println(i);
