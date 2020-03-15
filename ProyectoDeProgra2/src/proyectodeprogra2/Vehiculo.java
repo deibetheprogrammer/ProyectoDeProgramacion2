@@ -5,15 +5,19 @@
  */
 package proyectodeprogra2;
 
+import java.io.Serializable;
+import java.util.Date;
+
 /**
  *
  * @author davidbendeck
  */
-public class Vehiculo {
+public class Vehiculo implements Serializable {
     
+    private String nickname;
     private String marca;
     private String modelo;
-    private int year;
+    private Date year;
     private String cilindraje;
     private String tipo;
     private String transmision;
@@ -21,13 +25,22 @@ public class Vehiculo {
     public Vehiculo() {
     }
 
-    public Vehiculo(String marca, String modelo, int year, String cilindraje, String tipo, String transmision) {
+    public Vehiculo(String nickname, String marca, String modelo, Date year, String cilindraje, String tipo, String transmision) {
+        this.nickname = nickname;
         this.marca = marca;
         this.modelo = modelo;
         this.year = year;
         this.cilindraje = cilindraje;
         this.tipo = tipo;
         this.transmision = transmision;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getMarca() {
@@ -46,11 +59,11 @@ public class Vehiculo {
         this.modelo = modelo;
     }
 
-    public int getYear() {
+    public Date getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Date year) {
         this.year = year;
     }
 
@@ -80,7 +93,7 @@ public class Vehiculo {
 
     @Override
     public String toString() {
-        return "Vehiculo{" + "marca=" + marca + ", modelo=" + modelo + ", year=" + year + ", cilindraje=" + cilindraje + ", tipo=" + tipo + ", transmision=" + transmision + '}';
+        return marca;
     }
     
 }

@@ -12,3 +12,9 @@ os.arch=x86_64
 os.version=10.14.6
 derby.system.home=/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat Mar 14 21:13:37 CST 2020: Shutting down Derby engine
+----------------------------------------------------------------
+Sat Mar 14 21:13:37 CST 2020:
+Shutting down instance a816c00e-0170-da28-1239-fffff72c8559 on database directory /Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/proyecto2db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@55054057 
+----------------------------------------------------------------

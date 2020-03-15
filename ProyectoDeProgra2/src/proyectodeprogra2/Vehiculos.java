@@ -28,6 +28,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.sql.*;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import proyectodeprogra2.Personas.Administrador;
 import proyectodeprogra2.Personas.Cliente;
@@ -277,6 +278,29 @@ public class Vehiculos extends javax.swing.JFrame {
         M_MenuAdmin = new javax.swing.JMenu();
         MI_LogOut_MenuAdmin = new javax.swing.JMenuItem();
         M_AyudaAdmin = new javax.swing.JMenu();
+        D_VentaDirecta = new javax.swing.JDialog();
+        TP_Vehiculos_VentaDirecta = new javax.swing.JTabbedPane();
+        P_Vehiculos_VentaDirecta = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        L_Vehiculos_VentaDirecta = new javax.swing.JList<>();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        TF_Marca_VentaDirecta = new javax.swing.JTextField();
+        TF_Modelo_VentaDirecta = new javax.swing.JTextField();
+        DC_year_VentaDirecta = new com.toedter.calendar.JDateChooser();
+        RB_1500cc_VentaDirecta = new javax.swing.JRadioButton();
+        RB_1800cc_VentaDirecta = new javax.swing.JRadioButton();
+        RB_Turismo_VentaDirecta = new javax.swing.JRadioButton();
+        RB_Camion_VentaDirecta = new javax.swing.JRadioButton();
+        RB_Mecanico_VentaDirecta = new javax.swing.JRadioButton();
+        RB_Automatico_VentaDirecta = new javax.swing.JRadioButton();
+        B_OfertarVehiculo_VentaDirecta = new javax.swing.JButton();
+        P_Publicidad_VentaDirecta = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         B_LogIn = new javax.swing.JButton();
         L_SignIn = new javax.swing.JLabel();
@@ -582,9 +606,9 @@ public class Vehiculos extends javax.swing.JFrame {
         });
 
         B_VentaDirecta_MenuOfertador.setText("Venta directa");
-        B_VentaDirecta_MenuOfertador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_VentaDirecta_MenuOfertadorActionPerformed(evt);
+        B_VentaDirecta_MenuOfertador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_VentaDirecta_MenuOfertadorMouseClicked(evt);
             }
         });
 
@@ -595,7 +619,7 @@ public class Vehiculos extends javax.swing.JFrame {
         P_PaginaPrincipal_MenuOfertadorLayout.setHorizontalGroup(
             P_PaginaPrincipal_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_PaginaPrincipal_MenuOfertadorLayout.createSequentialGroup()
-                .addGap(19, 695, Short.MAX_VALUE)
+                .addContainerGap(695, Short.MAX_VALUE)
                 .addGroup(P_PaginaPrincipal_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(B_VentaDirecta_MenuOfertador)
                     .addComponent(jLabel17))
@@ -606,9 +630,9 @@ public class Vehiculos extends javax.swing.JFrame {
             .addGroup(P_PaginaPrincipal_MenuOfertadorLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(136, 136, 136)
+                .addGap(162, 162, 162)
                 .addComponent(B_VentaDirecta_MenuOfertador)
-                .addContainerGap(331, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
 
         TB_MenuOfertador.addTab("Pagina principal", P_PaginaPrincipal_MenuOfertador);
@@ -1914,6 +1938,172 @@ public class Vehiculos extends javax.swing.JFrame {
             .addComponent(TB_MenuAdmin, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
+        TP_Vehiculos_VentaDirecta.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                TP_Vehiculos_VentaDirectaStateChanged(evt);
+            }
+        });
+
+        L_Vehiculos_VentaDirecta.setModel(new DefaultListModel()
+        );
+        jScrollPane7.setViewportView(L_Vehiculos_VentaDirecta);
+
+        jLabel14.setText("Lista de Vehiculos Ofertados");
+
+        jLabel15.setText("Marca");
+
+        jLabel16.setText("Modelo");
+
+        jLabel28.setText("Año");
+
+        jLabel29.setText("Cilindraje");
+
+        jLabel38.setText("Tipo");
+
+        jLabel39.setText("Transmisión");
+
+        RB_1500cc_VentaDirecta.setText("1500 cc");
+
+        RB_1800cc_VentaDirecta.setText("1800 cc");
+
+        RB_Turismo_VentaDirecta.setText("Turismo");
+
+        RB_Camion_VentaDirecta.setText("Camion");
+
+        RB_Mecanico_VentaDirecta.setText("Mecánico");
+
+        RB_Automatico_VentaDirecta.setText("Automático");
+
+        B_OfertarVehiculo_VentaDirecta.setText("Ofertar vehículo");
+        B_OfertarVehiculo_VentaDirecta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_OfertarVehiculo_VentaDirectaMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout P_Vehiculos_VentaDirectaLayout = new javax.swing.GroupLayout(P_Vehiculos_VentaDirecta);
+        P_Vehiculos_VentaDirecta.setLayout(P_Vehiculos_VentaDirectaLayout);
+        P_Vehiculos_VentaDirectaLayout.setHorizontalGroup(
+            P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
+                        .addComponent(jLabel38)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
+                        .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel29))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51))
+                    .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
+                        .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel39))
+                        .addGap(47, 47, 47)
+                        .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TF_Marca_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TF_Modelo_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DC_year_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
+                                .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(RB_1500cc_VentaDirecta)
+                                    .addComponent(RB_Turismo_VentaDirecta)
+                                    .addComponent(RB_Mecanico_VentaDirecta))
+                                .addGap(28, 28, 28)
+                                .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(RB_Camion_VentaDirecta)
+                                    .addComponent(RB_1800cc_VentaDirecta)
+                                    .addComponent(RB_Automatico_VentaDirecta))))
+                        .addContainerGap(565, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addGap(67, 67, 67))
+            .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
+                .addGap(143, 143, 143)
+                .addComponent(B_OfertarVehiculo_VentaDirecta)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        P_Vehiculos_VentaDirectaLayout.setVerticalGroup(
+            P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel14)
+                .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
+                                .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
+                                        .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel15)
+                                            .addComponent(TF_Marca_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(63, 63, 63)
+                                        .addComponent(jLabel16))
+                                    .addComponent(TF_Modelo_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(69, 69, 69)
+                                .addComponent(jLabel28))
+                            .addComponent(DC_year_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53)
+                        .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel29)
+                            .addComponent(RB_1500cc_VentaDirecta)
+                            .addComponent(RB_1800cc_VentaDirecta))))
+                .addGap(9, 9, 9)
+                .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(RB_Turismo_VentaDirecta)
+                    .addComponent(RB_Camion_VentaDirecta))
+                .addGap(48, 48, 48)
+                .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39)
+                    .addComponent(RB_Mecanico_VentaDirecta)
+                    .addComponent(RB_Automatico_VentaDirecta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(B_OfertarVehiculo_VentaDirecta)
+                .addGap(36, 36, 36))
+        );
+
+        TP_Vehiculos_VentaDirecta.addTab("Vehiculos", P_Vehiculos_VentaDirecta);
+
+        javax.swing.GroupLayout P_Publicidad_VentaDirectaLayout = new javax.swing.GroupLayout(P_Publicidad_VentaDirecta);
+        P_Publicidad_VentaDirecta.setLayout(P_Publicidad_VentaDirectaLayout);
+        P_Publicidad_VentaDirectaLayout.setHorizontalGroup(
+            P_Publicidad_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 966, Short.MAX_VALUE)
+        );
+        P_Publicidad_VentaDirectaLayout.setVerticalGroup(
+            P_Publicidad_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        TP_Vehiculos_VentaDirecta.addTab("Publicidad", P_Publicidad_VentaDirecta);
+
+        javax.swing.GroupLayout D_VentaDirectaLayout = new javax.swing.GroupLayout(D_VentaDirecta.getContentPane());
+        D_VentaDirecta.getContentPane().setLayout(D_VentaDirectaLayout);
+        D_VentaDirectaLayout.setHorizontalGroup(
+            D_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(D_VentaDirectaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TP_Vehiculos_VentaDirecta, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        D_VentaDirectaLayout.setVerticalGroup(
+            D_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(D_VentaDirectaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TP_Vehiculos_VentaDirecta)
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         B_LogIn.setText("Log In");
@@ -2145,7 +2335,7 @@ public class Vehiculos extends javax.swing.JFrame {
 
                 if (CB_TipoUsuario_RegisterNaA.getSelectedItem().equals("Ofertador")) {
 
-                    ofertadores.add(new Ofertador(nickname, password, pais, birthday, correo, nombre));
+                    ofertadores.add(new Ofertador(nickname, password, pais, birthday,0.0,0.0, correo, nombre));
                     guardarOfertadores(ofertadores);
                     
                     JOptionPane.showConfirmDialog(D_RegisterNaA, "Registrado correctamente");
@@ -2158,7 +2348,7 @@ public class Vehiculos extends javax.swing.JFrame {
 
                 } else {
 
-                    clientes.add(new Cliente(nickname, password, pais, birthday, correo, nombre));
+                    clientes.add(new Cliente(nickname, password, pais, birthday,0.0,0.0, correo, nombre));
                     guardarClientes(clientes);
                     
                     JOptionPane.showConfirmDialog(D_RegisterNaA, "Registrado correctamente");
@@ -2382,8 +2572,6 @@ public class Vehiculos extends javax.swing.JFrame {
         for (Ofertador ofertador : ofertadores) {
             CB_Administrador_AdminUsuario_Ofertador.addItem(ofertador);
         }
-
-        CB_Administrador_AdminUsuario_Ofertador.setSelectedIndex(0);
 
     }//GEN-LAST:event_TP_ClienteOfertador_MenuAdminStateChanged
 
@@ -2683,9 +2871,84 @@ public class Vehiculos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_TB_MenuOfertadorStateChanged
 
-    private void B_VentaDirecta_MenuOfertadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_VentaDirecta_MenuOfertadorActionPerformed
+    private void B_VentaDirecta_MenuOfertadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_VentaDirecta_MenuOfertadorMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_B_VentaDirecta_MenuOfertadorActionPerformed
+        
+        D_MenuOfertador.setVisible(false);
+        
+        D_VentaDirecta.pack();
+        D_VentaDirecta.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        D_VentaDirecta.setVisible(true);
+        
+        DefaultListModel Lvehiculos = (DefaultListModel) L_Vehiculos_VentaDirecta.getModel();
+        
+        Lvehiculos.removeAllElements();
+        
+        for (Vehiculo v : vehiculos) {
+            if (v.getNickname().equals(ofertadorActual.getNickname())) {
+                Lvehiculos.addElement(v);
+            }
+        }
+    }//GEN-LAST:event_B_VentaDirecta_MenuOfertadorMouseClicked
+
+    private void TP_Vehiculos_VentaDirectaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TP_Vehiculos_VentaDirectaStateChanged
+        // TODO add your handling code here:
+        
+        DefaultListModel Lvehiculos = (DefaultListModel) L_Vehiculos_VentaDirecta.getModel();
+        Lvehiculos.removeAllElements();
+        
+        for (Vehiculo v : vehiculos) {
+            if (v.getNickname().equals(ofertadorActual.getNickname())) {
+                Lvehiculos.addElement(v);
+            }
+        }
+    }//GEN-LAST:event_TP_Vehiculos_VentaDirectaStateChanged
+
+    private void B_OfertarVehiculo_VentaDirectaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_OfertarVehiculo_VentaDirectaMouseClicked
+        // TODO add your handling code here:
+        
+        String nickname = ofertadorActual.getNickname();
+        
+        String marca = TF_Marca_VentaDirecta.getText();
+        
+        String modelo = TF_Modelo_VentaDirecta.getText();
+        
+        Date year = DC_year_VentaDirecta.getDate();
+        
+        String cilindraje = "";
+        if (RB_1500cc_VentaDirecta.isSelected()) {
+            cilindraje = "1500cc";
+        } else {
+            cilindraje = "1800cc";
+        }
+        
+        String tipo = "";
+        if(RB_Camion_VentaDirecta.isSelected()) {
+            tipo = "Camion";
+        } else {
+            tipo = "Turismo";
+        }
+        
+        String transmision = "";
+        if (RB_Mecanico_VentaDirecta.isSelected()) {
+            transmision = "Mecanico";
+        } else {
+            transmision = "Automatico";
+        }
+        
+        vehiculos.add(new Vehiculo(nickname, marca, modelo, year, cilindraje, tipo, transmision));
+        guardarVehiculos(vehiculos);
+        
+        DefaultListModel Lvehiculos = (DefaultListModel) L_Vehiculos_VentaDirecta.getModel();
+        
+        Lvehiculos.removeAllElements();
+        
+        for (Vehiculo v : vehiculos) {
+            if (v.getNickname().equals(ofertadorActual.getNickname())) {
+                Lvehiculos.addElement(v);
+            }
+        }
+    }//GEN-LAST:event_B_OfertarVehiculo_VentaDirectaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2729,6 +2992,9 @@ public class Vehiculos extends javax.swing.JFrame {
         //Leer Administradores
         leerAdmins(administradores);
         
+        //Leer Vehiculos
+        leerVehiculos(vehiculos);
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -2750,6 +3016,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JButton B_Modificar_ModificarOfertador;
     private javax.swing.JButton B_ObtenerDatos_ModificarDatos_MenuOfertador;
     private javax.swing.JButton B_ObtenerDatos_Modificar_MenuCliente;
+    private javax.swing.JButton B_OfertarVehiculo_VentaDirecta;
     private javax.swing.JButton B_PDF_Facturas_MenuCliente;
     private javax.swing.JButton B_PDF_Facturas_MenuOfertador;
     private javax.swing.JButton B_PagarMembresia_MenuCliente;
@@ -2772,12 +3039,14 @@ public class Vehiculos extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser DC_Birthday_ModificarOfertador;
     private com.toedter.calendar.JDateChooser DC_Birthday_RegisterNaA;
     private com.toedter.calendar.JDateChooser DC_Birthday_RegistrarAdmin;
+    private com.toedter.calendar.JDateChooser DC_year_VentaDirecta;
     private javax.swing.JDialog D_LogIn;
     private javax.swing.JDialog D_MenuAdmin;
     private javax.swing.JDialog D_MenuCliente;
     private javax.swing.JDialog D_MenuOfertador;
     private javax.swing.JDialog D_RegisterNaA;
     private javax.swing.JDialog D_RetrievePassword;
+    private javax.swing.JDialog D_VentaDirecta;
     private javax.swing.JInternalFrame IF_ClienteOfertador_AdminUsuario_MenuAdmin;
     private javax.swing.JLabel L_EstadoMembresia_Cliente;
     private javax.swing.JLabel L_EstadoMembresia_Ofertador;
@@ -2793,6 +3062,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JList<String> L_Pais_MenuOfertador_Modificar;
     private javax.swing.JLabel L_Password_RetrievePassword;
     private javax.swing.JLabel L_SignIn;
+    private javax.swing.JList<String> L_Vehiculos_VentaDirecta;
     private javax.swing.JMenuBar MB_Admin;
     private javax.swing.JMenuBar MB_Cliente;
     private javax.swing.JMenuBar MB_Ofertador;
@@ -2830,9 +3100,17 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JPanel P_PaginaPrincipal_MenuAdmin;
     private javax.swing.JPanel P_PaginaPrincipal_MenuCliente;
     private javax.swing.JPanel P_PaginaPrincipal_MenuOfertador;
+    private javax.swing.JPanel P_Publicidad_VentaDirecta;
     private javax.swing.JPanel P_RegisterNaA;
     private javax.swing.JPanel P_RegistrarAdmin_MenuAdmin;
     private javax.swing.JPanel P_RetrievePassword;
+    private javax.swing.JPanel P_Vehiculos_VentaDirecta;
+    private javax.swing.JRadioButton RB_1500cc_VentaDirecta;
+    private javax.swing.JRadioButton RB_1800cc_VentaDirecta;
+    private javax.swing.JRadioButton RB_Automatico_VentaDirecta;
+    private javax.swing.JRadioButton RB_Camion_VentaDirecta;
+    private javax.swing.JRadioButton RB_Mecanico_VentaDirecta;
+    private javax.swing.JRadioButton RB_Turismo_VentaDirecta;
     private javax.swing.JSpinner SP_Posicion_CompraDirecta_MenuCliente;
     private javax.swing.JTextArea TA_Ojetivos_Empresa_MenuAdmin;
     private javax.swing.JTextArea TA_Politicas_Empresa_MenuAdmin;
@@ -2853,7 +3131,9 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Direccion_Empresa_MenuAdmin;
     private javax.swing.JTextField TF_FechaV_Membresia_MenuCliente;
     private javax.swing.JTextField TF_FechaV_Membresia_MenuOfertador;
+    private javax.swing.JTextField TF_Marca_VentaDirecta;
     private javax.swing.JTextField TF_Mision_Empresa_MenuAdmin;
+    private javax.swing.JTextField TF_Modelo_VentaDirecta;
     private javax.swing.JTextField TF_Nickname;
     private javax.swing.JTextField TF_Nickname_MenuOfertador_Modificar;
     private javax.swing.JTextField TF_Nickname_RegisterNaA;
@@ -2873,6 +3153,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Vision_Empresa_MenuAdmin;
     private javax.swing.JTabbedPane TP_ClienteOfertador_MenuAdmin;
     private javax.swing.JTabbedPane TP_MenuCliente;
+    private javax.swing.JTabbedPane TP_Vehiculos_VentaDirecta;
     private javax.swing.JTable T_HistorialFacturas_Facturas_MenuCliente;
     private javax.swing.JTable T_HistorialFacturas_Facturas_MenuOfertador;
     private javax.swing.JTable T_Vehiculos_CompraDirecta_MenuCliente;
@@ -2881,6 +3162,9 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -2893,6 +3177,8 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -2902,6 +3188,8 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
@@ -2964,6 +3252,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane9;
     // End of variables declaration//GEN-END:variables
     
@@ -3028,7 +3317,7 @@ public class Vehiculos extends javax.swing.JFrame {
         try (FileWriter fw = new FileWriter("Clientes.txt")) {
             for (Cliente cliente : clientes) {
                 String sp = ";";
-                String linea = cliente.getNickname() + sp + cliente.getPassword() + sp + cliente.getPais() + sp + cliente.getBirthday() + sp + cliente.getCorreo() + sp + cliente.getNombre() + "\n";
+                String linea = cliente.getNickname() + sp + cliente.getPassword() + sp + cliente.getPais() + sp + cliente.getBirthday() + sp + cliente.getCorreo() + sp + cliente.getNombre() + sp + cliente.getLatitud() + sp + cliente.getLongitud() + "\n";
                 fw.write(linea);
                 count++;
             }
@@ -3049,7 +3338,9 @@ public class Vehiculos extends javax.swing.JFrame {
             while ((line = br.readLine()) != null) {                
                 tokens = line.split(";");
                 Date birthday = time.parse(tokens[3]);
-                clientes.add(new Cliente(tokens[0], tokens[1], tokens[2], birthday, tokens[4], tokens[5]));
+                double latitud = Double.parseDouble(tokens[6]);
+                double longitud = Double.parseDouble(tokens[7]);
+                clientes.add(new Cliente(tokens[0], tokens[1], tokens[2], birthday,latitud,longitud, tokens[4], tokens[5]));
                 count++;
             }
         } catch (FileNotFoundException ex) {
@@ -3095,6 +3386,40 @@ public class Vehiculos extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println("Error Sql"+ex);
         }
+    }
+    
+     public static int guardarVehiculos(ArrayList<Vehiculo> vehiculos) {
+        int count = 0;
+        try (
+                FileOutputStream f = new FileOutputStream("Vehiculos");
+                ObjectOutput o = new ObjectOutputStream(f);) {
+            for (Vehiculo vehiculo : vehiculos) {
+                o.writeObject(vehiculo);
+                count++;
+            }
+        } catch (IOException ex) { 
+            System.out.println(ex);
+        }
+        return count;
+    }
+    
+    public static int leerVehiculos(ArrayList<Vehiculo> vehiculos) {
+        int count = 0;
+        try (
+                FileInputStream fi = new FileInputStream("Vehiculos");
+                ObjectInputStream oi = new ObjectInputStream(fi);) {
+            while (true) {
+                vehiculos.add((Vehiculo) oi.readObject());
+                count++;
+                System.out.println(count);
+            }
+        } catch (IOException ex) {
+            System.out.println(ex);
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
+        System.out.println("Registros leidos" + count);
+        return count;
     }
     
     public static String consultarBanco(String tarjeta, String nombre, String vencimiento, String codigoSeguridad) {

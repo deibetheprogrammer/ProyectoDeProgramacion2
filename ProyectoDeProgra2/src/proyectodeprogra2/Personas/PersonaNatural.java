@@ -20,8 +20,8 @@ public abstract class PersonaNatural extends Persona implements Serializable {
     protected String password;
     protected String pais;
     protected Date birthday;
-    protected double longitud;
     protected double latitud;
+    protected double longitud;
     
     public PersonaNatural() {
        
@@ -34,6 +34,17 @@ public abstract class PersonaNatural extends Persona implements Serializable {
         this.pais = pais;
         this.birthday = birthday;
     }
+
+    public PersonaNatural(String nickname, String password, String pais, Date birthday, double latitud, double longitud, String correo, String nombre) {
+        super(correo, nombre);
+        this.nickname = nickname;
+        this.password = password;
+        this.pais = pais;
+        this.birthday = birthday;
+        this.latitud = latitud;
+        this.longitud = longitud;
+    }
+    
 
     public String getNickname() {
         return nickname;
@@ -66,5 +77,23 @@ public abstract class PersonaNatural extends Persona implements Serializable {
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+    
+    
 
 }

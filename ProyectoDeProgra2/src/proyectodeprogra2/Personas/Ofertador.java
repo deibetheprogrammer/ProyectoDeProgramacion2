@@ -15,15 +15,12 @@ import java.util.Date;
 public class Ofertador extends PersonaNatural implements Serializable {
     
     private boolean membresia_VentaDirecta;
-    private boolean membresia_VentaSubasta;
-    private boolean membresia_Renta;
-    private boolean membresia_Carwash;
 
     public Ofertador() {
     }
 
-    public Ofertador(String nickname, String password, String pais, Date birthday, String correo, String nombre) {
-        super(nickname, password, pais, birthday, correo, nombre);
+    public Ofertador(String nickname, String password, String pais, Date birthday, double latitud, double longitud, String correo, String nombre) {
+        super(nickname, password, pais, birthday, latitud, longitud, correo, nombre);
     }
     
     @Override
@@ -38,29 +35,4 @@ public class Ofertador extends PersonaNatural implements Serializable {
     public void setMembresia_VentaDirecta(boolean membresia_VentaDirecta) {
         this.membresia_VentaDirecta = membresia_VentaDirecta;
     }
-
-    public boolean isMembresia_VentaSubasta() {
-        return membresia_VentaSubasta;
-    }
-
-    public void setMembresia_VentaSubasta(boolean membresia_VentaSubasta) {
-        this.membresia_VentaSubasta = membresia_VentaSubasta;
-    }
-
-    public boolean isMembresia_Renta() {
-        return membresia_Renta;
-    }
-
-    public void setMembresia_Renta(boolean membresia_Renta) {
-        this.membresia_Renta = membresia_Renta;
-    }
-
-    public boolean isMembresia_Carwash() {
-        return membresia_Carwash;
-    }
-
-    public void setMembresia_Carwash(boolean membresia_Carwash) {
-        this.membresia_Carwash = membresia_Carwash;
-    }
-    
 }

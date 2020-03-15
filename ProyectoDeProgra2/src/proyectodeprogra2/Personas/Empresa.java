@@ -5,13 +5,14 @@
  */
 package proyectodeprogra2.Personas;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author daba5
  */
-public class Empresa extends Persona {
+public class Empresa extends Persona implements Serializable {
     
     private String mision;
     private String vision;

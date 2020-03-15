@@ -20,9 +20,10 @@ public class Cliente extends PersonaNatural implements Serializable {
         
     }
 
-    public Cliente(String nickname, String password, String pais, Date birthday, String correo, String nombre) {
-        super(nickname, password, pais, birthday, correo, nombre);
+    public Cliente(String nickname, String password, String pais, Date birthday, double latitud, double longitud, String correo, String nombre) {
+        super(nickname, password, pais, birthday, latitud, longitud, correo, nombre);
     }
+
 
     public boolean isMembresia() {
         return membresia;
