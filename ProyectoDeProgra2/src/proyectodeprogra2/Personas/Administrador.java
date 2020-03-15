@@ -20,5 +20,9 @@ public class Administrador extends PersonaNatural implements Serializable {
         super(nickname, password, pais, birthday, correo, nombre);
     }
 
+    @Override
+    public String toString() {
+        return nickname;
+    } 
 
 }

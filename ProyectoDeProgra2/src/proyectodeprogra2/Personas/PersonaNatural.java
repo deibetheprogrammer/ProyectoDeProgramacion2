@@ -20,7 +20,8 @@ public abstract class PersonaNatural extends Persona implements Serializable {
     protected String password;
     protected String pais;
     protected Date birthday;
-    
+    protected double longitud;
+    protected double latitud;
     
     public PersonaNatural() {
        

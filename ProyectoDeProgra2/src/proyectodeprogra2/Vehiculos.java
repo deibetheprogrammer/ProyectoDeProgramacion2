@@ -5,6 +5,7 @@
  */
 package proyectodeprogra2;
 
+import java.awt.Dialog;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -23,10 +24,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.sql.*;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import proyectodeprogra2.Personas.Administrador;
 import proyectodeprogra2.Personas.Cliente;
@@ -92,23 +93,11 @@ public class Vehiculos extends javax.swing.JFrame {
         L_Password_RetrievePassword = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         L_Nickname_RetrievePassword = new javax.swing.JLabel();
-        D_MembresiaOfertador = new javax.swing.JDialog();
-        P_MembresiaOfertador = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        B_VentaDirecta_MembresiaOfertador = new javax.swing.JRadioButton();
-        B_VentaSubasta_MembresiaOfertador = new javax.swing.JRadioButton();
-        B_Renta_MembresiaOfertador = new javax.swing.JRadioButton();
-        B_Carwash_MembresiaOfertador = new javax.swing.JRadioButton();
         D_MenuOfertador = new javax.swing.JDialog();
         TB_MenuOfertador = new javax.swing.JTabbedPane();
         P_PaginaPrincipal_MenuOfertador = new javax.swing.JPanel();
         B_VentaDirecta_MenuOfertador = new javax.swing.JButton();
-        B_VentaSubasta_MenuOfertador = new javax.swing.JButton();
-        B_Renta_MenuOfertador = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
-        B_Carwash_MenuOfertador = new javax.swing.JButton();
         P_ModificarDatos_MenuOfertador = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         PF_password_MenuOfertador_Modificar = new javax.swing.JPasswordField();
@@ -121,17 +110,19 @@ public class Vehiculos extends javax.swing.JFrame {
         TF_Correo_MenuOfertador_Modificar = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        TF_Nickname_MenuOfertador_Modificar = new javax.swing.JTextField();
         TF_NombreCompleto_MenuOfertador_Modificar = new javax.swing.JTextField();
         B_ModificarDatos_MenuOfertador_Modificar = new javax.swing.JButton();
         B_ObtenerDatos_ModificarDatos_MenuOfertador = new javax.swing.JButton();
+        TF_Nickname_MenuOfertador_Modificar = new javax.swing.JTextField();
+        P_Facturas_MenuOfertador = new javax.swing.JPanel();
+        B_PDF_Facturas_MenuOfertador = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        T_HistorialFacturas_Facturas_MenuOfertador = new javax.swing.JTable();
+        P_InformacionEmpresa_MenuOfertador = new javax.swing.JPanel();
         P_Membresia_MenuOfertador = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        RB_VentaDirecta_Membresia_MenuOfertador = new javax.swing.JRadioButton();
-        RB_VentaSubasta_Membresia_MenuOfertador = new javax.swing.JRadioButton();
-        RB_Renta_Membresia_MenuOfertador = new javax.swing.JRadioButton();
-        RB_Carwash_Membresia_MenuOfertador = new javax.swing.JRadioButton();
         B_PagarMembresia_MenuOfertador = new javax.swing.JButton();
         jLabel49 = new javax.swing.JLabel();
         TF_Tarjeta_Membresia_MenuOfertador = new javax.swing.JTextField();
@@ -141,21 +132,13 @@ public class Vehiculos extends javax.swing.JFrame {
         TF_FechaV_Membresia_MenuOfertador = new javax.swing.JTextField();
         jLabel57 = new javax.swing.JLabel();
         TF_Codigo_Membresia_MenuOfertador = new javax.swing.JTextField();
-        P_Facturas_MenuOfertador = new javax.swing.JPanel();
-        B_PDF_Facturas_MenuOfertador = new javax.swing.JButton();
-        jLabel27 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        T_HistorialFacturas_Facturas_MenuOfertador = new javax.swing.JTable();
-        P_InformacionEmpresa_MenuOfertador = new javax.swing.JPanel();
+        jLabel84 = new javax.swing.JLabel();
+        jLabel85 = new javax.swing.JLabel();
+        L_EstadoMembresia_Ofertador = new javax.swing.JLabel();
         MB_Ofertador = new javax.swing.JMenuBar();
         M_MenuOfertador = new javax.swing.JMenu();
         MI_LogOut_MenuOfertador = new javax.swing.JMenuItem();
         M_AyudaOfertador = new javax.swing.JMenu();
-        D_MembresiaCliente = new javax.swing.JDialog();
-        P_MembresiaCliente = new javax.swing.JPanel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        B_Pagar_MembresiaCliente = new javax.swing.JButton();
         D_MenuCliente = new javax.swing.JDialog();
         TP_MenuCliente = new javax.swing.JTabbedPane();
         P_PaginaPrincipal_MenuCliente = new javax.swing.JPanel();
@@ -169,6 +152,8 @@ public class Vehiculos extends javax.swing.JFrame {
         TF_FechaV_Membresia_MenuCliente = new javax.swing.JTextField();
         TF_Codigo_Membresia_MenuCliente = new javax.swing.JTextField();
         B_PagarMembresia_MenuCliente = new javax.swing.JButton();
+        jLabel86 = new javax.swing.JLabel();
+        L_EstadoMembresia_Cliente = new javax.swing.JLabel();
         P_Modificar_MenuCliente = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         TF_NombreCompleto_MenuCliente_Modificar = new javax.swing.JTextField();
@@ -182,8 +167,9 @@ public class Vehiculos extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         PF_password_MenuCliente_Modificar = new javax.swing.JPasswordField();
-        TF_Nickname_MenuCliente_Modificar = new javax.swing.JTextField();
         B_ModificarDatos_Modificar_MenuCliente = new javax.swing.JButton();
+        B_ObtenerDatos_Modificar_MenuCliente = new javax.swing.JButton();
+        L_Nickname_MenuCliente_Modificar = new javax.swing.JLabel();
         P_Facturas_MenuCliente = new javax.swing.JPanel();
         B_PDF_Facturas_MenuCliente = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
@@ -194,17 +180,6 @@ public class Vehiculos extends javax.swing.JFrame {
         T_Vehiculos_CompraDirecta_MenuCliente = new javax.swing.JTable();
         SP_Posicion_CompraDirecta_MenuCliente = new javax.swing.JSpinner();
         jLabel37 = new javax.swing.JLabel();
-        P_Subasta_MenuCliente = new javax.swing.JPanel();
-        P_Renta_MenuCliente = new javax.swing.JPanel();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        T_Vehiculos_Renta_MenuCliente1 = new javax.swing.JTable();
-        jLabel38 = new javax.swing.JLabel();
-        SP_Posicion_Renta_MenuCliente = new javax.swing.JSpinner();
-        P_Carwash_MenuCliente = new javax.swing.JPanel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        T_Vehiculos_Carwash_MenuCliente = new javax.swing.JTable();
-        jLabel39 = new javax.swing.JLabel();
-        SP_Posicion_Carwash_MenuCliente = new javax.swing.JSpinner();
         MB_Cliente = new javax.swing.JMenuBar();
         M_MenuCliente = new javax.swing.JMenu();
         MI_LogOut_MenuCliente = new javax.swing.JMenuItem();
@@ -236,8 +211,53 @@ public class Vehiculos extends javax.swing.JFrame {
         IF_ClienteOfertador_AdminUsuario_MenuAdmin = new javax.swing.JInternalFrame();
         TP_ClienteOfertador_MenuAdmin = new javax.swing.JTabbedPane();
         P_Cliente_AdminUsuario_MenuAdmin = new javax.swing.JPanel();
+        jLabel72 = new javax.swing.JLabel();
+        TF_NombreCompleto_ModificarCliente = new javax.swing.JTextField();
+        TF_Correo_ModificarCliente = new javax.swing.JTextField();
+        jLabel73 = new javax.swing.JLabel();
+        jLabel74 = new javax.swing.JLabel();
+        DC_Birthday_ModificarCliente = new com.toedter.calendar.JDateChooser();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        L_PaisDeNacimiento_ModificarCliente = new javax.swing.JList<>();
+        jLabel75 = new javax.swing.JLabel();
+        PF_password_ModificarCliente = new javax.swing.JPasswordField();
+        jLabel76 = new javax.swing.JLabel();
+        jLabel77 = new javax.swing.JLabel();
+        CB_Administrador_AdminUsuario_Cliente = new javax.swing.JComboBox<>();
+        B_Modificar_ModificarCliente = new javax.swing.JButton();
+        B_Eliminar_ModificarCliente = new javax.swing.JButton();
         P_Ofertador_AdminUsuario_MenuAdmin = new javax.swing.JPanel();
+        jLabel78 = new javax.swing.JLabel();
+        TF_NombreCompleto_ModificarOfertador = new javax.swing.JTextField();
+        TF_Correo_ModificarOfertador = new javax.swing.JTextField();
+        jLabel79 = new javax.swing.JLabel();
+        jLabel80 = new javax.swing.JLabel();
+        DC_Birthday_ModificarOfertador = new com.toedter.calendar.JDateChooser();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        L_PaisDeNacimiento_ModificarOfertador = new javax.swing.JList<>();
+        jLabel81 = new javax.swing.JLabel();
+        PF_password_ModificarOfertador = new javax.swing.JPasswordField();
+        jLabel82 = new javax.swing.JLabel();
+        jLabel83 = new javax.swing.JLabel();
+        CB_Administrador_AdminUsuario_Ofertador = new javax.swing.JComboBox<>();
+        B_Modificar_ModificarOfertador = new javax.swing.JButton();
+        B_Eliminar_ModificarOfertador = new javax.swing.JButton();
         P_Administrador_AdminUsuario_MenuAdmin = new javax.swing.JPanel();
+        DC_Birthday_ModificarAdmin = new com.toedter.calendar.JDateChooser();
+        TF_NombreCompleto_ModificarAdmin = new javax.swing.JTextField();
+        jLabel67 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
+        TF_Correo_ModificarAdmin = new javax.swing.JTextField();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        L_PaisDeNacimiento_ModificarAdmin = new javax.swing.JList<>();
+        PF_password_ModificarAdmin = new javax.swing.JPasswordField();
+        jLabel71 = new javax.swing.JLabel();
+        CB_Administrador_AdminUsuario_Admin = new javax.swing.JComboBox<>();
+        jLabel66 = new javax.swing.JLabel();
+        B_Modificar_ModificarAdmin = new javax.swing.JButton();
+        B_Eliminar_ModificarAdmin = new javax.swing.JButton();
         P_RegistrarAdmin_MenuAdmin = new javax.swing.JPanel();
         jLabel48 = new javax.swing.JLabel();
         B_Register_RegistrarAdmin = new javax.swing.JButton();
@@ -253,7 +273,6 @@ public class Vehiculos extends javax.swing.JFrame {
         jLabel54 = new javax.swing.JLabel();
         TF_Nickname_RegistrarAdmin = new javax.swing.JTextField();
         TF_NombreCompleto_RegistrarAdmin = new javax.swing.JTextField();
-        P_Subasta_MenuAdmin = new javax.swing.JPanel();
         MB_Admin = new javax.swing.JMenuBar();
         M_MenuAdmin = new javax.swing.JMenu();
         MI_LogOut_MenuAdmin = new javax.swing.JMenuItem();
@@ -556,81 +575,11 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel14.setText("Elija una membresía");
-
-        jLabel15.setText("Tipo de membresia (puede seleccionar más de una):");
-
-        jLabel16.setText("Realice su pago: ");
-
-        B_VentaDirecta_MembresiaOfertador.setText("Venta directa");
-
-        B_VentaSubasta_MembresiaOfertador.setText("Venta por subasta");
-
-        B_Renta_MembresiaOfertador.setText("Renta de vehículos");
-
-        B_Carwash_MembresiaOfertador.setText("Lavado por cita");
-
-        javax.swing.GroupLayout P_MembresiaOfertadorLayout = new javax.swing.GroupLayout(P_MembresiaOfertador);
-        P_MembresiaOfertador.setLayout(P_MembresiaOfertadorLayout);
-        P_MembresiaOfertadorLayout.setHorizontalGroup(
-            P_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_MembresiaOfertadorLayout.createSequentialGroup()
-                .addGroup(P_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P_MembresiaOfertadorLayout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(jLabel14))
-                    .addGroup(P_MembresiaOfertadorLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(P_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15)
-                            .addGroup(P_MembresiaOfertadorLayout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addGroup(P_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(B_VentaDirecta_MembresiaOfertador)
-                                    .addComponent(B_Renta_MembresiaOfertador))
-                                .addGap(99, 99, 99)
-                                .addGroup(P_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(B_Carwash_MembresiaOfertador)
-                                    .addComponent(B_VentaSubasta_MembresiaOfertador)))
-                            .addComponent(jLabel16))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        P_MembresiaOfertadorLayout.setVerticalGroup(
-            P_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_MembresiaOfertadorLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel14)
-                .addGap(52, 52, 52)
-                .addComponent(jLabel15)
-                .addGap(37, 37, 37)
-                .addGroup(P_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(B_VentaDirecta_MembresiaOfertador)
-                    .addComponent(B_VentaSubasta_MembresiaOfertador))
-                .addGap(44, 44, 44)
-                .addGroup(P_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(B_Renta_MembresiaOfertador)
-                    .addComponent(B_Carwash_MembresiaOfertador))
-                .addGap(28, 28, 28)
-                .addComponent(jLabel16)
-                .addContainerGap(169, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout D_MembresiaOfertadorLayout = new javax.swing.GroupLayout(D_MembresiaOfertador.getContentPane());
-        D_MembresiaOfertador.getContentPane().setLayout(D_MembresiaOfertadorLayout);
-        D_MembresiaOfertadorLayout.setHorizontalGroup(
-            D_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(D_MembresiaOfertadorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(P_MembresiaOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        D_MembresiaOfertadorLayout.setVerticalGroup(
-            D_MembresiaOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, D_MembresiaOfertadorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(P_MembresiaOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        TB_MenuOfertador.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                TB_MenuOfertadorStateChanged(evt);
+            }
+        });
 
         B_VentaDirecta_MenuOfertador.setText("Venta directa");
         B_VentaDirecta_MenuOfertador.addActionListener(new java.awt.event.ActionListener() {
@@ -639,45 +588,27 @@ public class Vehiculos extends javax.swing.JFrame {
             }
         });
 
-        B_VentaSubasta_MenuOfertador.setText("Venta por subasta");
-
-        B_Renta_MenuOfertador.setText("Renta de vehículos");
-
         jLabel17.setText("Menu Ofertador");
-
-        B_Carwash_MenuOfertador.setText("Lavado por cita");
 
         javax.swing.GroupLayout P_PaginaPrincipal_MenuOfertadorLayout = new javax.swing.GroupLayout(P_PaginaPrincipal_MenuOfertador);
         P_PaginaPrincipal_MenuOfertador.setLayout(P_PaginaPrincipal_MenuOfertadorLayout);
         P_PaginaPrincipal_MenuOfertadorLayout.setHorizontalGroup(
             P_PaginaPrincipal_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_PaginaPrincipal_MenuOfertadorLayout.createSequentialGroup()
-                .addGap(0, 676, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_PaginaPrincipal_MenuOfertadorLayout.createSequentialGroup()
+                .addGap(19, 695, Short.MAX_VALUE)
                 .addGroup(P_PaginaPrincipal_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(B_Renta_MenuOfertador)
-                    .addComponent(B_Carwash_MenuOfertador)
-                    .addComponent(B_VentaSubasta_MenuOfertador)
-                    .addGroup(P_PaginaPrincipal_MenuOfertadorLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(P_PaginaPrincipal_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(B_VentaDirecta_MenuOfertador)
-                            .addComponent(jLabel17))))
-                .addGap(86, 86, 86))
+                    .addComponent(B_VentaDirecta_MenuOfertador)
+                    .addComponent(jLabel17))
+                .addGap(103, 103, 103))
         );
         P_PaginaPrincipal_MenuOfertadorLayout.setVerticalGroup(
             P_PaginaPrincipal_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P_PaginaPrincipal_MenuOfertadorLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(136, 136, 136)
                 .addComponent(B_VentaDirecta_MenuOfertador)
-                .addGap(54, 54, 54)
-                .addComponent(B_VentaSubasta_MenuOfertador)
-                .addGap(44, 44, 44)
-                .addComponent(B_Renta_MenuOfertador)
-                .addGap(43, 43, 43)
-                .addComponent(B_Carwash_MenuOfertador)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(331, Short.MAX_VALUE))
         );
 
         TB_MenuOfertador.addTab("Pagina principal", P_PaginaPrincipal_MenuOfertador);
@@ -689,8 +620,6 @@ public class Vehiculos extends javax.swing.JFrame {
         });
 
         jLabel18.setText("Password");
-
-        PF_password_MenuOfertador_Modificar.setText("jPasswordField1");
 
         jLabel19.setText("Pais ");
 
@@ -723,6 +652,8 @@ public class Vehiculos extends javax.swing.JFrame {
             }
         });
 
+        TF_Nickname_MenuOfertador_Modificar.setEditable(false);
+
         javax.swing.GroupLayout P_ModificarDatos_MenuOfertadorLayout = new javax.swing.GroupLayout(P_ModificarDatos_MenuOfertador);
         P_ModificarDatos_MenuOfertador.setLayout(P_ModificarDatos_MenuOfertadorLayout);
         P_ModificarDatos_MenuOfertadorLayout.setHorizontalGroup(
@@ -747,18 +678,14 @@ public class Vehiculos extends javax.swing.JFrame {
                             .addComponent(jLabel18)
                             .addComponent(jLabel19))
                         .addGap(58, 58, 58)
-                        .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
-                                .addComponent(TF_Nickname_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(B_ObtenerDatos_ModificarDatos_MenuOfertador)
-                                .addGap(45, 45, 45)
-                                .addComponent(B_ModificarDatos_MenuOfertador_Modificar))
-                            .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
-                                .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(PF_password_MenuOfertador_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 561, Short.MAX_VALUE)))
+                        .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PF_password_MenuOfertador_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                            .addComponent(TF_Nickname_MenuOfertador_Modificar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
+                        .addComponent(B_ObtenerDatos_ModificarDatos_MenuOfertador)
+                        .addGap(45, 45, 45)
+                        .addComponent(B_ModificarDatos_MenuOfertador_Modificar)
                         .addGap(49, 49, 49))))
         );
         P_ModificarDatos_MenuOfertadorLayout.setVerticalGroup(
@@ -767,9 +694,9 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(TF_Nickname_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B_ModificarDatos_MenuOfertador_Modificar)
-                    .addComponent(B_ObtenerDatos_ModificarDatos_MenuOfertador))
+                    .addComponent(B_ObtenerDatos_ModificarDatos_MenuOfertador)
+                    .addComponent(TF_Nickname_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
@@ -796,107 +723,6 @@ public class Vehiculos extends javax.swing.JFrame {
         );
 
         TB_MenuOfertador.addTab("Modificar datos", P_ModificarDatos_MenuOfertador);
-
-        jLabel22.setText("Elija su(s) membresía(s): ");
-
-        jLabel25.setText("Realice su pago: ");
-
-        RB_VentaDirecta_Membresia_MenuOfertador.setText("Venta directa");
-
-        RB_VentaSubasta_Membresia_MenuOfertador.setText("Venta por subasta");
-
-        RB_Renta_Membresia_MenuOfertador.setText("Renta de vehículos");
-
-        RB_Carwash_Membresia_MenuOfertador.setText("Lavado por cita");
-
-        B_PagarMembresia_MenuOfertador.setText("Pagar membresía");
-        B_PagarMembresia_MenuOfertador.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                B_PagarMembresia_MenuOfertadorMouseClicked(evt);
-            }
-        });
-
-        jLabel49.setText("Trajeta");
-
-        jLabel55.setText("Nombre");
-
-        jLabel56.setText("Fecha de vencimiento");
-
-        jLabel57.setText("Código de seguridad");
-
-        javax.swing.GroupLayout P_Membresia_MenuOfertadorLayout = new javax.swing.GroupLayout(P_Membresia_MenuOfertador);
-        P_Membresia_MenuOfertador.setLayout(P_Membresia_MenuOfertadorLayout);
-        P_Membresia_MenuOfertadorLayout.setHorizontalGroup(
-            P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_Membresia_MenuOfertadorLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel22)
-                    .addGroup(P_Membresia_MenuOfertadorLayout.createSequentialGroup()
-                        .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(RB_VentaDirecta_Membresia_MenuOfertador)
-                            .addComponent(RB_Renta_Membresia_MenuOfertador))
-                        .addGap(68, 68, 68)
-                        .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(RB_Carwash_Membresia_MenuOfertador)
-                            .addComponent(RB_VentaSubasta_Membresia_MenuOfertador)))
-                    .addComponent(jLabel25)
-                    .addGroup(P_Membresia_MenuOfertadorLayout.createSequentialGroup()
-                        .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(P_Membresia_MenuOfertadorLayout.createSequentialGroup()
-                                .addComponent(jLabel49)
-                                .addGap(47, 47, 47)
-                                .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(TF_Nombre_Membresia_MenuOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                                    .addComponent(TF_Tarjeta_Membresia_MenuOfertador)))
-                            .addComponent(jLabel55))
-                        .addGap(126, 126, 126)
-                        .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel56)
-                            .addComponent(jLabel57))
-                        .addGap(76, 76, 76)
-                        .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TF_FechaV_Membresia_MenuOfertador)
-                            .addComponent(TF_Codigo_Membresia_MenuOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))))
-                .addContainerGap(129, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Membresia_MenuOfertadorLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(B_PagarMembresia_MenuOfertador)
-                .addGap(347, 347, 347))
-        );
-        P_Membresia_MenuOfertadorLayout.setVerticalGroup(
-            P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_Membresia_MenuOfertadorLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel22)
-                .addGap(57, 57, 57)
-                .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RB_VentaDirecta_Membresia_MenuOfertador)
-                    .addComponent(RB_VentaSubasta_Membresia_MenuOfertador))
-                .addGap(36, 36, 36)
-                .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RB_Renta_Membresia_MenuOfertador)
-                    .addComponent(RB_Carwash_Membresia_MenuOfertador))
-                .addGap(48, 48, 48)
-                .addComponent(jLabel25)
-                .addGap(39, 39, 39)
-                .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel49)
-                    .addComponent(TF_Tarjeta_Membresia_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel56)
-                    .addComponent(TF_FechaV_Membresia_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel55)
-                    .addComponent(TF_Nombre_Membresia_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel57)
-                    .addComponent(TF_Codigo_Membresia_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                .addComponent(B_PagarMembresia_MenuOfertador)
-                .addGap(34, 34, 34))
-        );
-
-        TB_MenuOfertador.addTab("Membresía", P_Membresia_MenuOfertador);
 
         P_Facturas_MenuOfertador.setToolTipText("");
 
@@ -960,11 +786,108 @@ public class Vehiculos extends javax.swing.JFrame {
 
         TB_MenuOfertador.addTab("Información general de la empresa", P_InformacionEmpresa_MenuOfertador);
 
+        jLabel22.setText("Membresia");
+
+        jLabel25.setText("Realice su pago: ");
+
+        B_PagarMembresia_MenuOfertador.setText("Pagar membresía");
+        B_PagarMembresia_MenuOfertador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_PagarMembresia_MenuOfertadorMouseClicked(evt);
+            }
+        });
+
+        jLabel49.setText("Trajeta");
+
+        jLabel55.setText("Nombre");
+
+        jLabel56.setText("Fecha de vencimiento");
+
+        jLabel57.setText("Código de seguridad");
+
+        jLabel84.setText("Venta directa");
+
+        jLabel85.setText("Estado :");
+
+        L_EstadoMembresia_Ofertador.setText("LOLAZO PAPÁ");
+
+        javax.swing.GroupLayout P_Membresia_MenuOfertadorLayout = new javax.swing.GroupLayout(P_Membresia_MenuOfertador);
+        P_Membresia_MenuOfertador.setLayout(P_Membresia_MenuOfertadorLayout);
+        P_Membresia_MenuOfertadorLayout.setHorizontalGroup(
+            P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Membresia_MenuOfertadorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(B_PagarMembresia_MenuOfertador)
+                .addGap(347, 347, 347))
+            .addGroup(P_Membresia_MenuOfertadorLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel25)
+                    .addGroup(P_Membresia_MenuOfertadorLayout.createSequentialGroup()
+                        .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P_Membresia_MenuOfertadorLayout.createSequentialGroup()
+                                .addComponent(jLabel49)
+                                .addGap(47, 47, 47)
+                                .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TF_Nombre_Membresia_MenuOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                                    .addComponent(TF_Tarjeta_Membresia_MenuOfertador)))
+                            .addComponent(jLabel55)
+                            .addComponent(jLabel84))
+                        .addGap(126, 126, 126)
+                        .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel56)
+                            .addComponent(jLabel57)
+                            .addComponent(jLabel85))
+                        .addGap(76, 76, 76)
+                        .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(L_EstadoMembresia_Ofertador)
+                            .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(TF_FechaV_Membresia_MenuOfertador)
+                                .addComponent(TF_Codigo_Membresia_MenuOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)))))
+                .addContainerGap(129, Short.MAX_VALUE))
+        );
+        P_Membresia_MenuOfertadorLayout.setVerticalGroup(
+            P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_Membresia_MenuOfertadorLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel22)
+                .addGap(85, 85, 85)
+                .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel84)
+                    .addComponent(jLabel85)
+                    .addComponent(L_EstadoMembresia_Ofertador))
+                .addGap(90, 90, 90)
+                .addComponent(jLabel25)
+                .addGap(39, 39, 39)
+                .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel49)
+                    .addComponent(TF_Tarjeta_Membresia_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel56)
+                    .addComponent(TF_FechaV_Membresia_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel55)
+                    .addComponent(TF_Nombre_Membresia_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel57)
+                    .addComponent(TF_Codigo_Membresia_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addComponent(B_PagarMembresia_MenuOfertador)
+                .addGap(34, 34, 34))
+        );
+
+        TB_MenuOfertador.addTab("Membresía", P_Membresia_MenuOfertador);
+
         M_MenuOfertador.setIcon(new javax.swing.ImageIcon("/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/Icons/027-menu.png")); // NOI18N
         M_MenuOfertador.setText("Menu");
 
         MI_LogOut_MenuOfertador.setIcon(new javax.swing.ImageIcon("/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/Icons/logout.png")); // NOI18N
         MI_LogOut_MenuOfertador.setText("Log Out");
+        MI_LogOut_MenuOfertador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MI_LogOut_MenuOfertadorActionPerformed(evt);
+            }
+        });
         M_MenuOfertador.add(MI_LogOut_MenuOfertador);
 
         MB_Ofertador.add(M_MenuOfertador);
@@ -995,61 +918,11 @@ public class Vehiculos extends javax.swing.JFrame {
                     .addContainerGap()))
         );
 
-        jLabel28.setText("Membresia de Cliente");
-
-        jLabel29.setText("Pagar membresia:");
-
-        B_Pagar_MembresiaCliente.setText("Pagar membresía");
-        B_Pagar_MembresiaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                B_Pagar_MembresiaClienteMouseClicked(evt);
+        TP_MenuCliente.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                TP_MenuClienteStateChanged(evt);
             }
         });
-
-        javax.swing.GroupLayout P_MembresiaClienteLayout = new javax.swing.GroupLayout(P_MembresiaCliente);
-        P_MembresiaCliente.setLayout(P_MembresiaClienteLayout);
-        P_MembresiaClienteLayout.setHorizontalGroup(
-            P_MembresiaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_MembresiaClienteLayout.createSequentialGroup()
-                .addGroup(P_MembresiaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P_MembresiaClienteLayout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(jLabel29))
-                    .addGroup(P_MembresiaClienteLayout.createSequentialGroup()
-                        .addGap(224, 224, 224)
-                        .addGroup(P_MembresiaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(B_Pagar_MembresiaCliente)
-                            .addComponent(jLabel28))))
-                .addContainerGap(241, Short.MAX_VALUE))
-        );
-        P_MembresiaClienteLayout.setVerticalGroup(
-            P_MembresiaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_MembresiaClienteLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel28)
-                .addGap(59, 59, 59)
-                .addComponent(jLabel29)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
-                .addComponent(B_Pagar_MembresiaCliente)
-                .addGap(38, 38, 38))
-        );
-
-        javax.swing.GroupLayout D_MembresiaClienteLayout = new javax.swing.GroupLayout(D_MembresiaCliente.getContentPane());
-        D_MembresiaCliente.getContentPane().setLayout(D_MembresiaClienteLayout);
-        D_MembresiaClienteLayout.setHorizontalGroup(
-            D_MembresiaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, D_MembresiaClienteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(P_MembresiaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        D_MembresiaClienteLayout.setVerticalGroup(
-            D_MembresiaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(D_MembresiaClienteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(P_MembresiaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
 
         javax.swing.GroupLayout P_PaginaPrincipal_MenuClienteLayout = new javax.swing.GroupLayout(P_PaginaPrincipal_MenuCliente);
         P_PaginaPrincipal_MenuCliente.setLayout(P_PaginaPrincipal_MenuClienteLayout);
@@ -1079,14 +952,21 @@ public class Vehiculos extends javax.swing.JFrame {
             }
         });
 
+        jLabel86.setText("Estado:");
+
+        L_EstadoMembresia_Cliente.setText("LALILULELO");
+
         javax.swing.GroupLayout P_Membresia_MenuClienteLayout = new javax.swing.GroupLayout(P_Membresia_MenuCliente);
         P_Membresia_MenuCliente.setLayout(P_Membresia_MenuClienteLayout);
         P_Membresia_MenuClienteLayout.setHorizontalGroup(
             P_Membresia_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P_Membresia_MenuClienteLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
                 .addGroup(P_Membresia_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_Membresia_MenuClienteLayout.createSequentialGroup()
+                        .addGap(402, 402, 402)
+                        .addComponent(B_PagarMembresia_MenuCliente))
+                    .addGroup(P_Membresia_MenuClienteLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
                         .addGroup(P_Membresia_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(P_Membresia_MenuClienteLayout.createSequentialGroup()
                                 .addComponent(jLabel58)
@@ -1097,22 +977,24 @@ public class Vehiculos extends javax.swing.JFrame {
                             .addComponent(jLabel59))
                         .addGap(126, 126, 126)
                         .addGroup(P_Membresia_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel86)
                             .addComponent(jLabel61)
                             .addComponent(jLabel60))
                         .addGap(76, 76, 76)
                         .addGroup(P_Membresia_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TF_FechaV_Membresia_MenuCliente)
-                            .addComponent(TF_Codigo_Membresia_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Membresia_MenuClienteLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(B_PagarMembresia_MenuCliente)
-                        .addGap(241, 241, 241)))
+                            .addComponent(TF_Codigo_Membresia_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(L_EstadoMembresia_Cliente))))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
         P_Membresia_MenuClienteLayout.setVerticalGroup(
             P_Membresia_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Membresia_MenuClienteLayout.createSequentialGroup()
-                .addGap(261, 261, 261)
+                .addGap(136, 136, 136)
+                .addGroup(P_Membresia_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel86)
+                    .addComponent(L_EstadoMembresia_Cliente))
+                .addGap(109, 109, 109)
                 .addGroup(P_Membresia_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel58)
                     .addComponent(TF_Tarjeta_Membresia_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1124,9 +1006,9 @@ public class Vehiculos extends javax.swing.JFrame {
                     .addComponent(TF_Nombre_Membresia_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel60)
                     .addComponent(TF_Codigo_Membresia_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(B_PagarMembresia_MenuCliente)
-                .addContainerGap())
+                .addGap(28, 28, 28))
         );
 
         TP_MenuCliente.addTab("Membresia", P_Membresia_MenuCliente);
@@ -1140,7 +1022,7 @@ public class Vehiculos extends javax.swing.JFrame {
         jLabel30.setText("Pais de Nacimiento");
 
         L_PaisDeNacimiento_MenuCliente_Modificar.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "Honduras", "Guatemala", "El Salvador", "Nicaragua", "Costa Rica", "Panama" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -1156,9 +1038,19 @@ public class Vehiculos extends javax.swing.JFrame {
 
         jLabel35.setText("Nombre completo");
 
-        PF_password_MenuCliente_Modificar.setText("jPasswordField1");
-
         B_ModificarDatos_Modificar_MenuCliente.setText("Modificar Datos");
+        B_ModificarDatos_Modificar_MenuCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_ModificarDatos_Modificar_MenuClienteMouseClicked(evt);
+            }
+        });
+
+        B_ObtenerDatos_Modificar_MenuCliente.setText("Obtener Datos");
+        B_ObtenerDatos_Modificar_MenuCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_ObtenerDatos_Modificar_MenuClienteMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout P_Modificar_MenuClienteLayout = new javax.swing.GroupLayout(P_Modificar_MenuCliente);
         P_Modificar_MenuCliente.setLayout(P_Modificar_MenuClienteLayout);
@@ -1172,12 +1064,13 @@ public class Vehiculos extends javax.swing.JFrame {
                             .addComponent(jLabel33)
                             .addComponent(jLabel34))
                         .addGap(58, 58, 58)
-                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PF_password_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
-                                .addComponent(TF_Nickname_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 366, Short.MAX_VALUE)
-                                .addComponent(B_ModificarDatos_Modificar_MenuCliente))))
+                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(PF_password_MenuCliente_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                            .addComponent(L_Nickname_MenuCliente_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 328, Short.MAX_VALUE)
+                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(B_ObtenerDatos_Modificar_MenuCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(B_ModificarDatos_Modificar_MenuCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
                         .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel30)
@@ -1197,10 +1090,10 @@ public class Vehiculos extends javax.swing.JFrame {
             .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
                 .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addGap(27, 27, 27)
                         .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel33)
-                            .addComponent(TF_Nickname_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(L_Nickname_MenuCliente_Modificar)))
                     .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(B_ModificarDatos_Modificar_MenuCliente)))
@@ -1208,10 +1101,15 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34)
                     .addComponent(PF_password_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
                 .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel30)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel30)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(B_ObtenerDatos_Modificar_MenuCliente)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
@@ -1327,120 +1225,16 @@ public class Vehiculos extends javax.swing.JFrame {
 
         TP_MenuCliente.addTab("Compra de Vehiculos", P_CompraDirecta_MenuCliente);
 
-        javax.swing.GroupLayout P_Subasta_MenuClienteLayout = new javax.swing.GroupLayout(P_Subasta_MenuCliente);
-        P_Subasta_MenuCliente.setLayout(P_Subasta_MenuClienteLayout);
-        P_Subasta_MenuClienteLayout.setHorizontalGroup(
-            P_Subasta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 875, Short.MAX_VALUE)
-        );
-        P_Subasta_MenuClienteLayout.setVerticalGroup(
-            P_Subasta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 473, Short.MAX_VALUE)
-        );
-
-        TP_MenuCliente.addTab("Subasta de Vehiculos", P_Subasta_MenuCliente);
-
-        T_Vehiculos_Renta_MenuCliente1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Posicion", "Marca", "Modelo", "Año", "Cilindraje", "Tipo", "Transmisión"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane8.setViewportView(T_Vehiculos_Renta_MenuCliente1);
-
-        jLabel38.setText("Elija la posición");
-
-        javax.swing.GroupLayout P_Renta_MenuClienteLayout = new javax.swing.GroupLayout(P_Renta_MenuCliente);
-        P_Renta_MenuCliente.setLayout(P_Renta_MenuClienteLayout);
-        P_Renta_MenuClienteLayout.setHorizontalGroup(
-            P_Renta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Renta_MenuClienteLayout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
-                .addGroup(P_Renta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P_Renta_MenuClienteLayout.createSequentialGroup()
-                        .addComponent(jLabel38)
-                        .addGap(81, 81, 81)
-                        .addComponent(SP_Posicion_Renta_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53))
-        );
-        P_Renta_MenuClienteLayout.setVerticalGroup(
-            P_Renta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_Renta_MenuClienteLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(P_Renta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SP_Posicion_Renta_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel38))
-                .addContainerGap(100, Short.MAX_VALUE))
-        );
-
-        TP_MenuCliente.addTab("Renta de Vehiculos", P_Renta_MenuCliente);
-
-        T_Vehiculos_Carwash_MenuCliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Posicion", "Marca", "Modelo", "Año", "Cilindraje", "Tipo", "Transmisión"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane7.setViewportView(T_Vehiculos_Carwash_MenuCliente);
-
-        jLabel39.setText("Elija la posición");
-
-        javax.swing.GroupLayout P_Carwash_MenuClienteLayout = new javax.swing.GroupLayout(P_Carwash_MenuCliente);
-        P_Carwash_MenuCliente.setLayout(P_Carwash_MenuClienteLayout);
-        P_Carwash_MenuClienteLayout.setHorizontalGroup(
-            P_Carwash_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Carwash_MenuClienteLayout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
-                .addGroup(P_Carwash_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P_Carwash_MenuClienteLayout.createSequentialGroup()
-                        .addComponent(jLabel39)
-                        .addGap(81, 81, 81)
-                        .addComponent(SP_Posicion_Carwash_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53))
-        );
-        P_Carwash_MenuClienteLayout.setVerticalGroup(
-            P_Carwash_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(P_Carwash_MenuClienteLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(P_Carwash_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SP_Posicion_Carwash_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel39))
-                .addContainerGap(100, Short.MAX_VALUE))
-        );
-
-        TP_MenuCliente.addTab("Carwash", P_Carwash_MenuCliente);
-
         M_MenuCliente.setIcon(new javax.swing.ImageIcon("/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/Icons/027-menu.png")); // NOI18N
         M_MenuCliente.setText("Menu");
 
         MI_LogOut_MenuCliente.setIcon(new javax.swing.ImageIcon("/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/Icons/logout.png")); // NOI18N
         MI_LogOut_MenuCliente.setText("Log Out");
+        MI_LogOut_MenuCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MI_LogOut_MenuClienteActionPerformed(evt);
+            }
+        });
         M_MenuCliente.add(MI_LogOut_MenuCliente);
 
         MB_Cliente.add(M_MenuCliente);
@@ -1471,7 +1265,7 @@ public class Vehiculos extends javax.swing.JFrame {
         P_PaginaPrincipal_MenuAdmin.setLayout(P_PaginaPrincipal_MenuAdminLayout);
         P_PaginaPrincipal_MenuAdminLayout.setHorizontalGroup(
             P_PaginaPrincipal_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
+            .addGap(0, 1060, Short.MAX_VALUE)
         );
         P_PaginaPrincipal_MenuAdminLayout.setVerticalGroup(
             P_PaginaPrincipal_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1482,29 +1276,40 @@ public class Vehiculos extends javax.swing.JFrame {
 
         jLabel40.setText("Nombre");
 
+        TF_Nombre_Empresa_MenuAdmin.setText("Vehiculos.com");
+
         jLabel41.setText("Mision");
 
+        TF_Mision_Empresa_MenuAdmin.setText("Ser el mejor servicio de venta de Carros");
+
         jLabel42.setText("Vision");
+
+        TF_Vision_Empresa_MenuAdmin.setText("Brindar servicio en adelanto con la necesidad del Cliente");
 
         jLabel43.setText("Objetivos");
 
         TA_Ojetivos_Empresa_MenuAdmin.setColumns(20);
         TA_Ojetivos_Empresa_MenuAdmin.setRows(5);
+        TA_Ojetivos_Empresa_MenuAdmin.setText("Brindar servicios con rapidez\nSer optimos en cada proceso\nBrindar al cliente el mejor servicio");
         jScrollPane9.setViewportView(TA_Ojetivos_Empresa_MenuAdmin);
 
         jLabel44.setText("Políticas");
 
         TA_Politicas_Empresa_MenuAdmin.setColumns(20);
         TA_Politicas_Empresa_MenuAdmin.setRows(5);
+        TA_Politicas_Empresa_MenuAdmin.setText("...");
         jScrollPane10.setViewportView(TA_Politicas_Empresa_MenuAdmin);
 
         jLabel45.setText("Telefonos ");
 
         TA_Telefonos_Empresa_MenuAdmin.setColumns(20);
         TA_Telefonos_Empresa_MenuAdmin.setRows(5);
+        TA_Telefonos_Empresa_MenuAdmin.setText("...");
         jScrollPane11.setViewportView(TA_Telefonos_Empresa_MenuAdmin);
 
         jLabel46.setText("Correo electrónico");
+
+        TF_Correo_Empresa_MenuAdmin.setText("vehiculos@gmail.com");
 
         jLabel47.setText("Dirección");
 
@@ -1528,7 +1333,7 @@ public class Vehiculos extends javax.swing.JFrame {
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(P_Empresa_MenuAdminLayout.createSequentialGroup()
                         .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TF_Nombre_Empresa_MenuAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                            .addComponent(TF_Nombre_Empresa_MenuAdmin)
                             .addComponent(TF_Mision_Empresa_MenuAdmin)
                             .addComponent(TF_Vision_Empresa_MenuAdmin))
                         .addGap(103, 103, 103)
@@ -1539,7 +1344,7 @@ public class Vehiculos extends javax.swing.JFrame {
                         .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TF_Correo_Empresa_MenuAdmin)
                             .addComponent(TF_Direccion_Empresa_MenuAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         P_Empresa_MenuAdminLayout.setVerticalGroup(
             P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1589,41 +1394,362 @@ public class Vehiculos extends javax.swing.JFrame {
 
         IF_ClienteOfertador_AdminUsuario_MenuAdmin.setVisible(true);
 
+        TP_ClienteOfertador_MenuAdmin.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                TP_ClienteOfertador_MenuAdminStateChanged(evt);
+            }
+        });
+
+        jLabel72.setText("Nombre completo");
+
+        jLabel73.setText("Correo");
+
+        jLabel74.setText("Fecha de nacimiento");
+
+        L_PaisDeNacimiento_ModificarCliente.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Honduras", "El Salvador", "Guatemala", "Nicaragua", "Costa Rica", "Panama" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane14.setViewportView(L_PaisDeNacimiento_ModificarCliente);
+
+        jLabel75.setText("Pais de Nacimiento");
+
+        PF_password_ModificarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PF_password_ModificarClienteActionPerformed(evt);
+            }
+        });
+
+        jLabel76.setText("Password");
+
+        jLabel77.setText("Nickname");
+
+        CB_Administrador_AdminUsuario_Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_Administrador_AdminUsuario_ClienteActionPerformed(evt);
+            }
+        });
+
+        B_Modificar_ModificarCliente.setText("Modificar");
+        B_Modificar_ModificarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_Modificar_ModificarClienteMouseClicked(evt);
+            }
+        });
+
+        B_Eliminar_ModificarCliente.setText("Eliminar");
+        B_Eliminar_ModificarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_Eliminar_ModificarClienteMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout P_Cliente_AdminUsuario_MenuAdminLayout = new javax.swing.GroupLayout(P_Cliente_AdminUsuario_MenuAdmin);
         P_Cliente_AdminUsuario_MenuAdmin.setLayout(P_Cliente_AdminUsuario_MenuAdminLayout);
         P_Cliente_AdminUsuario_MenuAdminLayout.setHorizontalGroup(
             P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 918, Short.MAX_VALUE)
+            .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, P_Cliente_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                        .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel74)
+                            .addComponent(jLabel73)
+                            .addComponent(jLabel72))
+                        .addGap(18, 18, 18)
+                        .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(TF_NombreCompleto_ModificarCliente)
+                                .addComponent(TF_Correo_ModificarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(DC_Birthday_ModificarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, P_Cliente_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                        .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel75)
+                            .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel77)
+                                .addComponent(jLabel76)))
+                        .addGap(41, 41, 41)
+                        .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CB_Administrador_AdminUsuario_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                                .addComponent(PF_password_ModificarCliente)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 422, Short.MAX_VALUE)
+                        .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(B_Eliminar_ModificarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(B_Modificar_ModificarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(161, 161, 161))
         );
         P_Cliente_AdminUsuario_MenuAdminLayout.setVerticalGroup(
             P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 535, Short.MAX_VALUE)
+            .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CB_Administrador_AdminUsuario_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel77)
+                    .addComponent(B_Modificar_ModificarCliente))
+                .addGap(30, 30, 30)
+                .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel76)
+                    .addComponent(PF_password_ModificarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(B_Eliminar_ModificarCliente)
+                .addGap(7, 7, 7)
+                .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel75)
+                    .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                        .addComponent(jLabel74)
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel73))
+                    .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                        .addComponent(DC_Birthday_ModificarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(TF_Correo_ModificarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addGroup(P_Cliente_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel72)
+                    .addComponent(TF_NombreCompleto_ModificarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68))
         );
 
         TP_ClienteOfertador_MenuAdmin.addTab("Clientes", P_Cliente_AdminUsuario_MenuAdmin);
+
+        jLabel78.setText("Nombre completo");
+
+        jLabel79.setText("Correo");
+
+        jLabel80.setText("Fecha de nacimiento");
+
+        L_PaisDeNacimiento_ModificarOfertador.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Honduras", "El Salvador", "Guatemala", "Nicaragua", "Costa Rica", "Panama" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane15.setViewportView(L_PaisDeNacimiento_ModificarOfertador);
+
+        jLabel81.setText("Pais de Nacimiento");
+
+        PF_password_ModificarOfertador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PF_password_ModificarOfertadorActionPerformed(evt);
+            }
+        });
+
+        jLabel82.setText("Password");
+
+        jLabel83.setText("Nickname");
+
+        CB_Administrador_AdminUsuario_Ofertador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_Administrador_AdminUsuario_OfertadorActionPerformed(evt);
+            }
+        });
+
+        B_Modificar_ModificarOfertador.setText("Modificar");
+        B_Modificar_ModificarOfertador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_Modificar_ModificarOfertadorMouseClicked(evt);
+            }
+        });
+
+        B_Eliminar_ModificarOfertador.setText("Eliminar");
+        B_Eliminar_ModificarOfertador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_Eliminar_ModificarOfertadorMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout P_Ofertador_AdminUsuario_MenuAdminLayout = new javax.swing.GroupLayout(P_Ofertador_AdminUsuario_MenuAdmin);
         P_Ofertador_AdminUsuario_MenuAdmin.setLayout(P_Ofertador_AdminUsuario_MenuAdminLayout);
         P_Ofertador_AdminUsuario_MenuAdminLayout.setHorizontalGroup(
             P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 918, Short.MAX_VALUE)
+            .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, P_Ofertador_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                        .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel80)
+                            .addComponent(jLabel79)
+                            .addComponent(jLabel78))
+                        .addGap(18, 18, 18)
+                        .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(TF_NombreCompleto_ModificarOfertador)
+                                .addComponent(TF_Correo_ModificarOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(DC_Birthday_ModificarOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, P_Ofertador_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                        .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel81)
+                            .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel83)
+                                .addComponent(jLabel82)))
+                        .addGap(41, 41, 41)
+                        .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CB_Administrador_AdminUsuario_Ofertador, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                                .addComponent(PF_password_ModificarOfertador)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 422, Short.MAX_VALUE)
+                        .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(B_Eliminar_ModificarOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(B_Modificar_ModificarOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(161, 161, 161))
         );
         P_Ofertador_AdminUsuario_MenuAdminLayout.setVerticalGroup(
             P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 535, Short.MAX_VALUE)
+            .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CB_Administrador_AdminUsuario_Ofertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel83)
+                    .addComponent(B_Modificar_ModificarOfertador))
+                .addGap(30, 30, 30)
+                .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel82)
+                    .addComponent(PF_password_ModificarOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(B_Eliminar_ModificarOfertador)
+                .addGap(7, 7, 7)
+                .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel81)
+                    .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                        .addComponent(jLabel80)
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel79))
+                    .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                        .addComponent(DC_Birthday_ModificarOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(TF_Correo_ModificarOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addGroup(P_Ofertador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel78)
+                    .addComponent(TF_NombreCompleto_ModificarOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68))
         );
 
         TP_ClienteOfertador_MenuAdmin.addTab("Ofertadores", P_Ofertador_AdminUsuario_MenuAdmin);
+
+        jLabel67.setText("Pais de Nacimiento");
+
+        jLabel68.setText("Correo");
+
+        jLabel69.setText("Fecha de nacimiento");
+
+        jLabel70.setText("Nombre completo");
+
+        L_PaisDeNacimiento_ModificarAdmin.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Honduras", "El Salvador", "Guatemala", "Nicaragua", "Costa Rica", "Panama" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane13.setViewportView(L_PaisDeNacimiento_ModificarAdmin);
+
+        PF_password_ModificarAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PF_password_ModificarAdminActionPerformed(evt);
+            }
+        });
+
+        jLabel71.setText("Password");
+
+        CB_Administrador_AdminUsuario_Admin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_Administrador_AdminUsuario_AdminActionPerformed(evt);
+            }
+        });
+
+        jLabel66.setText("Nickname");
+
+        B_Modificar_ModificarAdmin.setText("Modificar");
+        B_Modificar_ModificarAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_Modificar_ModificarAdminMouseClicked(evt);
+            }
+        });
+
+        B_Eliminar_ModificarAdmin.setText("Eliminar");
+        B_Eliminar_ModificarAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_Eliminar_ModificarAdminMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout P_Administrador_AdminUsuario_MenuAdminLayout = new javax.swing.GroupLayout(P_Administrador_AdminUsuario_MenuAdmin);
         P_Administrador_AdminUsuario_MenuAdmin.setLayout(P_Administrador_AdminUsuario_MenuAdminLayout);
         P_Administrador_AdminUsuario_MenuAdminLayout.setHorizontalGroup(
             P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 918, Short.MAX_VALUE)
+            .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, P_Administrador_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                        .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel69)
+                            .addComponent(jLabel68)
+                            .addComponent(jLabel70))
+                        .addGap(18, 18, 18)
+                        .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(TF_NombreCompleto_ModificarAdmin)
+                                .addComponent(TF_Correo_ModificarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(DC_Birthday_ModificarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, P_Administrador_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                        .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel67)
+                            .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel66)
+                                .addComponent(jLabel71)))
+                        .addGap(41, 41, 41)
+                        .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CB_Administrador_AdminUsuario_Admin, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                                .addComponent(PF_password_ModificarAdmin)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 422, Short.MAX_VALUE)
+                        .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(B_Modificar_ModificarAdmin)
+                            .addComponent(B_Eliminar_ModificarAdmin))))
+                .addGap(161, 161, 161))
         );
         P_Administrador_AdminUsuario_MenuAdminLayout.setVerticalGroup(
             P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 535, Short.MAX_VALUE)
+            .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CB_Administrador_AdminUsuario_Admin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel66)
+                    .addComponent(B_Modificar_ModificarAdmin))
+                .addGap(30, 30, 30)
+                .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel71)
+                    .addComponent(PF_password_ModificarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(B_Eliminar_ModificarAdmin)
+                .addGap(7, 7, 7)
+                .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel67)
+                    .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                        .addComponent(jLabel69)
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel68))
+                    .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createSequentialGroup()
+                        .addComponent(DC_Birthday_ModificarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(TF_Correo_ModificarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addGroup(P_Administrador_AdminUsuario_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel70)
+                    .addComponent(TF_NombreCompleto_ModificarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68))
         );
 
         TP_ClienteOfertador_MenuAdmin.addTab("Administrador", P_Administrador_AdminUsuario_MenuAdmin);
@@ -1720,7 +1846,7 @@ public class Vehiculos extends javax.swing.JFrame {
                             .addComponent(jScrollPane12)
                             .addComponent(PF_password_RegistrarAdmin)
                             .addComponent(TF_Nickname_RegistrarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(512, Short.MAX_VALUE))
+                .addContainerGap(632, Short.MAX_VALUE))
         );
         P_RegistrarAdmin_MenuAdminLayout.setVerticalGroup(
             P_RegistrarAdmin_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1758,24 +1884,16 @@ public class Vehiculos extends javax.swing.JFrame {
 
         TB_MenuAdmin.addTab("Registrar Admin", P_RegistrarAdmin_MenuAdmin);
 
-        javax.swing.GroupLayout P_Subasta_MenuAdminLayout = new javax.swing.GroupLayout(P_Subasta_MenuAdmin);
-        P_Subasta_MenuAdmin.setLayout(P_Subasta_MenuAdminLayout);
-        P_Subasta_MenuAdminLayout.setHorizontalGroup(
-            P_Subasta_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
-        );
-        P_Subasta_MenuAdminLayout.setVerticalGroup(
-            P_Subasta_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
-        );
-
-        TB_MenuAdmin.addTab("Subastas", P_Subasta_MenuAdmin);
-
         M_MenuAdmin.setIcon(new javax.swing.ImageIcon("/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/Icons/027-menu.png")); // NOI18N
         M_MenuAdmin.setText("Menu");
 
         MI_LogOut_MenuAdmin.setIcon(new javax.swing.ImageIcon("/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/Icons/logout.png")); // NOI18N
         MI_LogOut_MenuAdmin.setText("Log out");
+        MI_LogOut_MenuAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MI_LogOut_MenuAdminActionPerformed(evt);
+            }
+        });
         M_MenuAdmin.add(MI_LogOut_MenuAdmin);
 
         MB_Admin.add(M_MenuAdmin);
@@ -1883,7 +2001,6 @@ public class Vehiculos extends javax.swing.JFrame {
     private void B_LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_LogInMouseClicked
 
         D_LogIn.pack();
-        D_LogIn.setModal(true);
         D_LogIn.setVisible(true);
         
     }//GEN-LAST:event_B_LogInMouseClicked
@@ -1895,13 +2012,9 @@ public class Vehiculos extends javax.swing.JFrame {
     private void B_RegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_RegisterMouseClicked
         // TODO add your handling code here:
         D_RegisterNaA.pack();
-        D_RegisterNaA.setModal(true);
+        D_RegisterNaA.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         D_RegisterNaA.setVisible(true);
     }//GEN-LAST:event_B_RegisterMouseClicked
-
-    private void B_VentaDirecta_MenuOfertadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_VentaDirecta_MenuOfertadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B_VentaDirecta_MenuOfertadorActionPerformed
 
     private void B_RetrievePassword_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RetrievePassword_LoginActionPerformed
         // TODO add your handling code here:
@@ -1909,14 +2022,19 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void B_LogIn_LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_LogIn_LogInMouseClicked
         // TODO add your handling code here:
+        
+        
         boolean reject = true;
         if(CB_TipoUsuario_LogIn.getSelectedItem().equals("Cliente")) {
             for (Cliente cliente : clientes) {
                 if (cliente.getNickname().equals(TF_Nickname.getText())) {
                     if (cliente.getPassword().equals(PF_Password.getText())) {
+                        TF_Nickname.setText("");
+                        PF_Password.setText("");
+                        D_LogIn.setVisible(false);
                         clienteActual = cliente;
                         D_MenuCliente.pack();
-                        D_MenuCliente.setModal(true);
+                        D_MenuCliente.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
                         D_MenuCliente.setVisible(true);
                         reject = false;
                         break;
@@ -1931,9 +2049,12 @@ public class Vehiculos extends javax.swing.JFrame {
             for (Ofertador ofertador : ofertadores) {
                 if (ofertador.getNickname().equals(TF_Nickname.getText())) {
                     if (ofertador.getPassword().equals(PF_Password.getText())) {
+                        TF_Nickname.setText("");
+                        PF_Password.setText("");
+                        D_LogIn.setVisible(false);
                         ofertadorActual = ofertador;
                         D_MenuOfertador.pack();
-                        D_MenuOfertador.setModal(true);
+                        D_MenuOfertador.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
                         D_MenuOfertador.setVisible(true);
                         reject = false;
                         break;
@@ -1949,9 +2070,12 @@ public class Vehiculos extends javax.swing.JFrame {
             for (Administrador administrador : administradores) {
                 if (administrador.getNickname().equals(TF_Nickname.getText())) {
                     if (administrador.getPassword().equals(PF_Password.getText())) {
+                        TF_Nickname.setText("");
+                        PF_Password.setText("");
+                        D_LogIn.setVisible(false);
                         adminActual = administrador;
                         D_MenuAdmin.pack();
-                        D_MenuAdmin.setModal(true);
+                        D_MenuAdmin.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
                         D_MenuAdmin.setVisible(true);
                         reject = false;
                         break;
@@ -1959,9 +2083,11 @@ public class Vehiculos extends javax.swing.JFrame {
                 }
             }
             if(reject) {
-                JOptionPane.showMessageDialog(this, "Nickname o contraseña incorrectos(s)");
+                JOptionPane.showMessageDialog(D_LogIn, "Nickname o contraseña incorrectos(s)");
             }
         }
+        
+        
     }//GEN-LAST:event_B_LogIn_LogInMouseClicked
 
     private void PF_password_RegisterNaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_password_RegisterNaAActionPerformed
@@ -2020,18 +2146,28 @@ public class Vehiculos extends javax.swing.JFrame {
                 if (CB_TipoUsuario_RegisterNaA.getSelectedItem().equals("Ofertador")) {
 
                     ofertadores.add(new Ofertador(nickname, password, pais, birthday, correo, nombre));
+                    guardarOfertadores(ofertadores);
+                    
+                    JOptionPane.showConfirmDialog(D_RegisterNaA, "Registrado correctamente");
+                    
+                    D_RegisterNaA.setVisible(false);
 
-                    D_MembresiaOfertador.pack();
-                    D_MembresiaOfertador.setModal(true);
-                    D_MembresiaOfertador.setVisible(true);
+                    D_LogIn.pack();
+                    D_LogIn.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+                    D_LogIn.setVisible(true);
 
                 } else {
 
                     clientes.add(new Cliente(nickname, password, pais, birthday, correo, nombre));
+                    guardarClientes(clientes);
+                    
+                    JOptionPane.showConfirmDialog(D_RegisterNaA, "Registrado correctamente");
+                    
+                    D_RegisterNaA.setVisible(false);
 
-                    D_MembresiaCliente.pack();
-                    D_MembresiaCliente.setModal(true);
-                    D_MembresiaCliente.setVisible(true);
+                    D_LogIn.pack();
+                    D_LogIn.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+                    D_LogIn.setVisible(true);
                 }
             }
 
@@ -2045,98 +2181,34 @@ public class Vehiculos extends javax.swing.JFrame {
         // TODO add your handling code here:
         guardarOfertadores(ofertadores);
         guardarClientes(clientes);
+        System.exit(0);
     }//GEN-LAST:event_B_SalirMouseClicked
-
-    private void B_Register_RegistrarAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Register_RegistrarAdminMouseClicked
-        // TODO add your handling code here:
-        
-        String nickname = TF_Nickname_RegistrarAdmin.getText();
-        String password = PF_password_RegistrarAdmin.getText();
-        String pais = L_PaisDeNacimiento_RegistrarAdmin.getSelectedValue();
-        Date birthDate = DC_Birthday_RegistrarAdmin.getDate();
-        String correo = TF_Correo_RegistrarAdmin.getText();
-        String nombre = TF_NombreCompleto_RegistrarAdmin.getText();
-        
-        boolean correct;
-        
-        String mail = "\\S+(@{1})\\S+(.{1})\\S+";
-        
-        Pattern p = Pattern.compile(mail);
-        Matcher m = p.matcher(correo);
-        
-        correct = m.matches();
-        
-        if (correct) {
-       
-            //Se verifica que dicho administrador no exista en el sistema
-            boolean pass = true;
-
-            for (Administrador administrador : administradores) {
-                if (administrador.getNickname().equals(nickname)) {
-                    pass = false;
-                    JOptionPane.showMessageDialog(this, "Su Nickname no está disponible");
-                    break;
-                } else if (administrador.getCorreo().equals(correo)) {
-                    pass = false;
-                    JOptionPane.showMessageDialog(this, "Su correo ya está ocupado");
-                    break;
-                }
-            }
-            if (pass) {
-                administradores.add(new Administrador(nickname, password, pais, birthDate, correo, nombre));
-            }
-        }
-        
-        else {
-            JOptionPane.showMessageDialog(this, "Correo invalido");
-        }
-    }//GEN-LAST:event_B_Register_RegistrarAdminMouseClicked
-
-    private void PF_password_RegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_password_RegistrarAdminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PF_password_RegistrarAdminActionPerformed
-
-    private void B_Pagar_MembresiaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Pagar_MembresiaClienteMouseClicked
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_B_Pagar_MembresiaClienteMouseClicked
 
     private void B_PagarMembresia_MenuOfertadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_PagarMembresia_MenuOfertadorMouseClicked
         // TODO add your handling code here:
-        
-        String tarjeta = TF_Tarjeta_Membresia_MenuOfertador.getText();
-        String nombre = TF_Nombre_Membresia_MenuOfertador.getText();
-        String fechaV = TF_FechaV_Membresia_MenuOfertador.getText();
-        String codigo = TF_Codigo_Membresia_MenuOfertador.getText();
-        
-        String outcome = consultarBanco(tarjeta, nombre, fechaV, codigo);
-        
-        if ("-1".equals(outcome)) {
-            JOptionPane.showMessageDialog(this, "Transacción rechazada ");
-        } else {
-            JOptionPane.showMessageDialog(this, "Transacción exitosa");
-            if (RB_VentaDirecta_Membresia_MenuOfertador.isSelected()) {
+        if (!ofertadorActual.isMembresia_VentaDirecta()) {
+
+            String tarjeta = TF_Tarjeta_Membresia_MenuOfertador.getText();
+            String nombre = TF_Nombre_Membresia_MenuOfertador.getText();
+            String fechaV = TF_FechaV_Membresia_MenuOfertador.getText();
+            String codigo = TF_Codigo_Membresia_MenuOfertador.getText();
+
+            String outcome = consultarBanco(tarjeta, nombre, fechaV, codigo);
+
+            if ("-1".equals(outcome)) {
+                JOptionPane.showMessageDialog(this, "Transacción rechazada ");
+            } else {
+                JOptionPane.showMessageDialog(this, "Transacción exitosa");
+
                 ofertadorActual.setMembresia_VentaDirecta(true);
-            } else if (RB_VentaSubasta_Membresia_MenuOfertador.isSelected()) {
-                ofertadorActual.setMembresia_Renta(true);
-            } else if(RB_Renta_Membresia_MenuOfertador.isSelected()) {
-                ofertadorActual.setMembresia_Renta(true);
-            } else if(RB_Carwash_Membresia_MenuOfertador.isSelected()) {
-                ofertadorActual.setMembresia_Carwash(true);
+
+                L_EstadoMembresia_Ofertador.setText("Activo");
+
             }
+        } else {
+            JOptionPane.showMessageDialog(D_MenuOfertador, "Su membresía ya está activa");
         }
     }//GEN-LAST:event_B_PagarMembresia_MenuOfertadorMouseClicked
-
-    private void B_PagarMembresia_MenuClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_PagarMembresia_MenuClienteMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B_PagarMembresia_MenuClienteMouseClicked
-
-    private void P_Modificar_MenuClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_P_Modificar_MenuClienteFocusGained
-        // TODO add your handling code here:
-        //TF_Nickname_MenuCliente_Modificar.setText(clienteActual.getNickname());
-        //PF_password_MenuCliente_Modificar.setText(clienteActual.getPassword());
-        
-    }//GEN-LAST:event_P_Modificar_MenuClienteFocusGained
 
     private void P_ModificarDatos_MenuOfertadorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_P_ModificarDatos_MenuOfertadorFocusGained
         // TODO add your handling code here:
@@ -2162,16 +2234,458 @@ public class Vehiculos extends javax.swing.JFrame {
         ofertadorActual.setCorreo(TF_Correo_MenuOfertador_Modificar.getText());
         ofertadorActual.setNombre(TF_NombreCompleto_MenuOfertador_Modificar.getText());
         
+        guardarOfertadores(ofertadores);
+        
         JOptionPane.showMessageDialog(D_MenuOfertador, "Se han modificado sus datos");
         
         TF_Nickname_MenuOfertador_Modificar.setText("");
         PF_password_MenuOfertador_Modificar.setText("");
         L_Pais_MenuOfertador_Modificar.setSelectedValue(null, false);
-        DC_Birthday_MenuOfertador_Modificar.setDate(null); // a revisar
+        DC_Birthday_MenuOfertador_Modificar.setDate(new Date()); // a revisar
         TF_Correo_MenuOfertador_Modificar.setText("");
         TF_NombreCompleto_MenuOfertador_Modificar.setText("");
         
     }//GEN-LAST:event_B_ModificarDatos_MenuOfertador_ModificarMouseClicked
+
+    private void MI_LogOut_MenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MI_LogOut_MenuClienteActionPerformed
+        // TODO add your handling code here:
+        
+        D_MenuCliente.setVisible(false);
+        D_LogIn.pack();
+        D_LogIn.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        D_LogIn.setVisible(true);
+    }//GEN-LAST:event_MI_LogOut_MenuClienteActionPerformed
+
+    private void MI_LogOut_MenuOfertadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MI_LogOut_MenuOfertadorActionPerformed
+        // TODO add your handling code here:
+        D_MenuOfertador.setVisible(false);
+        D_LogIn.pack();
+        D_LogIn.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        D_LogIn.setVisible(true);
+    }//GEN-LAST:event_MI_LogOut_MenuOfertadorActionPerformed
+
+    private void MI_LogOut_MenuAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MI_LogOut_MenuAdminActionPerformed
+        // TODO add your handling code here:
+        
+        D_MenuAdmin.setVisible(false);
+        D_LogIn.pack();
+        D_LogIn.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        D_LogIn.setVisible(true);
+    }//GEN-LAST:event_MI_LogOut_MenuAdminActionPerformed
+
+    private void PF_password_RegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_password_RegistrarAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PF_password_RegistrarAdminActionPerformed
+
+    private void B_Register_RegistrarAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Register_RegistrarAdminMouseClicked
+        // TODO add your handling code here:
+
+        String nickname = TF_Nickname_RegistrarAdmin.getText();
+        String password = PF_password_RegistrarAdmin.getText();
+        String pais = L_PaisDeNacimiento_RegistrarAdmin.getSelectedValue();
+        Date birthday = DC_Birthday_RegistrarAdmin.getDate();
+        String correo = TF_Correo_RegistrarAdmin.getText();
+        String nombre = TF_NombreCompleto_RegistrarAdmin.getText();
+
+        boolean correct;
+
+        String mail = "\\S+(@{1})\\S+(.{1})\\S+";
+
+        Pattern p = Pattern.compile(mail);
+        Matcher m = p.matcher(correo);
+
+        correct = m.matches();
+
+        if (correct) {
+
+            //Se verifica que dicho administrador no exista en el sistema
+            boolean pass = true;
+
+            for (Administrador administrador : administradores) {
+                if (administrador.getNickname().equals(nickname)) {
+                    System.out.println(administrador.getNickname()+" "+nickname);
+                    pass = false;
+                    JOptionPane.showMessageDialog(this, "Su Nickname no está disponible");
+                    break;
+                } else if (administrador.getCorreo().equals(correo)) {
+                    pass = false;
+                    JOptionPane.showMessageDialog(this, "Su correo ya está ocupado");
+                    break;
+                }
+            }
+            if (pass) {
+
+                //    try {
+                    //      Class.forName("org.apache.derby.jdbc.ClientDriver");
+                    //
+                    //   } catch(ClassNotFoundException e){
+                    //     System.out.println("Class not found "+e);
+                    //   }
+                try {
+                    java.sql.Connection con = DriverManager.getConnection(
+                        "jdbc:derby://localhost:1527/proyecto2db", "david", "1844");
+                    java.sql.Statement stmt = (java.sql.Statement) con.createStatement() ;
+                    String sqlIns = "INSERT INTO ADMINS (NICKNAME,PASSWORD,PAIS,BIRTHDAY,CORREO,NOMBRE) VALUES (";
+                    sqlIns += "'" +nickname +"'";
+                    sqlIns += ",'" +password +"'";
+                    sqlIns += ",'" +pais +"'";
+                    sqlIns += ",BIRTHDAY ='" +(birthday.getYear()+1900) +"-" + (birthday.getMonth()+1) + "-" + birthday.getDate()+ "'";
+                    sqlIns += ",'" + correo+"'";
+                    sqlIns += ",'" +nombre +"')";
+                    System.out.println("sql "+sqlIns);
+                    int x=stmt.executeUpdate(sqlIns);
+                    if (x > 0) {
+                        JOptionPane.showMessageDialog(D_MenuAdmin, "Registro exitoso");
+                        administradores.add(new Administrador(nickname, password, pais, birthday, correo, nombre));
+                    }
+
+                    else {
+                        JOptionPane.showMessageDialog(D_MenuAdmin, "Registro falló");
+                    }
+
+                } catch (SQLException ex) {
+                    System.out.println(ex);
+                }
+
+            }
+        }
+
+        else {
+            JOptionPane.showMessageDialog(this, "Correo invalido");
+        }
+    }//GEN-LAST:event_B_Register_RegistrarAdminMouseClicked
+
+    private void TP_ClienteOfertador_MenuAdminStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TP_ClienteOfertador_MenuAdminStateChanged
+        // TODO add your handling code here:
+
+        //Llenar administradores
+        CB_Administrador_AdminUsuario_Admin.removeAllItems();
+
+        for (Administrador administrador : administradores) {
+            CB_Administrador_AdminUsuario_Admin.addItem(administrador);
+        }
+
+        CB_Administrador_AdminUsuario_Admin.setSelectedIndex(0);
+
+        //Llenar Clientes
+        CB_Administrador_AdminUsuario_Cliente.removeAllItems();
+
+        for (Cliente cliente : clientes) {
+            CB_Administrador_AdminUsuario_Cliente.addItem(cliente);
+        }
+
+        CB_Administrador_AdminUsuario_Cliente.setSelectedIndex(0);
+
+        //Llenar ofertadores
+        CB_Administrador_AdminUsuario_Ofertador.removeAllItems();
+
+        for (Ofertador ofertador : ofertadores) {
+            CB_Administrador_AdminUsuario_Ofertador.addItem(ofertador);
+        }
+
+        CB_Administrador_AdminUsuario_Ofertador.setSelectedIndex(0);
+
+    }//GEN-LAST:event_TP_ClienteOfertador_MenuAdminStateChanged
+
+    private void B_Eliminar_ModificarAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Eliminar_ModificarAdminMouseClicked
+        // TODO add your handling code here:
+
+        int confirm = JOptionPane.showConfirmDialog(TP_ClienteOfertador_MenuAdmin, "¿Esta seguro que desea eliminar a este usuario?");
+        System.out.println(confirm);
+
+        Administrador admin  = (Administrador) CB_Administrador_AdminUsuario_Admin.getSelectedItem();
+
+        if (admin.equals(adminActual)) {
+            JOptionPane.showMessageDialog(TP_ClienteOfertador_MenuAdmin, "No puede borrarse a si mismo");
+            confirm = 1;
+        }
+
+        String nickname = admin.getNickname();
+
+        if (confirm == 0) {
+
+            try {
+                java.sql.Connection con = DriverManager.getConnection(
+                    "jdbc:derby://localhost:1527/proyecto2db", "david", "1844");
+                java.sql.Statement stmt = (java.sql.Statement) con.createStatement();
+                String sqlIns = "DELETE FROM ADMINS WHERE NICKNAME = '" + nickname + "'";
+
+                int x = stmt.executeUpdate(sqlIns);
+                if (x > 0) {
+                    JOptionPane.showMessageDialog(D_MenuAdmin, "Eliminación exitosa");
+                    administradores.clear();
+                    leerAdmins(administradores);
+                    CB_Administrador_AdminUsuario_Admin.removeAllItems();
+                    for (Administrador administrador : administradores) {
+                        CB_Administrador_AdminUsuario_Admin.addItem(administrador);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(D_MenuAdmin, "Eliminación falló");
+                }
+
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        }
+    }//GEN-LAST:event_B_Eliminar_ModificarAdminMouseClicked
+
+    private void B_Modificar_ModificarAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Modificar_ModificarAdminMouseClicked
+        // TODO add your handling code here:
+
+        String nickname = ((Administrador)CB_Administrador_AdminUsuario_Admin.getSelectedItem()).getNickname();
+        String password = PF_password_ModificarAdmin.getText();
+        String pais = L_PaisDeNacimiento_ModificarAdmin.getSelectedValue();
+        Date birthday = DC_Birthday_ModificarAdmin.getDate();
+        String correo = TF_Correo_ModificarAdmin.getText();
+        String nombre = TF_NombreCompleto_ModificarAdmin.getText();
+
+        try {
+            java.sql.Connection con = DriverManager.getConnection(
+                "jdbc:derby://localhost:1527/proyecto2db", "david", "1844");
+            java.sql.Statement stmt = (java.sql.Statement) con.createStatement() ;
+            String sqlIns = "UPDATE ADMINS  SET ";
+            sqlIns += "PASSWORD ='" +password +"'";
+            sqlIns += ",PAIS ='" +pais +"'";
+            sqlIns += ",BIRTHDAY ='" +(birthday.getYear()+1900) +"-" + (birthday.getMonth()+1) + "-" + birthday.getDate()+ "'";
+            sqlIns += ",CORREO ='" + correo+"'";
+            sqlIns += ",NOMBRE ='" +nombre +"' WHERE NICKNAME = '" + nickname + "'";
+            System.out.println("sql "+sqlIns);
+            int x=stmt.executeUpdate(sqlIns);
+            if (x > 0) {
+                JOptionPane.showMessageDialog(D_MenuAdmin, "Modificación exitosa");
+                administradores.clear();
+                leerAdmins(administradores);
+                CB_Administrador_AdminUsuario_Admin.removeAllItems();
+                for (Administrador administrador : administradores) {
+                    CB_Administrador_AdminUsuario_Admin.addItem(administrador);
+                }
+            }
+
+            else {
+                JOptionPane.showMessageDialog(D_MenuAdmin, "Modificación falló");
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_B_Modificar_ModificarAdminMouseClicked
+
+    private void CB_Administrador_AdminUsuario_AdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Administrador_AdminUsuario_AdminActionPerformed
+        // TODO add your handling code here:
+        Administrador admin = (Administrador) CB_Administrador_AdminUsuario_Admin.getSelectedItem();
+        if (admin != null) {
+            PF_password_ModificarAdmin.setText(admin.getPassword());
+            L_PaisDeNacimiento_ModificarAdmin.setSelectedValue(admin.getPais(), true);
+            DC_Birthday_ModificarAdmin.setDate(admin.getBirthday());
+            TF_Correo_ModificarAdmin.setText(admin.getCorreo());
+            TF_NombreCompleto_ModificarAdmin.setText(admin.getNombre());
+        }
+    }//GEN-LAST:event_CB_Administrador_AdminUsuario_AdminActionPerformed
+
+    private void PF_password_ModificarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_password_ModificarAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PF_password_ModificarAdminActionPerformed
+
+    private void B_Eliminar_ModificarOfertadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Eliminar_ModificarOfertadorMouseClicked
+        // TODO add your handling code here:
+        
+        Ofertador ofertador = (Ofertador) CB_Administrador_AdminUsuario_Ofertador.getSelectedItem();
+        
+        for (Ofertador o : ofertadores) {
+            if (ofertador.equals(o)){
+                ofertadores.remove(o);
+            }
+        }
+        
+        CB_Administrador_AdminUsuario_Ofertador.removeItem(ofertador);
+        
+        guardarOfertadores(ofertadores);
+    }//GEN-LAST:event_B_Eliminar_ModificarOfertadorMouseClicked
+
+    private void B_Modificar_ModificarOfertadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Modificar_ModificarOfertadorMouseClicked
+        // TODO add your handling code here:
+        
+        String password = PF_password_ModificarOfertador.getText();
+        String pais = L_PaisDeNacimiento_ModificarOfertador.getSelectedValue();
+        Date fecha = DC_Birthday_ModificarOfertador.getDate();
+        String correo = TF_Correo_ModificarOfertador.getText();
+        String nombre = TF_NombreCompleto_ModificarOfertador.getText();
+        
+        Ofertador ofertador = (Ofertador) CB_Administrador_AdminUsuario_Ofertador.getSelectedItem();
+        
+        ofertador.setPassword(password);
+        ofertador.setPais(pais);
+        ofertador.setBirthday(fecha);
+        ofertador.setCorreo(correo);
+        ofertador.setNombre(nombre);
+        
+        guardarOfertadores(ofertadores);
+    }//GEN-LAST:event_B_Modificar_ModificarOfertadorMouseClicked
+
+    private void CB_Administrador_AdminUsuario_OfertadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Administrador_AdminUsuario_OfertadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_Administrador_AdminUsuario_OfertadorActionPerformed
+
+    private void PF_password_ModificarOfertadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_password_ModificarOfertadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PF_password_ModificarOfertadorActionPerformed
+
+    private void B_Eliminar_ModificarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Eliminar_ModificarClienteMouseClicked
+        // TODO add your handling code here:
+
+        int choice = JOptionPane.showConfirmDialog(D_MenuAdmin, "Esta seguro de que desea eliminar a este cliente");
+
+        if (choice == 0) {
+
+            Cliente cliente = (Cliente) CB_Administrador_AdminUsuario_Cliente.getSelectedItem();
+
+            for (Cliente c : clientes) {
+                if (c.equals(cliente)) {
+                    clientes.remove(c);
+                }
+            }
+
+            CB_Administrador_AdminUsuario_Cliente.removeItem(cliente);
+            
+            guardarClientes(clientes);
+        }
+    }//GEN-LAST:event_B_Eliminar_ModificarClienteMouseClicked
+
+    private void B_Modificar_ModificarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Modificar_ModificarClienteMouseClicked
+        // TODO add your handling code here:
+
+        String password = PF_password_ModificarCliente.getText();
+        String pais = L_PaisDeNacimiento_ModificarCliente.getSelectedValue();
+        Date birthday = DC_Birthday_ModificarCliente.getDate();
+        String correo = TF_Correo_ModificarCliente.getText();
+        String nombre = TF_NombreCompleto_ModificarCliente.getText();
+
+        Cliente cliente = (Cliente) CB_Administrador_AdminUsuario_Cliente.getSelectedItem();
+
+        cliente.setPassword(password);
+        cliente.setPais(pais);
+        cliente.setBirthday(birthday);
+        cliente.setCorreo(correo);
+        cliente.setNombre(nombre);
+        
+        guardarClientes(clientes);
+    }//GEN-LAST:event_B_Modificar_ModificarClienteMouseClicked
+
+    private void CB_Administrador_AdminUsuario_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Administrador_AdminUsuario_ClienteActionPerformed
+        // TODO add your handling code here:
+        Cliente cliente = (Cliente) CB_Administrador_AdminUsuario_Cliente.getSelectedItem();
+        if (cliente != null) {
+            PF_password_ModificarCliente.setText(cliente.getPassword());
+            L_PaisDeNacimiento_ModificarCliente.setSelectedValue(cliente.getPais(), true);
+            DC_Birthday_ModificarCliente.setDate(cliente.getBirthday());
+            TF_Correo_ModificarCliente.setText(cliente.getCorreo());
+            TF_NombreCompleto_ModificarCliente.setText(cliente.getNombre());
+        }
+    }//GEN-LAST:event_CB_Administrador_AdminUsuario_ClienteActionPerformed
+
+    private void PF_password_ModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_password_ModificarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PF_password_ModificarClienteActionPerformed
+
+    private void P_Modificar_MenuClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_P_Modificar_MenuClienteFocusGained
+        // TODO add your handling code here:
+        //TF_Nickname_MenuCliente_Modificar.setText(clienteActual.getNickname());
+        //PF_password_MenuCliente_Modificar.setText(clienteActual.getPassword());
+
+    }//GEN-LAST:event_P_Modificar_MenuClienteFocusGained
+
+    private void B_PagarMembresia_MenuClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_PagarMembresia_MenuClienteMouseClicked
+        // TODO add your handling code here:
+        
+        if (!clienteActual.isMembresia()) {
+
+            String tarjeta = TF_Tarjeta_Membresia_MenuCliente.getText();
+            String nombre = TF_Nombre_Membresia_MenuCliente.getText();
+            String fechaV = TF_FechaV_Membresia_MenuCliente.getText();
+            String codigo = TF_Codigo_Membresia_MenuCliente.getText();
+
+            String outcome = consultarBanco(tarjeta, nombre, fechaV, codigo);
+
+            if ("-1".equals(outcome)) {
+                JOptionPane.showMessageDialog(this, "Transacción rechazada ");
+            } else {
+                JOptionPane.showMessageDialog(this, "Transacción exitosa");
+
+                clienteActual.setMembresia(true);
+                L_EstadoMembresia_Cliente.setText("Activo");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(D_MenuCliente, "Su membresia ya está activa");
+        }
+            
+    }//GEN-LAST:event_B_PagarMembresia_MenuClienteMouseClicked
+
+    private void B_ObtenerDatos_Modificar_MenuClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_ObtenerDatos_Modificar_MenuClienteMouseClicked
+        // TODO add your handling code here:
+        L_Nickname_MenuCliente_Modificar.setText(clienteActual.getNickname());
+        PF_password_MenuCliente_Modificar.setText(clienteActual.getPassword());
+        L_PaisDeNacimiento_MenuCliente_Modificar.setSelectedValue(clienteActual.getPais(), true);
+        DC_Birthday_MenuCliente_Modificar.setDate(clienteActual.getBirthday());
+        TF_Correo_MenuCliente_Modificar.setText(clienteActual.getCorreo());
+        TF_NombreCompleto_MenuCliente_Modificar.setText(clienteActual.getNombre());
+    }//GEN-LAST:event_B_ObtenerDatos_Modificar_MenuClienteMouseClicked
+
+    private void B_ModificarDatos_Modificar_MenuClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_ModificarDatos_Modificar_MenuClienteMouseClicked
+        // TODO add your handling code here:
+        
+        String password = PF_password_MenuCliente_Modificar.getText();
+        String pais = L_PaisDeNacimiento_MenuCliente_Modificar.getSelectedValue();
+        Date birthday = DC_Birthday_MenuCliente_Modificar.getDate();
+        String correo = TF_Correo_MenuCliente_Modificar.getText();
+        String nombre = TF_NombreCompleto_MenuCliente_Modificar.getText();
+        
+        clienteActual.setPassword(password);
+        clienteActual.setPais(pais);
+        clienteActual.setBirthday(birthday);
+        clienteActual.setCorreo(correo);
+        clienteActual.setNombre(nombre);
+        
+        guardarClientes(clientes);
+        
+        JOptionPane.showMessageDialog(D_MenuCliente, "Modificado exitosamente");
+        
+        PF_password_MenuCliente_Modificar.setText("");
+        L_PaisDeNacimiento_ModificarCliente.setSelectedValue(null, false);
+        DC_Birthday_ModificarCliente.setDate(new Date());
+        TF_Correo_MenuCliente_Modificar.setText("");
+        TF_NombreCompleto_MenuCliente_Modificar.setText("");
+    }//GEN-LAST:event_B_ModificarDatos_Modificar_MenuClienteMouseClicked
+
+    private void TP_MenuClienteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TP_MenuClienteStateChanged
+        // TODO add your handling code here:
+        if (clienteActual != null) {
+            if (clienteActual.isMembresia()) {
+                L_EstadoMembresia_Cliente.setText("Activo");
+            } else {
+                L_EstadoMembresia_Cliente.setText("Inactivo");
+            }
+        }
+            
+    }//GEN-LAST:event_TP_MenuClienteStateChanged
+
+    private void TB_MenuOfertadorStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TB_MenuOfertadorStateChanged
+        // TODO add your handling code here:
+        if (ofertadorActual != null) {
+            if (ofertadorActual.isMembresia_VentaDirecta()) {
+                L_EstadoMembresia_Ofertador.setText("Activo");
+                B_VentaDirecta_MenuOfertador.setVisible(true);
+            } else {
+                L_EstadoMembresia_Ofertador.setText("Inactivo");
+                B_VentaDirecta_MenuOfertador.setVisible(false);
+            }
+        }
+        
+    }//GEN-LAST:event_TB_MenuOfertadorStateChanged
+
+    private void B_VentaDirecta_MenuOfertadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_VentaDirecta_MenuOfertadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B_VentaDirecta_MenuOfertadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2212,7 +2726,11 @@ public class Vehiculos extends javax.swing.JFrame {
         //Leer Clientes existentes
         numClientes = leerClientes(clientes);
         
+        //Leer Administradores
+        leerAdmins(administradores);
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Vehiculos().setVisible(true);
             }
@@ -2220,47 +2738,56 @@ public class Vehiculos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton B_Carwash_MembresiaOfertador;
-    private javax.swing.JButton B_Carwash_MenuOfertador;
+    private javax.swing.JButton B_Eliminar_ModificarAdmin;
+    private javax.swing.JButton B_Eliminar_ModificarCliente;
+    private javax.swing.JButton B_Eliminar_ModificarOfertador;
     private javax.swing.JButton B_LogIn;
     private javax.swing.JButton B_LogIn_LogIn;
     private javax.swing.JButton B_ModificarDatos_MenuOfertador_Modificar;
     private javax.swing.JButton B_ModificarDatos_Modificar_MenuCliente;
+    private javax.swing.JButton B_Modificar_ModificarAdmin;
+    private javax.swing.JButton B_Modificar_ModificarCliente;
+    private javax.swing.JButton B_Modificar_ModificarOfertador;
     private javax.swing.JButton B_ObtenerDatos_ModificarDatos_MenuOfertador;
+    private javax.swing.JButton B_ObtenerDatos_Modificar_MenuCliente;
     private javax.swing.JButton B_PDF_Facturas_MenuCliente;
     private javax.swing.JButton B_PDF_Facturas_MenuOfertador;
     private javax.swing.JButton B_PagarMembresia_MenuCliente;
     private javax.swing.JButton B_PagarMembresia_MenuOfertador;
-    private javax.swing.JButton B_Pagar_MembresiaCliente;
     private javax.swing.JButton B_Register;
     private javax.swing.JButton B_Register_RegisterNaA;
     private javax.swing.JButton B_Register_RegistrarAdmin;
-    private javax.swing.JRadioButton B_Renta_MembresiaOfertador;
-    private javax.swing.JButton B_Renta_MenuOfertador;
     private javax.swing.JButton B_RetrievePassword_Login;
     private javax.swing.JButton B_Salir;
-    private javax.swing.JRadioButton B_VentaDirecta_MembresiaOfertador;
     private javax.swing.JButton B_VentaDirecta_MenuOfertador;
-    private javax.swing.JRadioButton B_VentaSubasta_MembresiaOfertador;
-    private javax.swing.JButton B_VentaSubasta_MenuOfertador;
+    private javax.swing.JComboBox<Administrador> CB_Administrador_AdminUsuario_Admin;
+    private javax.swing.JComboBox<Cliente> CB_Administrador_AdminUsuario_Cliente;
+    private javax.swing.JComboBox<Ofertador> CB_Administrador_AdminUsuario_Ofertador;
     private javax.swing.JComboBox<String> CB_TipoUsuario_LogIn;
     private javax.swing.JComboBox<String> CB_TipoUsuario_RegisterNaA;
     private com.toedter.calendar.JDateChooser DC_Birthday_MenuCliente_Modificar;
     private com.toedter.calendar.JDateChooser DC_Birthday_MenuOfertador_Modificar;
+    private com.toedter.calendar.JDateChooser DC_Birthday_ModificarAdmin;
+    private com.toedter.calendar.JDateChooser DC_Birthday_ModificarCliente;
+    private com.toedter.calendar.JDateChooser DC_Birthday_ModificarOfertador;
     private com.toedter.calendar.JDateChooser DC_Birthday_RegisterNaA;
     private com.toedter.calendar.JDateChooser DC_Birthday_RegistrarAdmin;
     private javax.swing.JDialog D_LogIn;
-    private javax.swing.JDialog D_MembresiaCliente;
-    private javax.swing.JDialog D_MembresiaOfertador;
     private javax.swing.JDialog D_MenuAdmin;
     private javax.swing.JDialog D_MenuCliente;
     private javax.swing.JDialog D_MenuOfertador;
     private javax.swing.JDialog D_RegisterNaA;
     private javax.swing.JDialog D_RetrievePassword;
     private javax.swing.JInternalFrame IF_ClienteOfertador_AdminUsuario_MenuAdmin;
+    private javax.swing.JLabel L_EstadoMembresia_Cliente;
+    private javax.swing.JLabel L_EstadoMembresia_Ofertador;
     private javax.swing.JLabel L_Nickname;
+    private javax.swing.JLabel L_Nickname_MenuCliente_Modificar;
     private javax.swing.JLabel L_Nickname_RetrievePassword;
     private javax.swing.JList<String> L_PaisDeNacimiento_MenuCliente_Modificar;
+    private javax.swing.JList<String> L_PaisDeNacimiento_ModificarAdmin;
+    private javax.swing.JList<String> L_PaisDeNacimiento_ModificarCliente;
+    private javax.swing.JList<String> L_PaisDeNacimiento_ModificarOfertador;
     private javax.swing.JList<String> L_PaisDeNacimiento_RegisterNaA;
     private javax.swing.JList<String> L_PaisDeNacimiento_RegistrarAdmin;
     private javax.swing.JList<String> L_Pais_MenuOfertador_Modificar;
@@ -2281,11 +2808,13 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JPasswordField PF_Password;
     private javax.swing.JPasswordField PF_password_MenuCliente_Modificar;
     private javax.swing.JPasswordField PF_password_MenuOfertador_Modificar;
+    private javax.swing.JPasswordField PF_password_ModificarAdmin;
+    private javax.swing.JPasswordField PF_password_ModificarCliente;
+    private javax.swing.JPasswordField PF_password_ModificarOfertador;
     private javax.swing.JPasswordField PF_password_RegisterNaA;
     private javax.swing.JPasswordField PF_password_RegistrarAdmin;
     private javax.swing.JPanel P_Administrador_AdminUsuario_MenuAdmin;
     private javax.swing.JPanel P_AministrarUsuario_MenuAdmin;
-    private javax.swing.JPanel P_Carwash_MenuCliente;
     private javax.swing.JPanel P_Cliente_AdminUsuario_MenuAdmin;
     private javax.swing.JPanel P_CompraDirecta_MenuCliente;
     private javax.swing.JPanel P_Empresa_MenuAdmin;
@@ -2293,8 +2822,6 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JPanel P_Facturas_MenuOfertador;
     private javax.swing.JPanel P_InformacionEmpresa_MenuOfertador;
     private javax.swing.JPanel P_LogIn;
-    private javax.swing.JPanel P_MembresiaCliente;
-    private javax.swing.JPanel P_MembresiaOfertador;
     private javax.swing.JPanel P_Membresia_MenuCliente;
     private javax.swing.JPanel P_Membresia_MenuOfertador;
     private javax.swing.JPanel P_ModificarDatos_MenuOfertador;
@@ -2305,17 +2832,8 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JPanel P_PaginaPrincipal_MenuOfertador;
     private javax.swing.JPanel P_RegisterNaA;
     private javax.swing.JPanel P_RegistrarAdmin_MenuAdmin;
-    private javax.swing.JPanel P_Renta_MenuCliente;
     private javax.swing.JPanel P_RetrievePassword;
-    private javax.swing.JPanel P_Subasta_MenuAdmin;
-    private javax.swing.JPanel P_Subasta_MenuCliente;
-    private javax.swing.JRadioButton RB_Carwash_Membresia_MenuOfertador;
-    private javax.swing.JRadioButton RB_Renta_Membresia_MenuOfertador;
-    private javax.swing.JRadioButton RB_VentaDirecta_Membresia_MenuOfertador;
-    private javax.swing.JRadioButton RB_VentaSubasta_Membresia_MenuOfertador;
-    private javax.swing.JSpinner SP_Posicion_Carwash_MenuCliente;
     private javax.swing.JSpinner SP_Posicion_CompraDirecta_MenuCliente;
-    private javax.swing.JSpinner SP_Posicion_Renta_MenuCliente;
     private javax.swing.JTextArea TA_Ojetivos_Empresa_MenuAdmin;
     private javax.swing.JTextArea TA_Politicas_Empresa_MenuAdmin;
     private javax.swing.JTextArea TA_Telefonos_Empresa_MenuAdmin;
@@ -2326,6 +2844,9 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Correo_Empresa_MenuAdmin;
     private javax.swing.JTextField TF_Correo_MenuCliente_Modificar;
     private javax.swing.JTextField TF_Correo_MenuOfertador_Modificar;
+    private javax.swing.JTextField TF_Correo_ModificarAdmin;
+    private javax.swing.JTextField TF_Correo_ModificarCliente;
+    private javax.swing.JTextField TF_Correo_ModificarOfertador;
     private javax.swing.JTextField TF_Correo_RegisterNaA;
     private javax.swing.JTextField TF_Correo_RegistrarAdmin;
     private javax.swing.JTextField TF_Correo_RetrievePassword;
@@ -2334,12 +2855,14 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JTextField TF_FechaV_Membresia_MenuOfertador;
     private javax.swing.JTextField TF_Mision_Empresa_MenuAdmin;
     private javax.swing.JTextField TF_Nickname;
-    private javax.swing.JTextField TF_Nickname_MenuCliente_Modificar;
     private javax.swing.JTextField TF_Nickname_MenuOfertador_Modificar;
     private javax.swing.JTextField TF_Nickname_RegisterNaA;
     private javax.swing.JTextField TF_Nickname_RegistrarAdmin;
     private javax.swing.JTextField TF_NombreCompleto_MenuCliente_Modificar;
     private javax.swing.JTextField TF_NombreCompleto_MenuOfertador_Modificar;
+    private javax.swing.JTextField TF_NombreCompleto_ModificarAdmin;
+    private javax.swing.JTextField TF_NombreCompleto_ModificarCliente;
+    private javax.swing.JTextField TF_NombreCompleto_ModificarOfertador;
     private javax.swing.JTextField TF_NombreCompleto_RegisterNaA;
     private javax.swing.JTextField TF_NombreCompleto_RegistrarAdmin;
     private javax.swing.JTextField TF_Nombre_Empresa_MenuAdmin;
@@ -2352,17 +2875,12 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JTabbedPane TP_MenuCliente;
     private javax.swing.JTable T_HistorialFacturas_Facturas_MenuCliente;
     private javax.swing.JTable T_HistorialFacturas_Facturas_MenuOfertador;
-    private javax.swing.JTable T_Vehiculos_Carwash_MenuCliente;
     private javax.swing.JTable T_Vehiculos_CompraDirecta_MenuCliente;
-    private javax.swing.JTable T_Vehiculos_Renta_MenuCliente1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -2375,8 +2893,6 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -2386,8 +2902,6 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
@@ -2413,21 +2927,43 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     // End of variables declaration//GEN-END:variables
     
@@ -2524,6 +3060,41 @@ public class Vehiculos extends javax.swing.JFrame {
             System.out.println(ex);
         }
         return count;
+    }
+    
+    public static void leerAdmins(ArrayList<Administrador> administradores) {
+      //  try {
+      //      Class.forName("org.apache.derby.jdbc.ClientDriver");
+
+      //  } catch (ClassNotFoundException e) {
+      //      System.out.println("Class not found " + e);
+       // }
+        try {
+            java.sql.Connection con = DriverManager.getConnection(
+                    "jdbc:derby://localhost:1527/proyecto2db", "david", "1844");
+                   // "jdbc:derby://localhost:1527/sample", "app", "app");
+            
+            System.out.println("Conexion exitosa");
+            java.sql.Statement stmt = (java.sql.Statement) con.createStatement();
+            String sqlRead = "SELECT * FROM ADMINS";
+          
+            ResultSet rs = stmt.executeQuery(sqlRead);
+            while (rs.next()) {                
+                String nickname = rs.getString("NICKNAME");
+                String password = rs.getString("PASSWORD");
+                String pais = rs.getString("PAIS");
+                Date birthday = rs.getDate("BIRTHDAY");
+                String correo = rs.getString("CORREO");
+                String nombre = rs.getString("NOMBRE");
+                
+                administradores.add(new Administrador(nickname, password, pais, birthday, correo, nombre));
+                
+                System.out.println(administradores.get(administradores.size()-1));
+            } 
+
+        } catch (SQLException ex) {
+            System.out.println("Error Sql"+ex);
+        }
     }
     
     public static String consultarBanco(String tarjeta, String nombre, String vencimiento, String codigoSeguridad) {

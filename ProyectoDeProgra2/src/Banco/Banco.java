@@ -46,7 +46,7 @@ public class Banco {
 
                 String line = "";
 
-                String[] tarjetas = {"11921019;eri;09/21;1234", "0801199922654;david,12/20,1844"};
+                String[] tarjetas = {"11921019;eri;09/21;1234", "0801199922654;david;12/20;1844"};
                 
                 boolean match = false;
                 
