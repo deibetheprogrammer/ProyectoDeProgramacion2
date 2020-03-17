@@ -1,1 +1,1 @@
-deku;mha;Honduras;Tue Aug 16 17:55:34 CST 2005;deku@mha.com;Midorya Izuku;0.0;0.0;true;Mon Mar 16 15:30:42 CST 2020;
+deku;mha;Honduras;Tue Aug 16 17:55:34 CST 2005;deku@mha.com;Midorya Izuku;14.0768885;-87.1937657;true;Mon Mar 16 15:30:42 CST 2020;

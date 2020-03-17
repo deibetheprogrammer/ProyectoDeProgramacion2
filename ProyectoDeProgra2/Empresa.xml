@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="13.0.2" class="java.beans.XMLDecoder">
+ <object class="proyectodeprogra2.Personas.Empresa" id="Empresa0">
+  <void property="contactNumbers">
+   <void method="add">
+    <string>+504 78580757</string>
+   </void>
+   <void method="add">
+    <string>+504 65765868</string>
+   </void>
+  </void>
+  <void property="correo">
+   <string>vehiculos@gmail.com</string>
+  </void>
+  <void property="direccion">
+   <string>Colonia El Hogar</string>
+  </void>
+  <void property="mision">
+   <string>Ser la mejor plataforma para la venta de Vehiculos</string>
+  </void>
+  <void property="nombre">
+   <string>Vehiculos.com</string>
+  </void>
+  <void property="objetivos">
+   <string>Ser optimos con cada accion
+Brindar nuestros servicios rapidamente
+Tener la mejor atencion al cliente</string>
+  </void>
+  <void property="politicas">
+   <string>No fumar dentro de las instalaciones
+No ingerir alcohol dentro de las instalaciones
+</string>
+  </void>
+  <void property="vision">
+   <string>Innovar en los estandares de servicio al cliente</string>
+  </void>
+ </object>
+</java>

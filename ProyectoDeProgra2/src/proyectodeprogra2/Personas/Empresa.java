@@ -102,7 +102,10 @@ public class Empresa extends Persona implements Serializable {
     public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Empresa{" + "mision=" + mision + ", vision=" + vision + ", objetivos=" + objetivos + ", politicas=" + politicas + ", contactNumbers=" + contactNumbers + ", direccion=" + direccion + ", latitud=" + latitud + ", longitud=" + longitud + '}';
+    }
     
 }
