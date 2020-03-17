@@ -6,6 +6,10 @@
 package proyectodeprogra2;
 
 import java.awt.Dialog;
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -30,8 +34,11 @@ import java.sql.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.ListModel;
+import javax.swing.table.DefaultTableModel;
 import proyectodeprogra2.Personas.Administrador;
 import proyectodeprogra2.Personas.Cliente;
+import proyectodeprogra2.Personas.Empresa;
 import proyectodeprogra2.Personas.Ofertador;
 
 /**
@@ -96,6 +103,26 @@ public class Vehiculos extends javax.swing.JFrame {
         L_Nickname_RetrievePassword = new javax.swing.JLabel();
         D_MenuOfertador = new javax.swing.JDialog();
         TB_MenuOfertador = new javax.swing.JTabbedPane();
+        P_InformacionEmpresa_MenuOfertador = new javax.swing.JPanel();
+        TF_Telefono2_Empresa_MenuOfertador = new javax.swing.JTextField();
+        TF_Telefono1_Empresa_MenuOfertador = new javax.swing.JTextField();
+        jLabel88 = new javax.swing.JLabel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        TA_Politicas_Empresa_MenuOfertador = new javax.swing.JTextArea();
+        jLabel89 = new javax.swing.JLabel();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        TA_Ojetivos_Empresa_MenuOfertador = new javax.swing.JTextArea();
+        jLabel90 = new javax.swing.JLabel();
+        jLabel91 = new javax.swing.JLabel();
+        TF_Vision_Empresa_MenuOfertador = new javax.swing.JTextField();
+        TF_Mision_Empresa_MenuOfertador = new javax.swing.JTextField();
+        jLabel92 = new javax.swing.JLabel();
+        jLabel93 = new javax.swing.JLabel();
+        TF_Nombre_Empresa_MenuOfertador = new javax.swing.JTextField();
+        jLabel94 = new javax.swing.JLabel();
+        TF_Direccion_Empresa_MenuOfertador = new javax.swing.JTextField();
+        TF_Correo_Empresa_MenuOfertador = new javax.swing.JTextField();
+        jLabel95 = new javax.swing.JLabel();
         P_PaginaPrincipal_MenuOfertador = new javax.swing.JPanel();
         B_VentaDirecta_MenuOfertador = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
@@ -120,7 +147,6 @@ public class Vehiculos extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         T_HistorialFacturas_Facturas_MenuOfertador = new javax.swing.JTable();
-        P_InformacionEmpresa_MenuOfertador = new javax.swing.JPanel();
         P_Membresia_MenuOfertador = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -179,8 +205,17 @@ public class Vehiculos extends javax.swing.JFrame {
         P_CompraDirecta_MenuCliente = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         T_Vehiculos_CompraDirecta_MenuCliente = new javax.swing.JTable();
-        SP_Posicion_CompraDirecta_MenuCliente = new javax.swing.JSpinner();
         jLabel37 = new javax.swing.JLabel();
+        B_Comprar_Compra_MenuCliente = new javax.swing.JButton();
+        CB_Posicion_Compra_MenuCliente = new javax.swing.JComboBox<>();
+        TF_Tarjeta_Compra_MenuCliente = new javax.swing.JTextField();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        TF_Nombre_Compra_MenuCliente = new javax.swing.JTextField();
+        jLabel65 = new javax.swing.JLabel();
+        TF_FechaV_Compra_MenuCliente = new javax.swing.JTextField();
+        jLabel87 = new javax.swing.JLabel();
+        TF_Codigo_Compra_MenuCliente = new javax.swing.JTextField();
         MB_Cliente = new javax.swing.JMenuBar();
         M_MenuCliente = new javax.swing.JMenu();
         MI_LogOut_MenuCliente = new javax.swing.JMenuItem();
@@ -202,12 +237,13 @@ public class Vehiculos extends javax.swing.JFrame {
         jScrollPane10 = new javax.swing.JScrollPane();
         TA_Politicas_Empresa_MenuAdmin = new javax.swing.JTextArea();
         jLabel45 = new javax.swing.JLabel();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        TA_Telefonos_Empresa_MenuAdmin = new javax.swing.JTextArea();
         jLabel46 = new javax.swing.JLabel();
         TF_Correo_Empresa_MenuAdmin = new javax.swing.JTextField();
         jLabel47 = new javax.swing.JLabel();
         TF_Direccion_Empresa_MenuAdmin = new javax.swing.JTextField();
+        TF_Telefono1_Empresa_MenuAdmin = new javax.swing.JTextField();
+        TF_Telefono2_Empresa_MenuAdmin = new javax.swing.JTextField();
+        B_ModificarDatos_Empresa_MenuAdmin = new javax.swing.JButton();
         P_AministrarUsuario_MenuAdmin = new javax.swing.JPanel();
         IF_ClienteOfertador_AdminUsuario_MenuAdmin = new javax.swing.JInternalFrame();
         TP_ClienteOfertador_MenuAdmin = new javax.swing.JTabbedPane();
@@ -280,9 +316,8 @@ public class Vehiculos extends javax.swing.JFrame {
         M_AyudaAdmin = new javax.swing.JMenu();
         D_VentaDirecta = new javax.swing.JDialog();
         TP_Vehiculos_VentaDirecta = new javax.swing.JTabbedPane();
+        P_Publicidad_VentaDirecta = new javax.swing.JPanel();
         P_Vehiculos_VentaDirecta = new javax.swing.JPanel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        L_Vehiculos_VentaDirecta = new javax.swing.JList<>();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -300,7 +335,13 @@ public class Vehiculos extends javax.swing.JFrame {
         RB_Mecanico_VentaDirecta = new javax.swing.JRadioButton();
         RB_Automatico_VentaDirecta = new javax.swing.JRadioButton();
         B_OfertarVehiculo_VentaDirecta = new javax.swing.JButton();
-        P_Publicidad_VentaDirecta = new javax.swing.JPanel();
+        jLabel62 = new javax.swing.JLabel();
+        TF_Precio_VentaDirecta = new javax.swing.JTextField();
+        CB_Vehiculos_VentaDirecta = new javax.swing.JComboBox<>();
+        MB_VentaDirecta = new javax.swing.JMenuBar();
+        M_Menu_VentaDirecta = new javax.swing.JMenu();
+        MI_LogOut_VentaDirecta = new javax.swing.JMenuItem();
+        MI_Ayuda_VentaDirecta = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         B_LogIn = new javax.swing.JButton();
         L_SignIn = new javax.swing.JLabel();
@@ -343,9 +384,9 @@ public class Vehiculos extends javax.swing.JFrame {
                     .addComponent(B_RetrievePassword_Login)
                     .addComponent(TF_Nickname, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
                     .addComponent(PF_Password))
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(CB_TipoUsuario_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 25, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
             .addGroup(P_LogInLayout.createSequentialGroup()
                 .addGroup(P_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_LogInLayout.createSequentialGroup()
@@ -367,11 +408,11 @@ public class Vehiculos extends javax.swing.JFrame {
                     .addGroup(P_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(TF_Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(CB_TipoUsuario_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(34, 34, 34)
+                .addGap(33, 33, 33)
                 .addGroup(P_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(PF_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(B_LogIn_LogIn)
                 .addGap(18, 18, 18)
                 .addComponent(B_RetrievePassword_Login)
@@ -605,6 +646,138 @@ public class Vehiculos extends javax.swing.JFrame {
             }
         });
 
+        TF_Telefono2_Empresa_MenuOfertador.setEditable(false);
+
+        TF_Telefono1_Empresa_MenuOfertador.setEditable(false);
+
+        jLabel88.setText("Telefonos ");
+
+        TA_Politicas_Empresa_MenuOfertador.setEditable(false);
+        TA_Politicas_Empresa_MenuOfertador.setColumns(20);
+        TA_Politicas_Empresa_MenuOfertador.setRows(5);
+        TA_Politicas_Empresa_MenuOfertador.setText("...");
+        jScrollPane11.setViewportView(TA_Politicas_Empresa_MenuOfertador);
+
+        jLabel89.setText("Políticas");
+
+        TA_Ojetivos_Empresa_MenuOfertador.setEditable(false);
+        TA_Ojetivos_Empresa_MenuOfertador.setColumns(20);
+        TA_Ojetivos_Empresa_MenuOfertador.setRows(5);
+        TA_Ojetivos_Empresa_MenuOfertador.setText("Brindar servicios con rapidez\nSer optimos en cada proceso\nBrindar al cliente el mejor servicio");
+        jScrollPane16.setViewportView(TA_Ojetivos_Empresa_MenuOfertador);
+
+        jLabel90.setText("Objetivos");
+
+        jLabel91.setText("Vision");
+
+        TF_Vision_Empresa_MenuOfertador.setEditable(false);
+        TF_Vision_Empresa_MenuOfertador.setText("Brindar servicio en adelanto con la necesidad del Cliente");
+
+        TF_Mision_Empresa_MenuOfertador.setEditable(false);
+        TF_Mision_Empresa_MenuOfertador.setText("Ser el mejor servicio de venta de Carros");
+
+        jLabel92.setText("Mision");
+
+        jLabel93.setText("Nombre");
+
+        TF_Nombre_Empresa_MenuOfertador.setEditable(false);
+        TF_Nombre_Empresa_MenuOfertador.setText("Vehiculos.com");
+
+        jLabel94.setText("Dirección");
+
+        TF_Direccion_Empresa_MenuOfertador.setEditable(false);
+
+        TF_Correo_Empresa_MenuOfertador.setEditable(false);
+        TF_Correo_Empresa_MenuOfertador.setText("vehiculos@gmail.com");
+
+        jLabel95.setText("Correo electrónico");
+
+        javax.swing.GroupLayout P_InformacionEmpresa_MenuOfertadorLayout = new javax.swing.GroupLayout(P_InformacionEmpresa_MenuOfertador);
+        P_InformacionEmpresa_MenuOfertador.setLayout(P_InformacionEmpresa_MenuOfertadorLayout);
+        P_InformacionEmpresa_MenuOfertadorLayout.setHorizontalGroup(
+            P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel93)
+                    .addComponent(jLabel92)
+                    .addComponent(jLabel91)
+                    .addComponent(jLabel90)
+                    .addComponent(jLabel89)
+                    .addComponent(jLabel88))
+                .addGap(32, 32, 32)
+                .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createSequentialGroup()
+                        .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createSequentialGroup()
+                                .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TF_Nombre_Empresa_MenuOfertador)
+                                    .addComponent(TF_Mision_Empresa_MenuOfertador)
+                                    .addComponent(TF_Vision_Empresa_MenuOfertador))
+                                .addGap(103, 103, 103)
+                                .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel95)
+                                    .addComponent(jLabel94))
+                                .addGap(62, 62, 62)
+                                .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TF_Correo_Empresa_MenuOfertador)
+                                    .addComponent(TF_Direccion_Empresa_MenuOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)))
+                            .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(TF_Telefono2_Empresa_MenuOfertador, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                .addComponent(TF_Telefono1_Empresa_MenuOfertador, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createSequentialGroup()
+                        .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(172, 567, Short.MAX_VALUE))))
+        );
+        P_InformacionEmpresa_MenuOfertadorLayout.setVerticalGroup(
+            P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel93)
+                            .addComponent(TF_Nombre_Empresa_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel95)
+                        .addComponent(TF_Correo_Empresa_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel92)
+                            .addComponent(TF_Mision_Empresa_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel94)
+                            .addComponent(TF_Direccion_Empresa_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(21, 21, 21)
+                .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel91)
+                    .addComponent(TF_Vision_Empresa_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel90)
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel89)
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel88)
+                    .addComponent(TF_Telefono1_Empresa_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(TF_Telefono2_Empresa_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+
+        TB_MenuOfertador.addTab("Información general de la empresa", P_InformacionEmpresa_MenuOfertador);
+
         B_VentaDirecta_MenuOfertador.setText("Venta directa");
         B_VentaDirecta_MenuOfertador.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -619,7 +792,7 @@ public class Vehiculos extends javax.swing.JFrame {
         P_PaginaPrincipal_MenuOfertadorLayout.setHorizontalGroup(
             P_PaginaPrincipal_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_PaginaPrincipal_MenuOfertadorLayout.createSequentialGroup()
-                .addContainerGap(695, Short.MAX_VALUE)
+                .addContainerGap(726, Short.MAX_VALUE)
                 .addGroup(P_PaginaPrincipal_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(B_VentaDirecta_MenuOfertador)
                     .addComponent(jLabel17))
@@ -632,7 +805,7 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(162, 162, 162)
                 .addComponent(B_VentaDirecta_MenuOfertador)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addContainerGap(317, Short.MAX_VALUE))
         );
 
         TB_MenuOfertador.addTab("Pagina principal", P_PaginaPrincipal_MenuOfertador);
@@ -706,7 +879,7 @@ public class Vehiculos extends javax.swing.JFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(PF_password_MenuOfertador_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                             .addComponent(TF_Nickname_MenuOfertador_Modificar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
                         .addComponent(B_ObtenerDatos_ModificarDatos_MenuOfertador)
                         .addGap(45, 45, 45)
                         .addComponent(B_ModificarDatos_MenuOfertador_Modificar)
@@ -729,7 +902,7 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
                         .addComponent(jLabel20)
@@ -781,7 +954,7 @@ public class Vehiculos extends javax.swing.JFrame {
                     .addGroup(P_Facturas_MenuOfertadorLayout.createSequentialGroup()
                         .addGap(312, 312, 312)
                         .addComponent(B_PDF_Facturas_MenuOfertador)))
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(289, Short.MAX_VALUE))
         );
         P_Facturas_MenuOfertadorLayout.setVerticalGroup(
             P_Facturas_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -790,25 +963,12 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addComponent(jLabel27)
                 .addGap(39, 39, 39)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addComponent(B_PDF_Facturas_MenuOfertador)
                 .addGap(52, 52, 52))
         );
 
         TB_MenuOfertador.addTab("Facturas", P_Facturas_MenuOfertador);
-
-        javax.swing.GroupLayout P_InformacionEmpresa_MenuOfertadorLayout = new javax.swing.GroupLayout(P_InformacionEmpresa_MenuOfertador);
-        P_InformacionEmpresa_MenuOfertador.setLayout(P_InformacionEmpresa_MenuOfertadorLayout);
-        P_InformacionEmpresa_MenuOfertadorLayout.setHorizontalGroup(
-            P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 910, Short.MAX_VALUE)
-        );
-        P_InformacionEmpresa_MenuOfertadorLayout.setVerticalGroup(
-            P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
-        );
-
-        TB_MenuOfertador.addTab("Información general de la empresa", P_InformacionEmpresa_MenuOfertador);
 
         jLabel22.setText("Membresia");
 
@@ -869,7 +1029,7 @@ public class Vehiculos extends javax.swing.JFrame {
                             .addGroup(P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(TF_FechaV_Membresia_MenuOfertador)
                                 .addComponent(TF_Codigo_Membresia_MenuOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)))))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
         P_Membresia_MenuOfertadorLayout.setVerticalGroup(
             P_Membresia_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -895,7 +1055,7 @@ public class Vehiculos extends javax.swing.JFrame {
                     .addComponent(TF_Nombre_Membresia_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel57)
                     .addComponent(TF_Codigo_Membresia_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(B_PagarMembresia_MenuOfertador)
                 .addGap(34, 34, 34))
         );
@@ -925,21 +1085,14 @@ public class Vehiculos extends javax.swing.JFrame {
         D_MenuOfertador.getContentPane().setLayout(D_MenuOfertadorLayout);
         D_MenuOfertadorLayout.setHorizontalGroup(
             D_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 924, Short.MAX_VALUE)
-            .addGroup(D_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(D_MenuOfertadorLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(TB_MenuOfertador)
-                    .addContainerGap()))
+            .addGroup(D_MenuOfertadorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TB_MenuOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, 943, Short.MAX_VALUE)
+                .addGap(109, 109, 109))
         );
         D_MenuOfertadorLayout.setVerticalGroup(
             D_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 582, Short.MAX_VALUE)
-            .addGroup(D_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(D_MenuOfertadorLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(TB_MenuOfertador)
-                    .addContainerGap()))
+            .addComponent(TB_MenuOfertador)
         );
 
         TP_MenuCliente.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -952,11 +1105,11 @@ public class Vehiculos extends javax.swing.JFrame {
         P_PaginaPrincipal_MenuCliente.setLayout(P_PaginaPrincipal_MenuClienteLayout);
         P_PaginaPrincipal_MenuClienteLayout.setHorizontalGroup(
             P_PaginaPrincipal_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 875, Short.MAX_VALUE)
+            .addGap(0, 1029, Short.MAX_VALUE)
         );
         P_PaginaPrincipal_MenuClienteLayout.setVerticalGroup(
             P_PaginaPrincipal_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 473, Short.MAX_VALUE)
+            .addGap(0, 592, Short.MAX_VALUE)
         );
 
         TP_MenuCliente.addTab("Pagina Principal", P_PaginaPrincipal_MenuCliente);
@@ -1009,7 +1162,7 @@ public class Vehiculos extends javax.swing.JFrame {
                             .addComponent(TF_FechaV_Membresia_MenuCliente)
                             .addComponent(TF_Codigo_Membresia_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(L_EstadoMembresia_Cliente))))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(249, Short.MAX_VALUE))
         );
         P_Membresia_MenuClienteLayout.setVerticalGroup(
             P_Membresia_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1030,7 +1183,7 @@ public class Vehiculos extends javax.swing.JFrame {
                     .addComponent(TF_Nombre_Membresia_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel60)
                     .addComponent(TF_Codigo_Membresia_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
                 .addComponent(B_PagarMembresia_MenuCliente)
                 .addGap(28, 28, 28))
         );
@@ -1091,7 +1244,7 @@ public class Vehiculos extends javax.swing.JFrame {
                         .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(PF_password_MenuCliente_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                             .addComponent(L_Nickname_MenuCliente_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 328, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 482, Short.MAX_VALUE)
                         .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(B_ObtenerDatos_Modificar_MenuCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(B_ModificarDatos_Modificar_MenuCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -1134,7 +1287,7 @@ public class Vehiculos extends javax.swing.JFrame {
                     .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(B_ObtenerDatos_Modificar_MenuCliente)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                 .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
                         .addComponent(jLabel31)
@@ -1179,7 +1332,7 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addGroup(P_Facturas_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel36)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(377, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Facturas_MenuClienteLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(B_PDF_Facturas_MenuCliente)
@@ -1194,7 +1347,7 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(B_PDF_Facturas_MenuCliente)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
 
         TP_MenuCliente.addTab("Factura", P_Facturas_MenuCliente);
@@ -1204,11 +1357,11 @@ public class Vehiculos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Posicion", "Marca", "Modelo", "Año", "Cilindraje", "Tipo", "Transmisión"
+                "Posicion", "Marca", "Modelo", "Año", "Cilindraje", "Tipo", "Transmisión", "Precio"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1219,6 +1372,21 @@ public class Vehiculos extends javax.swing.JFrame {
 
         jLabel37.setText("Elija la posición");
 
+        B_Comprar_Compra_MenuCliente.setText("Comprar vehículo");
+        B_Comprar_Compra_MenuCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_Comprar_Compra_MenuClienteMouseClicked(evt);
+            }
+        });
+
+        jLabel63.setText("Trajeta");
+
+        jLabel64.setText("Nombre");
+
+        jLabel65.setText("Fecha de vencimiento");
+
+        jLabel87.setText("Código de seguridad");
+
         javax.swing.GroupLayout P_CompraDirecta_MenuClienteLayout = new javax.swing.GroupLayout(P_CompraDirecta_MenuCliente);
         P_CompraDirecta_MenuCliente.setLayout(P_CompraDirecta_MenuClienteLayout);
         P_CompraDirecta_MenuClienteLayout.setHorizontalGroup(
@@ -1226,14 +1394,35 @@ public class Vehiculos extends javax.swing.JFrame {
             .addGroup(P_CompraDirecta_MenuClienteLayout.createSequentialGroup()
                 .addGroup(P_CompraDirecta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_CompraDirecta_MenuClienteLayout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jLabel37)
-                        .addGap(81, 81, 81)
-                        .addComponent(SP_Posicion_CompraDirecta_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(P_CompraDirecta_MenuClienteLayout.createSequentialGroup()
                         .addGap(61, 61, 61)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(P_CompraDirecta_MenuClienteLayout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addGroup(P_CompraDirecta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P_CompraDirecta_MenuClienteLayout.createSequentialGroup()
+                                .addGroup(P_CompraDirecta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(P_CompraDirecta_MenuClienteLayout.createSequentialGroup()
+                                        .addComponent(jLabel63)
+                                        .addGap(47, 47, 47)
+                                        .addGroup(P_CompraDirecta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(TF_Nombre_Compra_MenuCliente)
+                                            .addComponent(TF_Tarjeta_Compra_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel64))
+                                .addGap(126, 126, 126)
+                                .addGroup(P_CompraDirecta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel65)
+                                    .addComponent(jLabel87))
+                                .addGap(76, 76, 76)
+                                .addGroup(P_CompraDirecta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TF_FechaV_Compra_MenuCliente)
+                                    .addComponent(TF_Codigo_Compra_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(P_CompraDirecta_MenuClienteLayout.createSequentialGroup()
+                                .addComponent(jLabel37)
+                                .addGap(56, 56, 56)
+                                .addComponent(CB_Posicion_Compra_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(147, 147, 147)
+                                .addComponent(B_Comprar_Compra_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
         P_CompraDirecta_MenuClienteLayout.setVerticalGroup(
             P_CompraDirecta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1242,9 +1431,22 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(P_CompraDirecta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SP_Posicion_CompraDirecta_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel37))
-                .addContainerGap(111, Short.MAX_VALUE))
+                    .addComponent(jLabel37)
+                    .addComponent(B_Comprar_Compra_MenuCliente)
+                    .addComponent(CB_Posicion_Compra_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addGroup(P_CompraDirecta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel63)
+                    .addComponent(TF_Tarjeta_Compra_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel65)
+                    .addComponent(TF_FechaV_Compra_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addGroup(P_CompraDirecta_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel64)
+                    .addComponent(TF_Nombre_Compra_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel87)
+                    .addComponent(TF_Codigo_Compra_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         TP_MenuCliente.addTab("Compra de Vehiculos", P_CompraDirecta_MenuCliente);
@@ -1279,11 +1481,17 @@ public class Vehiculos extends javax.swing.JFrame {
         );
         D_MenuClienteLayout.setVerticalGroup(
             D_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, D_MenuClienteLayout.createSequentialGroup()
+            .addGroup(D_MenuClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(TP_MenuCliente)
                 .addContainerGap())
         );
+
+        TB_MenuAdmin.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                TB_MenuAdminStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout P_PaginaPrincipal_MenuAdminLayout = new javax.swing.GroupLayout(P_PaginaPrincipal_MenuAdmin);
         P_PaginaPrincipal_MenuAdmin.setLayout(P_PaginaPrincipal_MenuAdminLayout);
@@ -1326,16 +1534,18 @@ public class Vehiculos extends javax.swing.JFrame {
 
         jLabel45.setText("Telefonos ");
 
-        TA_Telefonos_Empresa_MenuAdmin.setColumns(20);
-        TA_Telefonos_Empresa_MenuAdmin.setRows(5);
-        TA_Telefonos_Empresa_MenuAdmin.setText("...");
-        jScrollPane11.setViewportView(TA_Telefonos_Empresa_MenuAdmin);
-
         jLabel46.setText("Correo electrónico");
 
         TF_Correo_Empresa_MenuAdmin.setText("vehiculos@gmail.com");
 
         jLabel47.setText("Dirección");
+
+        B_ModificarDatos_Empresa_MenuAdmin.setText("Modificar datos");
+        B_ModificarDatos_Empresa_MenuAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_ModificarDatos_Empresa_MenuAdminMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout P_Empresa_MenuAdminLayout = new javax.swing.GroupLayout(P_Empresa_MenuAdmin);
         P_Empresa_MenuAdmin.setLayout(P_Empresa_MenuAdminLayout);
@@ -1352,23 +1562,31 @@ public class Vehiculos extends javax.swing.JFrame {
                     .addComponent(jLabel45))
                 .addGap(32, 32, 32)
                 .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(P_Empresa_MenuAdminLayout.createSequentialGroup()
-                        .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TF_Nombre_Empresa_MenuAdmin)
-                            .addComponent(TF_Mision_Empresa_MenuAdmin)
-                            .addComponent(TF_Vision_Empresa_MenuAdmin))
-                        .addGap(103, 103, 103)
                         .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel46)
-                            .addComponent(jLabel47))
-                        .addGap(62, 62, 62)
-                        .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TF_Correo_Empresa_MenuAdmin)
-                            .addComponent(TF_Direccion_Empresa_MenuAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(P_Empresa_MenuAdminLayout.createSequentialGroup()
+                                .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TF_Nombre_Empresa_MenuAdmin)
+                                    .addComponent(TF_Mision_Empresa_MenuAdmin)
+                                    .addComponent(TF_Vision_Empresa_MenuAdmin))
+                                .addGap(103, 103, 103)
+                                .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel46)
+                                    .addComponent(jLabel47))
+                                .addGap(62, 62, 62)
+                                .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TF_Correo_Empresa_MenuAdmin)
+                                    .addComponent(TF_Direccion_Empresa_MenuAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)))
+                            .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(TF_Telefono2_Empresa_MenuAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                .addComponent(TF_Telefono1_Empresa_MenuAdmin, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addContainerGap(125, Short.MAX_VALUE))
+                    .addGroup(P_Empresa_MenuAdminLayout.createSequentialGroup()
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(B_ModificarDatos_Empresa_MenuAdmin)
+                        .addGap(172, 172, 172))))
         );
         P_Empresa_MenuAdminLayout.setVerticalGroup(
             P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1399,19 +1617,26 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel42)
                     .addComponent(TF_Vision_Empresa_MenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel43)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                    .addGroup(P_Empresa_MenuAdminLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel43)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(P_Empresa_MenuAdminLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(B_ModificarDatos_Empresa_MenuAdmin)))
+                .addGap(13, 13, 13)
                 .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel44)
                     .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel45)
-                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                    .addComponent(TF_Telefono1_Empresa_MenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(TF_Telefono2_Empresa_MenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         TB_MenuAdmin.addTab("Empresa", P_Empresa_MenuAdmin);
@@ -1944,9 +2169,18 @@ public class Vehiculos extends javax.swing.JFrame {
             }
         });
 
-        L_Vehiculos_VentaDirecta.setModel(new DefaultListModel()
+        javax.swing.GroupLayout P_Publicidad_VentaDirectaLayout = new javax.swing.GroupLayout(P_Publicidad_VentaDirecta);
+        P_Publicidad_VentaDirecta.setLayout(P_Publicidad_VentaDirectaLayout);
+        P_Publicidad_VentaDirectaLayout.setHorizontalGroup(
+            P_Publicidad_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 924, Short.MAX_VALUE)
         );
-        jScrollPane7.setViewportView(L_Vehiculos_VentaDirecta);
+        P_Publicidad_VentaDirectaLayout.setVerticalGroup(
+            P_Publicidad_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 578, Short.MAX_VALUE)
+        );
+
+        TP_Vehiculos_VentaDirecta.addTab("Publicidad", P_Publicidad_VentaDirecta);
 
         jLabel14.setText("Lista de Vehiculos Ofertados");
 
@@ -1981,6 +2215,8 @@ public class Vehiculos extends javax.swing.JFrame {
             }
         });
 
+        jLabel62.setText("Precio US$");
+
         javax.swing.GroupLayout P_Vehiculos_VentaDirectaLayout = new javax.swing.GroupLayout(P_Vehiculos_VentaDirecta);
         P_Vehiculos_VentaDirecta.setLayout(P_Vehiculos_VentaDirectaLayout);
         P_Vehiculos_VentaDirectaLayout.setHorizontalGroup(
@@ -1989,75 +2225,77 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
-                        .addComponent(jLabel38)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
                         .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16)
                             .addComponent(jLabel28)
                             .addComponent(jLabel29))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51))
+                        .addGap(51, 816, Short.MAX_VALUE))
                     .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
                         .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel39))
-                        .addGap(47, 47, 47)
-                        .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TF_Marca_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TF_Modelo_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DC_year_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel38)
                             .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
                                 .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(RB_1500cc_VentaDirecta)
-                                    .addComponent(RB_Turismo_VentaDirecta)
-                                    .addComponent(RB_Mecanico_VentaDirecta))
-                                .addGap(28, 28, 28)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel39))
+                                .addGap(47, 47, 47)
                                 .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(RB_Camion_VentaDirecta)
-                                    .addComponent(RB_1800cc_VentaDirecta)
-                                    .addComponent(RB_Automatico_VentaDirecta))))
-                        .addContainerGap(565, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel14)
-                .addGap(67, 67, 67))
+                                    .addComponent(TF_Marca_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TF_Modelo_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(DC_year_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
+                                        .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(RB_1500cc_VentaDirecta)
+                                            .addComponent(RB_Turismo_VentaDirecta)
+                                            .addComponent(RB_Mecanico_VentaDirecta))
+                                        .addGap(28, 28, 28)
+                                        .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(RB_Camion_VentaDirecta)
+                                            .addComponent(RB_1800cc_VentaDirecta)
+                                            .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
+                                                .addComponent(RB_Automatico_VentaDirecta)
+                                                .addGap(167, 167, 167)
+                                                .addComponent(jLabel62)
+                                                .addGap(63, 63, 63)
+                                                .addComponent(TF_Precio_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
                 .addGap(143, 143, 143)
                 .addComponent(B_OfertarVehiculo_VentaDirecta)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addComponent(CB_Vehiculos_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43))
         );
         P_Vehiculos_VentaDirectaLayout.setVerticalGroup(
             P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel14)
-                .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(5, 5, 5)
+                .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
                         .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
-                                .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(P_Vehiculos_VentaDirectaLayout.createSequentialGroup()
-                                        .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel15)
-                                            .addComponent(TF_Marca_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(63, 63, 63)
-                                        .addComponent(jLabel16))
-                                    .addComponent(TF_Modelo_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(69, 69, 69)
-                                .addComponent(jLabel28))
-                            .addComponent(DC_year_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(53, 53, 53)
-                        .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel29)
-                            .addComponent(RB_1500cc_VentaDirecta)
-                            .addComponent(RB_1800cc_VentaDirecta))))
-                .addGap(9, 9, 9)
+                                .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel15)
+                                    .addComponent(TF_Marca_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(30, 30, 30)
+                                .addComponent(CB_Vehiculos_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(jLabel16))
+                            .addComponent(TF_Modelo_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel28))
+                    .addComponent(DC_year_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
+                .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(RB_1500cc_VentaDirecta)
+                    .addComponent(RB_1800cc_VentaDirecta))
+                .addGap(54, 54, 54)
                 .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel38)
                     .addComponent(RB_Turismo_VentaDirecta)
@@ -2066,26 +2304,34 @@ public class Vehiculos extends javax.swing.JFrame {
                 .addGroup(P_Vehiculos_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
                     .addComponent(RB_Mecanico_VentaDirecta)
-                    .addComponent(RB_Automatico_VentaDirecta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                    .addComponent(RB_Automatico_VentaDirecta)
+                    .addComponent(jLabel62)
+                    .addComponent(TF_Precio_VentaDirecta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(B_OfertarVehiculo_VentaDirecta)
                 .addGap(36, 36, 36))
         );
 
         TP_Vehiculos_VentaDirecta.addTab("Vehiculos", P_Vehiculos_VentaDirecta);
 
-        javax.swing.GroupLayout P_Publicidad_VentaDirectaLayout = new javax.swing.GroupLayout(P_Publicidad_VentaDirecta);
-        P_Publicidad_VentaDirecta.setLayout(P_Publicidad_VentaDirectaLayout);
-        P_Publicidad_VentaDirectaLayout.setHorizontalGroup(
-            P_Publicidad_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 966, Short.MAX_VALUE)
-        );
-        P_Publicidad_VentaDirectaLayout.setVerticalGroup(
-            P_Publicidad_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
+        M_Menu_VentaDirecta.setIcon(new javax.swing.ImageIcon("/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/Icons/027-menu.png")); // NOI18N
+        M_Menu_VentaDirecta.setText("Menu");
 
-        TP_Vehiculos_VentaDirecta.addTab("Publicidad", P_Publicidad_VentaDirecta);
+        MI_LogOut_VentaDirecta.setIcon(new javax.swing.ImageIcon("/Users/davidbendeck/NetBeansProjects/ProyectoDeProgramacion2/ProyectoDeProgra2/res/Icons/logout.png")); // NOI18N
+        MI_LogOut_VentaDirecta.setText("Log Out");
+        MI_LogOut_VentaDirecta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MI_LogOut_VentaDirectaActionPerformed(evt);
+            }
+        });
+        M_Menu_VentaDirecta.add(MI_LogOut_VentaDirecta);
+
+        MB_VentaDirecta.add(M_Menu_VentaDirecta);
+
+        MI_Ayuda_VentaDirecta.setText("Ayuda");
+        MB_VentaDirecta.add(MI_Ayuda_VentaDirecta);
+
+        D_VentaDirecta.setJMenuBar(MB_VentaDirecta);
 
         javax.swing.GroupLayout D_VentaDirectaLayout = new javax.swing.GroupLayout(D_VentaDirecta.getContentPane());
         D_VentaDirecta.getContentPane().setLayout(D_VentaDirectaLayout);
@@ -2093,8 +2339,8 @@ public class Vehiculos extends javax.swing.JFrame {
             D_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(D_VentaDirectaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(TP_Vehiculos_VentaDirecta, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(TP_Vehiculos_VentaDirecta)
+                .addGap(48, 48, 48))
         );
         D_VentaDirectaLayout.setVerticalGroup(
             D_VentaDirectaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2191,6 +2437,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private void B_LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_LogInMouseClicked
 
         D_LogIn.pack();
+        D_LogIn.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         D_LogIn.setVisible(true);
         
     }//GEN-LAST:event_B_LogInMouseClicked
@@ -2205,80 +2452,6 @@ public class Vehiculos extends javax.swing.JFrame {
         D_RegisterNaA.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         D_RegisterNaA.setVisible(true);
     }//GEN-LAST:event_B_RegisterMouseClicked
-
-    private void B_RetrievePassword_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RetrievePassword_LoginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B_RetrievePassword_LoginActionPerformed
-
-    private void B_LogIn_LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_LogIn_LogInMouseClicked
-        // TODO add your handling code here:
-        
-        
-        boolean reject = true;
-        if(CB_TipoUsuario_LogIn.getSelectedItem().equals("Cliente")) {
-            for (Cliente cliente : clientes) {
-                if (cliente.getNickname().equals(TF_Nickname.getText())) {
-                    if (cliente.getPassword().equals(PF_Password.getText())) {
-                        TF_Nickname.setText("");
-                        PF_Password.setText("");
-                        D_LogIn.setVisible(false);
-                        clienteActual = cliente;
-                        D_MenuCliente.pack();
-                        D_MenuCliente.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-                        D_MenuCliente.setVisible(true);
-                        reject = false;
-                        break;
-                    }
-                } 
-            }
-            if(reject){
-                JOptionPane.showMessageDialog(this, "Nickname o contraseña incorrectos(s)");  
-            }
-        }
-        else if (CB_TipoUsuario_LogIn.getSelectedItem().equals("Ofertador")) {
-            for (Ofertador ofertador : ofertadores) {
-                if (ofertador.getNickname().equals(TF_Nickname.getText())) {
-                    if (ofertador.getPassword().equals(PF_Password.getText())) {
-                        TF_Nickname.setText("");
-                        PF_Password.setText("");
-                        D_LogIn.setVisible(false);
-                        ofertadorActual = ofertador;
-                        D_MenuOfertador.pack();
-                        D_MenuOfertador.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-                        D_MenuOfertador.setVisible(true);
-                        reject = false;
-                        break;
-                    } 
-                } 
-            }
-            if(reject) {
-               JOptionPane.showMessageDialog(this, "Nickname o contraseña incorrectos(s)"); 
-            }
-        }
-        
-        else {
-            for (Administrador administrador : administradores) {
-                if (administrador.getNickname().equals(TF_Nickname.getText())) {
-                    if (administrador.getPassword().equals(PF_Password.getText())) {
-                        TF_Nickname.setText("");
-                        PF_Password.setText("");
-                        D_LogIn.setVisible(false);
-                        adminActual = administrador;
-                        D_MenuAdmin.pack();
-                        D_MenuAdmin.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-                        D_MenuAdmin.setVisible(true);
-                        reject = false;
-                        break;
-                    }
-                }
-            }
-            if(reject) {
-                JOptionPane.showMessageDialog(D_LogIn, "Nickname o contraseña incorrectos(s)");
-            }
-        }
-        
-        
-    }//GEN-LAST:event_B_LogIn_LogInMouseClicked
 
     private void PF_password_RegisterNaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_password_RegisterNaAActionPerformed
         // TODO add your handling code here:
@@ -2335,7 +2508,7 @@ public class Vehiculos extends javax.swing.JFrame {
 
                 if (CB_TipoUsuario_RegisterNaA.getSelectedItem().equals("Ofertador")) {
 
-                    ofertadores.add(new Ofertador(nickname, password, pais, birthday,0.0,0.0, correo, nombre));
+                    ofertadores.add(new Ofertador(nickname, password, pais, birthday,0.0,0.0,false,new Date(), correo, nombre));
                     guardarOfertadores(ofertadores);
                     
                     JOptionPane.showConfirmDialog(D_RegisterNaA, "Registrado correctamente");
@@ -2348,7 +2521,7 @@ public class Vehiculos extends javax.swing.JFrame {
 
                 } else {
 
-                    clientes.add(new Cliente(nickname, password, pais, birthday,0.0,0.0, correo, nombre));
+                    clientes.add(new Cliente(nickname, password, pais, birthday,0.0,0.0,false,new Date(), correo, nombre));
                     guardarClientes(clientes);
                     
                     JOptionPane.showConfirmDialog(D_RegisterNaA, "Registrado correctamente");
@@ -2376,21 +2549,31 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void B_PagarMembresia_MenuOfertadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_PagarMembresia_MenuOfertadorMouseClicked
         // TODO add your handling code here:
-        if (!ofertadorActual.isMembresia_VentaDirecta()) {
+        if (!ofertadorActual.isMembresia()) {
 
             String tarjeta = TF_Tarjeta_Membresia_MenuOfertador.getText();
             String nombre = TF_Nombre_Membresia_MenuOfertador.getText();
             String fechaV = TF_FechaV_Membresia_MenuOfertador.getText();
             String codigo = TF_Codigo_Membresia_MenuOfertador.getText();
 
-            String outcome = consultarBanco(tarjeta, nombre, fechaV, codigo);
+            String output = consultarBanco(tarjeta, nombre, fechaV, codigo, 500);
 
-            if ("-1".equals(outcome)) {
-                JOptionPane.showMessageDialog(this, "Transacción rechazada ");
+            if(output.equals("-1")) {
+                
+                JOptionPane.showMessageDialog(D_MenuCliente, "Transacción rechazada, La tarjeta no existe");
+                
+            } else if (output.equals("-2")) {
+                
+                JOptionPane.showMessageDialog(D_MenuCliente, "Transacción rechazada, Su saldo no es suficiente");
+                
+            } else if (output.equals("-3")) {
+                
+                JOptionPane.showMessageDialog(D_MenuCliente, "Transacción rechazada, Error al actualizar la tarjeta");
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Transacción exitosa");
 
-                ofertadorActual.setMembresia_VentaDirecta(true);
+                ofertadorActual.setMembresia(true);
 
                 L_EstadoMembresia_Ofertador.setText("Activo");
 
@@ -2564,7 +2747,6 @@ public class Vehiculos extends javax.swing.JFrame {
             CB_Administrador_AdminUsuario_Cliente.addItem(cliente);
         }
 
-        CB_Administrador_AdminUsuario_Cliente.setSelectedIndex(0);
 
         //Llenar ofertadores
         CB_Administrador_AdminUsuario_Ofertador.removeAllItems();
@@ -2712,6 +2894,16 @@ public class Vehiculos extends javax.swing.JFrame {
 
     private void CB_Administrador_AdminUsuario_OfertadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Administrador_AdminUsuario_OfertadorActionPerformed
         // TODO add your handling code here:
+        
+        Ofertador ofertador = (Ofertador) CB_Administrador_AdminUsuario_Ofertador.getSelectedItem();
+        
+        if (ofertador != null) {
+           PF_password_ModificarOfertador.setText(ofertador.getPassword());
+           L_PaisDeNacimiento_ModificarOfertador.setSelectedValue(ofertador.getPais(), true);
+           DC_Birthday_ModificarOfertador.setDate(ofertador.getBirthday());
+           TF_Correo_ModificarOfertador.setText(ofertador.getCorreo());
+           TF_NombreCompleto_ModificarOfertador.setText(ofertador.getNombre());
+        }
     }//GEN-LAST:event_CB_Administrador_AdminUsuario_OfertadorActionPerformed
 
     private void PF_password_ModificarOfertadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_password_ModificarOfertadorActionPerformed
@@ -2792,10 +2984,20 @@ public class Vehiculos extends javax.swing.JFrame {
             String fechaV = TF_FechaV_Membresia_MenuCliente.getText();
             String codigo = TF_Codigo_Membresia_MenuCliente.getText();
 
-            String outcome = consultarBanco(tarjeta, nombre, fechaV, codigo);
+            String output = consultarBanco(tarjeta, nombre, fechaV, codigo,50);
 
-            if ("-1".equals(outcome)) {
-                JOptionPane.showMessageDialog(this, "Transacción rechazada ");
+            if(output.equals("-1")) {
+                
+                JOptionPane.showMessageDialog(D_MenuCliente, "Transacción rechazada, La tarjeta no existe");
+                
+            } else if (output.equals("-2")) {
+                
+                JOptionPane.showMessageDialog(D_MenuCliente, "Transacción rechazada, Su saldo no es suficiente");
+                
+            } else if (output.equals("-3")) {
+                
+                JOptionPane.showMessageDialog(D_MenuCliente, "Transacción rechazada, Error al actualizar la tarjeta");
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Transacción exitosa");
 
@@ -2854,13 +3056,43 @@ public class Vehiculos extends javax.swing.JFrame {
                 L_EstadoMembresia_Cliente.setText("Inactivo");
             }
         }
+        
+         T_Vehiculos_CompraDirecta_MenuCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Posicion", "Marca", "Modelo", "Año", "Cilindraje", "Tipo", "Transmisión", "Precio"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        
+        CB_Posicion_Compra_MenuCliente.removeAllItems();
+         
+        DefaultTableModel tablaVehiculos = (DefaultTableModel) T_Vehiculos_CompraDirecta_MenuCliente.getModel();
+        int posicion = 0;
+        
+        
+        for (Vehiculo v : vehiculos) {
+            Object[] newRow = {posicion,v.getMarca(),v.getModelo(),v.getYear(),v.getCilindraje(),v.getTipo(),v.getTransmision(),v.getPrecio()};
+            tablaVehiculos.addRow(newRow);
+            CB_Posicion_Compra_MenuCliente.addItem(posicion);
+            posicion++;
+        }
             
     }//GEN-LAST:event_TP_MenuClienteStateChanged
 
     private void TB_MenuOfertadorStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TB_MenuOfertadorStateChanged
         // TODO add your handling code here:
         if (ofertadorActual != null) {
-            if (ofertadorActual.isMembresia_VentaDirecta()) {
+            if (ofertadorActual.isMembresia()) {
                 L_EstadoMembresia_Ofertador.setText("Activo");
                 B_VentaDirecta_MenuOfertador.setVisible(true);
             } else {
@@ -2880,28 +3112,30 @@ public class Vehiculos extends javax.swing.JFrame {
         D_VentaDirecta.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         D_VentaDirecta.setVisible(true);
         
-        DefaultListModel Lvehiculos = (DefaultListModel) L_Vehiculos_VentaDirecta.getModel();
+        CB_Vehiculos_VentaDirecta.removeAllItems();
         
-        Lvehiculos.removeAllElements();
-        
-        for (Vehiculo v : vehiculos) {
-            if (v.getNickname().equals(ofertadorActual.getNickname())) {
-                Lvehiculos.addElement(v);
+        if (ofertadorActual != null) {
+            for (Vehiculo v : vehiculos) {
+                if (ofertadorActual.getNickname().equals(v.getNickname())) {
+                    CB_Vehiculos_VentaDirecta.addItem(v);
+                }
             }
         }
     }//GEN-LAST:event_B_VentaDirecta_MenuOfertadorMouseClicked
 
     private void TP_Vehiculos_VentaDirectaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TP_Vehiculos_VentaDirectaStateChanged
         // TODO add your handling code here:
+        CB_Vehiculos_VentaDirecta.removeAllItems();
         
-        DefaultListModel Lvehiculos = (DefaultListModel) L_Vehiculos_VentaDirecta.getModel();
-        Lvehiculos.removeAllElements();
-        
-        for (Vehiculo v : vehiculos) {
-            if (v.getNickname().equals(ofertadorActual.getNickname())) {
-                Lvehiculos.addElement(v);
+        if (ofertadorActual != null) {
+            for (Vehiculo v : vehiculos) {
+                if (ofertadorActual.getNickname().equals(v.getNickname())) {
+                    CB_Vehiculos_VentaDirecta.addItem(v);
+                }
             }
         }
+       
+        
     }//GEN-LAST:event_TP_Vehiculos_VentaDirectaStateChanged
 
     private void B_OfertarVehiculo_VentaDirectaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_OfertarVehiculo_VentaDirectaMouseClicked
@@ -2936,19 +3170,210 @@ public class Vehiculos extends javax.swing.JFrame {
             transmision = "Automatico";
         }
         
-        vehiculos.add(new Vehiculo(nickname, marca, modelo, year, cilindraje, tipo, transmision));
+        int precio = Integer.parseInt(TF_Precio_VentaDirecta.getText());
+        
+        vehiculos.add(new Vehiculo(nickname, marca, modelo, year, cilindraje, tipo, transmision,precio));
         guardarVehiculos(vehiculos);
         
-        DefaultListModel Lvehiculos = (DefaultListModel) L_Vehiculos_VentaDirecta.getModel();
+        CB_Vehiculos_VentaDirecta.removeAllItems();
         
-        Lvehiculos.removeAllElements();
-        
-        for (Vehiculo v : vehiculos) {
-            if (v.getNickname().equals(ofertadorActual.getNickname())) {
-                Lvehiculos.addElement(v);
+        if (ofertadorActual != null) {
+            for (Vehiculo v : vehiculos) {
+                if (ofertadorActual.getNickname().equals(v.getNickname())) {
+                    CB_Vehiculos_VentaDirecta.addItem(v);
+                }
             }
         }
     }//GEN-LAST:event_B_OfertarVehiculo_VentaDirectaMouseClicked
+
+    private void B_Comprar_Compra_MenuClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Comprar_Compra_MenuClienteMouseClicked
+        // TODO add your handling code here:
+        
+         int posicion = CB_Posicion_Compra_MenuCliente.getSelectedIndex();
+        
+        if (clienteActual.isMembresia()) {
+            String tarjeta = TF_Tarjeta_Compra_MenuCliente.getText();
+            String nombre = TF_Nombre_Compra_MenuCliente.getText();
+            String fechaV = TF_FechaV_Compra_MenuCliente.getText();
+            String codigo = TF_Codigo_Compra_MenuCliente.getText();
+            
+            Vehiculo vehiculo = vehiculos.get(posicion);
+            int precio = vehiculo.getPrecio();
+            
+            String output = consultarBanco(tarjeta, nombre, fechaV, codigo,precio);
+            
+            if(output.equals("-1")) {
+                
+                JOptionPane.showMessageDialog(D_MenuCliente, "Transacción rechazada, La tarjeta no existe");
+                
+            } else if (output.equals("-2")) {
+                
+                JOptionPane.showMessageDialog(D_MenuCliente, "Transacción rechazada, Su saldo no es suficiente");
+                
+            } else if (output.equals("-3")) {
+                
+                JOptionPane.showMessageDialog(D_MenuCliente, "Transacción rechazada, Error al actualizar la tarjeta");
+                
+            } else {
+                JOptionPane.showMessageDialog(D_MenuCliente, "Transacción exitosa");
+               
+                vehiculos.remove(vehiculos.get(posicion));
+                guardarVehiculos(vehiculos);
+            }
+            
+        } else {
+            JOptionPane.showMessageDialog(D_MenuCliente, "Su membresía no está activa, no puede realizar esta acción");
+        }
+        
+        T_Vehiculos_CompraDirecta_MenuCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Posicion", "Marca", "Modelo", "Año", "Cilindraje", "Tipo", "Transmisión", "Precio"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        
+        CB_Posicion_Compra_MenuCliente.removeAllItems();
+         
+        DefaultTableModel tablaVehiculos = (DefaultTableModel) T_Vehiculos_CompraDirecta_MenuCliente.getModel();
+        posicion = 0;
+        
+        
+        for (Vehiculo v : vehiculos) {
+            Object[] newRow = {posicion,v.getMarca(),v.getModelo(),v.getYear(),v.getCilindraje(),v.getTipo(),v.getTransmision(),v.getPrecio()};
+            tablaVehiculos.addRow(newRow);
+            CB_Posicion_Compra_MenuCliente.addItem(posicion);
+            posicion++;
+        }
+    }//GEN-LAST:event_B_Comprar_Compra_MenuClienteMouseClicked
+
+    private void MI_LogOut_VentaDirectaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MI_LogOut_VentaDirectaActionPerformed
+        // TODO add your handling code here:
+        D_VentaDirecta.setVisible(false);
+        
+        D_MenuOfertador.pack();
+        D_MenuOfertador.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        D_MenuOfertador.setVisible(true);
+    }//GEN-LAST:event_MI_LogOut_VentaDirectaActionPerformed
+
+    private void B_LogIn_LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_LogIn_LogInMouseClicked
+        // TODO add your handling code here:
+
+        boolean reject = true;
+        if(CB_TipoUsuario_LogIn.getSelectedItem().equals("Cliente")) {
+            for (Cliente cliente : clientes) {
+                if (cliente.getNickname().equals(TF_Nickname.getText())) {
+                    if (cliente.getPassword().equals(PF_Password.getText())) {
+                        TF_Nickname.setText("");
+                        PF_Password.setText("");
+                        D_LogIn.setVisible(false);
+                        clienteActual = cliente;
+                        D_MenuCliente.pack();
+                        D_MenuCliente.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+                        D_MenuCliente.setVisible(true);
+                        reject = false;
+                        break;
+                    }
+                }
+            }
+            if(reject){
+                JOptionPane.showMessageDialog(this, "Nickname o contraseña incorrectos(s)");
+            }
+        }
+        else if (CB_TipoUsuario_LogIn.getSelectedItem().equals("Ofertador")) {
+            for (Ofertador ofertador : ofertadores) {
+                if (ofertador.getNickname().equals(TF_Nickname.getText())) {
+                    if (ofertador.getPassword().equals(PF_Password.getText())) {
+                        TF_Nickname.setText("");
+                        PF_Password.setText("");
+                        D_LogIn.setVisible(false);
+                        ofertadorActual = ofertador;
+                        D_MenuOfertador.pack();
+                        D_MenuOfertador.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+                        D_MenuOfertador.setVisible(true);
+                        reject = false;
+                        break;
+                    }
+                }
+            }
+            if(reject) {
+                JOptionPane.showMessageDialog(this, "Nickname o contraseña incorrectos(s)");
+            }
+        }
+
+        else {
+            for (Administrador administrador : administradores) {
+                if (administrador.getNickname().equals(TF_Nickname.getText())) {
+                    if (administrador.getPassword().equals(PF_Password.getText())) {
+                        TF_Nickname.setText("");
+                        PF_Password.setText("");
+                        D_LogIn.setVisible(false);
+                        adminActual = administrador;
+                        D_MenuAdmin.pack();
+                        D_MenuAdmin.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+                        D_MenuAdmin.setVisible(true);
+                        reject = false;
+                        break;
+                    }
+                }
+            }
+            if(reject) {
+                JOptionPane.showMessageDialog(D_LogIn, "Nickname o contraseña incorrectos(s)");
+            }
+        }
+
+    }//GEN-LAST:event_B_LogIn_LogInMouseClicked
+
+    private void B_RetrievePassword_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RetrievePassword_LoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B_RetrievePassword_LoginActionPerformed
+
+    private void TB_MenuAdminStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TB_MenuAdminStateChanged
+        // TODO add your handling code here:
+        if (empresa != null) {
+            TF_Nombre_Empresa_MenuAdmin.setText(empresa.getNombre());
+            TF_Mision_Empresa_MenuAdmin.setText(empresa.getMision());
+            TF_Vision_Empresa_MenuAdmin.setText(empresa.getVision());
+            TA_Ojetivos_Empresa_MenuAdmin.setText(empresa.getObjetivos());
+            TA_Politicas_Empresa_MenuAdmin.setText(empresa.getObjetivos());
+            ArrayList<String> telefonos = empresa.getContactNumbers();
+            TF_Telefono1_Empresa_MenuAdmin.setText(telefonos.get(0));
+            TF_Telefono2_Empresa_MenuAdmin.setText(telefonos.get(1));
+            TF_Correo_Empresa_MenuAdmin.setText(empresa.getCorreo());
+            TF_Direccion_Empresa_MenuAdmin.setText(empresa.getDireccion());
+        }
+    }//GEN-LAST:event_TB_MenuAdminStateChanged
+
+    private void B_ModificarDatos_Empresa_MenuAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_ModificarDatos_Empresa_MenuAdminMouseClicked
+        // TODO add your handling code here:
+        String nombre = TF_Nombre_Empresa_MenuAdmin.getText();
+        String mision = TF_Mision_Empresa_MenuAdmin.getText();
+        String vision = TF_Vision_Empresa_MenuAdmin.getText();
+        String objetivos = TA_Ojetivos_Empresa_MenuAdmin.getText();
+        String politicas = TA_Politicas_Empresa_MenuAdmin.getText();
+        String telefono1 = TF_Telefono1_Empresa_MenuAdmin.getText();
+        String telefono2 = TF_Telefono2_Empresa_MenuAdmin.getText();
+        String correo = TF_Correo_Empresa_MenuAdmin.getText();
+        String direccion = TF_Direccion_Empresa_MenuAdmin.getText();
+        
+        empresa = new Empresa(mision, vision, objetivos, politicas, direccion,0.0,0.0, correo, nombre);
+        empresa.getContactNumbers().clear();
+        empresa.getContactNumbers().add(telefono1);
+        empresa.getContactNumbers().add(telefono2);
+        
+        guardarEmpresa(empresa);
+        
+        JOptionPane.showMessageDialog(D_MenuAdmin, "Modificado exitosamente");
+    }//GEN-LAST:event_B_ModificarDatos_Empresa_MenuAdminMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2995,6 +3420,9 @@ public class Vehiculos extends javax.swing.JFrame {
         //Leer Vehiculos
         leerVehiculos(vehiculos);
         
+        //Leer Empresa
+        leerEmpresa(empresa);
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -3004,11 +3432,13 @@ public class Vehiculos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_Comprar_Compra_MenuCliente;
     private javax.swing.JButton B_Eliminar_ModificarAdmin;
     private javax.swing.JButton B_Eliminar_ModificarCliente;
     private javax.swing.JButton B_Eliminar_ModificarOfertador;
     private javax.swing.JButton B_LogIn;
     private javax.swing.JButton B_LogIn_LogIn;
+    private javax.swing.JButton B_ModificarDatos_Empresa_MenuAdmin;
     private javax.swing.JButton B_ModificarDatos_MenuOfertador_Modificar;
     private javax.swing.JButton B_ModificarDatos_Modificar_MenuCliente;
     private javax.swing.JButton B_Modificar_ModificarAdmin;
@@ -3030,8 +3460,10 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JComboBox<Administrador> CB_Administrador_AdminUsuario_Admin;
     private javax.swing.JComboBox<Cliente> CB_Administrador_AdminUsuario_Cliente;
     private javax.swing.JComboBox<Ofertador> CB_Administrador_AdminUsuario_Ofertador;
+    private javax.swing.JComboBox<Integer> CB_Posicion_Compra_MenuCliente;
     private javax.swing.JComboBox<String> CB_TipoUsuario_LogIn;
     private javax.swing.JComboBox<String> CB_TipoUsuario_RegisterNaA;
+    private javax.swing.JComboBox<Vehiculo> CB_Vehiculos_VentaDirecta;
     private com.toedter.calendar.JDateChooser DC_Birthday_MenuCliente_Modificar;
     private com.toedter.calendar.JDateChooser DC_Birthday_MenuOfertador_Modificar;
     private com.toedter.calendar.JDateChooser DC_Birthday_ModificarAdmin;
@@ -3062,19 +3494,22 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JList<String> L_Pais_MenuOfertador_Modificar;
     private javax.swing.JLabel L_Password_RetrievePassword;
     private javax.swing.JLabel L_SignIn;
-    private javax.swing.JList<String> L_Vehiculos_VentaDirecta;
     private javax.swing.JMenuBar MB_Admin;
     private javax.swing.JMenuBar MB_Cliente;
     private javax.swing.JMenuBar MB_Ofertador;
+    private javax.swing.JMenuBar MB_VentaDirecta;
+    private javax.swing.JMenu MI_Ayuda_VentaDirecta;
     private javax.swing.JMenuItem MI_LogOut_MenuAdmin;
     private javax.swing.JMenuItem MI_LogOut_MenuCliente;
     private javax.swing.JMenuItem MI_LogOut_MenuOfertador;
+    private javax.swing.JMenuItem MI_LogOut_VentaDirecta;
     private javax.swing.JMenu M_AyudaAdmin;
     private javax.swing.JMenu M_AyudaCliente;
     private javax.swing.JMenu M_AyudaOfertador;
     private javax.swing.JMenu M_MenuAdmin;
     private javax.swing.JMenu M_MenuCliente;
     private javax.swing.JMenu M_MenuOfertador;
+    private javax.swing.JMenu M_Menu_VentaDirecta;
     private javax.swing.JPasswordField PF_Password;
     private javax.swing.JPasswordField PF_password_MenuCliente_Modificar;
     private javax.swing.JPasswordField PF_password_MenuOfertador_Modificar;
@@ -3111,15 +3546,17 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JRadioButton RB_Camion_VentaDirecta;
     private javax.swing.JRadioButton RB_Mecanico_VentaDirecta;
     private javax.swing.JRadioButton RB_Turismo_VentaDirecta;
-    private javax.swing.JSpinner SP_Posicion_CompraDirecta_MenuCliente;
     private javax.swing.JTextArea TA_Ojetivos_Empresa_MenuAdmin;
+    private javax.swing.JTextArea TA_Ojetivos_Empresa_MenuOfertador;
     private javax.swing.JTextArea TA_Politicas_Empresa_MenuAdmin;
-    private javax.swing.JTextArea TA_Telefonos_Empresa_MenuAdmin;
+    private javax.swing.JTextArea TA_Politicas_Empresa_MenuOfertador;
     private javax.swing.JTabbedPane TB_MenuAdmin;
     private javax.swing.JTabbedPane TB_MenuOfertador;
+    private javax.swing.JTextField TF_Codigo_Compra_MenuCliente;
     private javax.swing.JTextField TF_Codigo_Membresia_MenuCliente;
     private javax.swing.JTextField TF_Codigo_Membresia_MenuOfertador;
     private javax.swing.JTextField TF_Correo_Empresa_MenuAdmin;
+    private javax.swing.JTextField TF_Correo_Empresa_MenuOfertador;
     private javax.swing.JTextField TF_Correo_MenuCliente_Modificar;
     private javax.swing.JTextField TF_Correo_MenuOfertador_Modificar;
     private javax.swing.JTextField TF_Correo_ModificarAdmin;
@@ -3129,10 +3566,13 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Correo_RegistrarAdmin;
     private javax.swing.JTextField TF_Correo_RetrievePassword;
     private javax.swing.JTextField TF_Direccion_Empresa_MenuAdmin;
+    private javax.swing.JTextField TF_Direccion_Empresa_MenuOfertador;
+    private javax.swing.JTextField TF_FechaV_Compra_MenuCliente;
     private javax.swing.JTextField TF_FechaV_Membresia_MenuCliente;
     private javax.swing.JTextField TF_FechaV_Membresia_MenuOfertador;
     private javax.swing.JTextField TF_Marca_VentaDirecta;
     private javax.swing.JTextField TF_Mision_Empresa_MenuAdmin;
+    private javax.swing.JTextField TF_Mision_Empresa_MenuOfertador;
     private javax.swing.JTextField TF_Modelo_VentaDirecta;
     private javax.swing.JTextField TF_Nickname;
     private javax.swing.JTextField TF_Nickname_MenuOfertador_Modificar;
@@ -3145,12 +3585,21 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JTextField TF_NombreCompleto_ModificarOfertador;
     private javax.swing.JTextField TF_NombreCompleto_RegisterNaA;
     private javax.swing.JTextField TF_NombreCompleto_RegistrarAdmin;
+    private javax.swing.JTextField TF_Nombre_Compra_MenuCliente;
     private javax.swing.JTextField TF_Nombre_Empresa_MenuAdmin;
+    private javax.swing.JTextField TF_Nombre_Empresa_MenuOfertador;
     private javax.swing.JTextField TF_Nombre_Membresia_MenuCliente;
     private javax.swing.JTextField TF_Nombre_Membresia_MenuOfertador;
+    private javax.swing.JTextField TF_Precio_VentaDirecta;
+    private javax.swing.JTextField TF_Tarjeta_Compra_MenuCliente;
     private javax.swing.JTextField TF_Tarjeta_Membresia_MenuCliente;
     private javax.swing.JTextField TF_Tarjeta_Membresia_MenuOfertador;
+    private javax.swing.JTextField TF_Telefono1_Empresa_MenuAdmin;
+    private javax.swing.JTextField TF_Telefono1_Empresa_MenuOfertador;
+    private javax.swing.JTextField TF_Telefono2_Empresa_MenuAdmin;
+    private javax.swing.JTextField TF_Telefono2_Empresa_MenuOfertador;
     private javax.swing.JTextField TF_Vision_Empresa_MenuAdmin;
+    private javax.swing.JTextField TF_Vision_Empresa_MenuOfertador;
     private javax.swing.JTabbedPane TP_ClienteOfertador_MenuAdmin;
     private javax.swing.JTabbedPane TP_MenuCliente;
     private javax.swing.JTabbedPane TP_Vehiculos_VentaDirecta;
@@ -3215,6 +3664,10 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
@@ -3238,7 +3691,16 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel84;
     private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
+    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel90;
+    private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel92;
+    private javax.swing.JLabel jLabel93;
+    private javax.swing.JLabel jLabel94;
+    private javax.swing.JLabel jLabel95;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -3247,12 +3709,12 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane9;
     // End of variables declaration//GEN-END:variables
     
@@ -3273,6 +3735,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private static Cliente clienteActual;
     private static Ofertador ofertadorActual;
     private static Administrador adminActual;
+    private static Empresa empresa;
     
     //METODOS
     
@@ -3317,7 +3780,7 @@ public class Vehiculos extends javax.swing.JFrame {
         try (FileWriter fw = new FileWriter("Clientes.txt")) {
             for (Cliente cliente : clientes) {
                 String sp = ";";
-                String linea = cliente.getNickname() + sp + cliente.getPassword() + sp + cliente.getPais() + sp + cliente.getBirthday() + sp + cliente.getCorreo() + sp + cliente.getNombre() + sp + cliente.getLatitud() + sp + cliente.getLongitud() + "\n";
+                String linea = cliente.getNickname() + sp + cliente.getPassword() + sp + cliente.getPais() + sp + cliente.getBirthday() + sp + cliente.getCorreo() + sp + cliente.getNombre() + sp + cliente.getLatitud() + sp + cliente.getLongitud() + sp + cliente.isMembresia() + sp + cliente.getContratacion()+ sp + "\n";
                 fw.write(linea);
                 count++;
             }
@@ -3340,7 +3803,9 @@ public class Vehiculos extends javax.swing.JFrame {
                 Date birthday = time.parse(tokens[3]);
                 double latitud = Double.parseDouble(tokens[6]);
                 double longitud = Double.parseDouble(tokens[7]);
-                clientes.add(new Cliente(tokens[0], tokens[1], tokens[2], birthday,latitud,longitud, tokens[4], tokens[5]));
+                boolean membresia = Boolean.parseBoolean(tokens[8]);
+                Date contratacion = time.parse(tokens[9]);
+                clientes.add(new Cliente(tokens[0], tokens[1], tokens[2], birthday,latitud,longitud,membresia,contratacion, tokens[4], tokens[5]));
                 count++;
             }
         } catch (FileNotFoundException ex) {
@@ -3422,7 +3887,26 @@ public class Vehiculos extends javax.swing.JFrame {
         return count;
     }
     
-    public static String consultarBanco(String tarjeta, String nombre, String vencimiento, String codigoSeguridad) {
+    public static void guardarEmpresa(Empresa empresa){
+        
+        try (XMLEncoder e = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("Empresa.xml")))) {
+            e.writeObject(empresa);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void leerEmpresa(Empresa empresa) {
+        try (XMLDecoder d = new XMLDecoder(new BufferedInputStream(new FileInputStream("Empresa.xml")));) {
+                empresa = (Empresa) d.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
+    public static String consultarBanco(String tarjeta, String nombre, String vencimiento, String codigoSeguridad, int precio) {
         // A Java program for a Client 
 
         // initialize socket and input output streams 
@@ -3434,7 +3918,7 @@ public class Vehiculos extends javax.swing.JFrame {
         int port = 10000;
         
         String sp = ";";
-        String mensaje = tarjeta + sp + nombre + sp + vencimiento + sp + codigoSeguridad;
+        String mensaje = tarjeta + sp + nombre + sp + vencimiento + sp + codigoSeguridad + sp + precio;
 
         // establish a connection 
         try {

@@ -14,25 +14,18 @@ import java.util.Date;
  */
 public class Ofertador extends PersonaNatural implements Serializable {
     
-    private boolean membresia_VentaDirecta;
 
     public Ofertador() {
     }
 
-    public Ofertador(String nickname, String password, String pais, Date birthday, double latitud, double longitud, String correo, String nombre) {
-        super(nickname, password, pais, birthday, latitud, longitud, correo, nombre);
+    public Ofertador(String nickname, String password, String pais, Date birthday, double latitud, double longitud, boolean membresia, Date contratacion, String correo, String nombre) {
+        super(nickname, password, pais, birthday, latitud, longitud, membresia, contratacion, correo, nombre);
     }
+
     
     @Override
     public String toString() {
-        return String.format("Nickname: %s%nPassword: %s%nPais: %s%nFecha de nacimiento: %s%nCorreo: %s%nNombre: %s%n",nickname,password,pais,birthday,correo,nombre);
+        return nickname;
     }
 
-    public boolean isMembresia_VentaDirecta() {
-        return membresia_VentaDirecta;
-    }
-
-    public void setMembresia_VentaDirecta(boolean membresia_VentaDirecta) {
-        this.membresia_VentaDirecta = membresia_VentaDirecta;
-    }
 }

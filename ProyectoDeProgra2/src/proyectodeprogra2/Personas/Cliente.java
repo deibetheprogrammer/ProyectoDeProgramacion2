@@ -14,28 +14,18 @@ import java.util.Date;
  */
 public class Cliente extends PersonaNatural implements Serializable {
     
-    private boolean membresia;
     
     public Cliente() {
         
     }
 
-    public Cliente(String nickname, String password, String pais, Date birthday, double latitud, double longitud, String correo, String nombre) {
-        super(nickname, password, pais, birthday, latitud, longitud, correo, nombre);
-    }
-
-
-    public boolean isMembresia() {
-        return membresia;
-    }
-
-    public void setMembresia(boolean membresia) {
-        this.membresia = membresia;
+    public Cliente(String nickname, String password, String pais, Date birthday, double latitud, double longitud, boolean membresia, Date contratacion, String correo, String nombre) {
+        super(nickname, password, pais, birthday, latitud, longitud, membresia, contratacion, correo, nombre);
     }
 
     @Override
     public String toString() {
-        return String.format("Nickname: %s%nPassword: %s%nPais: %s%nFecha de nacimiento: %s%nCorreo: %s%nNombre: %s%n",nickname,password,pais,birthday,correo,nombre);
+        return nickname;
     }
     
     

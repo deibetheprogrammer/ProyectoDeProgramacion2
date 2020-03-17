@@ -18,17 +18,26 @@ public class Empresa extends Persona implements Serializable {
     private String vision;
     private String objetivos;
     private String politicas;
-    private ArrayList<Integer> contactNumbers = new ArrayList<>();
+    private ArrayList<String> contactNumbers = new ArrayList<>();
     private String direccion;
+    private double latitud;
+    private double longitud;
 
-    public Empresa(String mision, String vision, String objetivos, String politicas, String direccion, String correo, String nombre) {
+    public Empresa() {
+    }
+
+    public Empresa(String mision, String vision, String objetivos, String politicas, String direccion, double latitud, double longitud, String correo, String nombre) {
         super(correo, nombre);
         this.mision = mision;
         this.vision = vision;
         this.objetivos = objetivos;
         this.politicas = politicas;
         this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
     }
+
+    
 
     public String getMision() {
         return mision;
@@ -62,11 +71,11 @@ public class Empresa extends Persona implements Serializable {
         this.politicas = politicas;
     }
 
-    public ArrayList<Integer> getContactNumbers() {
+    public ArrayList<String> getContactNumbers() {
         return contactNumbers;
     }
 
-    public void setContactNumbers(ArrayList<Integer> contactNumbers) {
+    public void setContactNumbers(ArrayList<String> contactNumbers) {
         this.contactNumbers = contactNumbers;
     }
 
@@ -78,5 +87,22 @@ public class Empresa extends Persona implements Serializable {
         this.direccion = direccion;
     }
 
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+    
+    
     
 }

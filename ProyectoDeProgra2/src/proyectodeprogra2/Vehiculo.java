@@ -21,11 +21,12 @@ public class Vehiculo implements Serializable {
     private String cilindraje;
     private String tipo;
     private String transmision;
+    private int precio;
 
     public Vehiculo() {
     }
 
-    public Vehiculo(String nickname, String marca, String modelo, Date year, String cilindraje, String tipo, String transmision) {
+    public Vehiculo(String nickname, String marca, String modelo, Date year, String cilindraje, String tipo, String transmision,int precio) {
         this.nickname = nickname;
         this.marca = marca;
         this.modelo = modelo;
@@ -33,6 +34,7 @@ public class Vehiculo implements Serializable {
         this.cilindraje = cilindraje;
         this.tipo = tipo;
         this.transmision = transmision;
+        this.precio = precio;
     }
 
     public String getNickname() {
@@ -89,6 +91,14 @@ public class Vehiculo implements Serializable {
 
     public void setTransmision(String transmision) {
         this.transmision = transmision;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
     }
 
     @Override

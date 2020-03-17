@@ -6,8 +6,6 @@
 package proyectodeprogra2.Personas;
 
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -22,6 +20,8 @@ public abstract class PersonaNatural extends Persona implements Serializable {
     protected Date birthday;
     protected double latitud;
     protected double longitud;
+    protected boolean membresia;
+    protected Date contratacion;
     
     public PersonaNatural() {
        
@@ -35,7 +35,7 @@ public abstract class PersonaNatural extends Persona implements Serializable {
         this.birthday = birthday;
     }
 
-    public PersonaNatural(String nickname, String password, String pais, Date birthday, double latitud, double longitud, String correo, String nombre) {
+    public PersonaNatural(String nickname, String password, String pais, Date birthday, double latitud, double longitud, boolean membresia, Date contratacion, String correo, String nombre) {
         super(correo, nombre);
         this.nickname = nickname;
         this.password = password;
@@ -43,6 +43,8 @@ public abstract class PersonaNatural extends Persona implements Serializable {
         this.birthday = birthday;
         this.latitud = latitud;
         this.longitud = longitud;
+        this.membresia = membresia;
+        this.contratacion = contratacion;
     }
     
 
@@ -93,7 +95,21 @@ public abstract class PersonaNatural extends Persona implements Serializable {
     public void setLatitud(double latitud) {
         this.latitud = latitud;
     }
-    
-    
+
+    public boolean isMembresia() {
+        return membresia;
+    }
+
+    public void setMembresia(boolean membresia) {
+        this.membresia = membresia;
+    }
+
+    public Date getContratacion() {
+        return contratacion;
+    }
+
+    public void setContratacion(Date contratacion) {
+        this.contratacion = contratacion;
+    }
 
 }
