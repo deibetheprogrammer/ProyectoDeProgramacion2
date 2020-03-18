@@ -6,7 +6,11 @@
 package proyectodeprogra2;
 
 import java.awt.BorderLayout;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
@@ -74,9 +78,19 @@ public class ViewMap extends JFXPanel {
                     ht += "marker" + c + ".addListener('click', function() {infowindow" + c + ".open(map, marker" + c + ");});\n";
                     c += 1;
                 }
+                String key = "";
+                try (BufferedReader br = new BufferedReader(new FileReader("../../miApi.txt"))) {
+                    String line;
+                    line = br.readLine();
+                    key = line;
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 ht += "}</script>";
                 System.out.println("ht " + ht);
-                ht += "<script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyCTVvRJrh5zQq8zr10Si5nM9AsZz83-T2k&callback=initMap\"";
+                ht += "<script src=\"https://maps.googleapis.com/maps/api/js?key=" + key + "&callback=initMap\"";
                 ht += "async defer></script></body></html>";
 
                 webComponent.getEngine().loadContent(ht, "text/html");

@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
+import java.net.PasswordAuthentication;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.text.ParseException;
@@ -31,6 +32,16 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.sql.*;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyectodeprogra2.Personas.Administrador;
@@ -128,10 +139,8 @@ public class Vehiculos extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         TF_Correo_RetrievePassword = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        L_Password_RetrievePassword = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        L_Nickname_RetrievePassword = new javax.swing.JLabel();
+        CB_TipoUsuario_RetrievePassword = new javax.swing.JComboBox<>();
+        B_RetrievePassword = new javax.swing.JButton();
         D_MenuOfertador = new javax.swing.JDialog();
         TB_MenuOfertador = new javax.swing.JTabbedPane();
         P_InformacionEmpresa_MenuOfertador = new javax.swing.JPanel();
@@ -173,6 +182,10 @@ public class Vehiculos extends javax.swing.JFrame {
         B_ModificarDatos_MenuOfertador_Modificar = new javax.swing.JButton();
         B_ObtenerDatos_ModificarDatos_MenuOfertador = new javax.swing.JButton();
         TF_Nickname_MenuOfertador_Modificar = new javax.swing.JTextField();
+        jLabel100 = new javax.swing.JLabel();
+        jLabel101 = new javax.swing.JLabel();
+        TF_Latitud_MenuOfertador = new javax.swing.JTextField();
+        TF_Longitud_MenuOfertador = new javax.swing.JTextField();
         P_Facturas_MenuOfertador = new javax.swing.JPanel();
         B_PDF_Facturas_MenuOfertador = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
@@ -228,6 +241,10 @@ public class Vehiculos extends javax.swing.JFrame {
         B_ModificarDatos_Modificar_MenuCliente = new javax.swing.JButton();
         B_ObtenerDatos_Modificar_MenuCliente = new javax.swing.JButton();
         L_Nickname_MenuCliente_Modificar = new javax.swing.JLabel();
+        jLabel98 = new javax.swing.JLabel();
+        jLabel99 = new javax.swing.JLabel();
+        TF_Latitud_MenuCliente = new javax.swing.JTextField();
+        TF_longitud_MenuCliente = new javax.swing.JTextField();
         P_Facturas_MenuCliente = new javax.swing.JPanel();
         B_PDF_Facturas_MenuCliente = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
@@ -276,6 +293,10 @@ public class Vehiculos extends javax.swing.JFrame {
         TF_Telefono2_Empresa_MenuAdmin = new javax.swing.JTextField();
         B_ModificarDatos_Empresa_MenuAdmin = new javax.swing.JButton();
         P_ViewMap_Empresa_MenuAdmin = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        TF_Latitud_Empresa = new javax.swing.JTextField();
+        TF_Longitud_Empresa = new javax.swing.JTextField();
         P_AministrarUsuario_MenuAdmin = new javax.swing.JPanel();
         IF_ClienteOfertador_AdminUsuario_MenuAdmin = new javax.swing.JInternalFrame();
         TP_ClienteOfertador_MenuAdmin = new javax.swing.JTabbedPane();
@@ -389,6 +410,11 @@ public class Vehiculos extends javax.swing.JFrame {
         jLabel3.setText("Log In");
 
         B_RetrievePassword_Login.setText("Recuperar contraseña");
+        B_RetrievePassword_Login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_RetrievePassword_LoginMouseClicked(evt);
+            }
+        });
         B_RetrievePassword_Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B_RetrievePassword_LoginActionPerformed(evt);
@@ -624,56 +650,48 @@ public class Vehiculos extends javax.swing.JFrame {
 
         jLabel12.setText("Ingrese su correo");
 
-        TF_Correo_RetrievePassword.setText("jTextField1");
+        CB_TipoUsuario_RetrievePassword.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Ofertador" }));
 
-        jLabel13.setText("Su contraseña es:");
-
-        L_Password_RetrievePassword.setText("Lol xdxdxd");
-
-        jLabel26.setText("Su Nickname es:");
-
-        L_Nickname_RetrievePassword.setText("lol 2 xdxdxd");
+        B_RetrievePassword.setText("Recuperar Contraseña");
+        B_RetrievePassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_RetrievePasswordMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout P_RetrievePasswordLayout = new javax.swing.GroupLayout(P_RetrievePassword);
         P_RetrievePassword.setLayout(P_RetrievePasswordLayout);
         P_RetrievePasswordLayout.setHorizontalGroup(
             P_RetrievePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P_RetrievePasswordLayout.createSequentialGroup()
-                .addGroup(P_RetrievePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(28, 28, 28)
+                .addGroup(P_RetrievePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(B_RetrievePassword)
                     .addGroup(P_RetrievePasswordLayout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(jLabel11))
-                    .addGroup(P_RetrievePasswordLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(P_RetrievePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel26))
-                        .addGap(68, 68, 68)
+                        .addComponent(jLabel12)
+                        .addGap(51, 51, 51)
                         .addGroup(P_RetrievePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(L_Password_RetrievePassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(TF_Correo_RetrievePassword, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                            .addComponent(L_Nickname_RetrievePassword))))
-                .addContainerGap(187, Short.MAX_VALUE))
+                            .addComponent(CB_TipoUsuario_RetrievePassword, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_RetrievePasswordLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(16, 16, 16)))))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         P_RetrievePasswordLayout.setVerticalGroup(
             P_RetrievePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P_RetrievePasswordLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel11)
-                .addGap(81, 81, 81)
+                .addGap(79, 79, 79)
                 .addGroup(P_RetrievePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(TF_Correo_RetrievePassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71)
-                .addGroup(P_RetrievePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(L_Password_RetrievePassword))
-                .addGap(36, 36, 36)
-                .addGroup(P_RetrievePasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(L_Nickname_RetrievePassword))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(CB_TipoUsuario_RetrievePassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(B_RetrievePassword)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout D_RetrievePasswordLayout = new javax.swing.GroupLayout(D_RetrievePassword.getContentPane());
@@ -759,29 +777,25 @@ public class Vehiculos extends javax.swing.JFrame {
                     .addComponent(jLabel88))
                 .addGap(32, 32, 32)
                 .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createSequentialGroup()
+                        .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TF_Nombre_Empresa_MenuOfertador)
+                            .addComponent(TF_Mision_Empresa_MenuOfertador)
+                            .addComponent(TF_Vision_Empresa_MenuOfertador))
+                        .addGap(103, 103, 103)
                         .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createSequentialGroup()
-                                .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(TF_Nombre_Empresa_MenuOfertador)
-                                    .addComponent(TF_Mision_Empresa_MenuOfertador)
-                                    .addComponent(TF_Vision_Empresa_MenuOfertador))
-                                .addGap(103, 103, 103)
-                                .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel95)
-                                    .addComponent(jLabel94))
-                                .addGap(62, 62, 62)
-                                .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(TF_Correo_Empresa_MenuOfertador)
-                                    .addComponent(TF_Direccion_Empresa_MenuOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)))
-                            .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(TF_Telefono2_Empresa_MenuOfertador, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                                .addComponent(TF_Telefono1_Empresa_MenuOfertador, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createSequentialGroup()
-                        .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(172, 567, Short.MAX_VALUE))))
+                            .addComponent(jLabel95)
+                            .addComponent(jLabel94))
+                        .addGap(62, 62, 62)
+                        .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TF_Correo_Empresa_MenuOfertador)
+                            .addComponent(TF_Direccion_Empresa_MenuOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)))
+                    .addGroup(P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(TF_Telefono2_Empresa_MenuOfertador, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                        .addComponent(TF_Telefono1_Empresa_MenuOfertador, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         P_InformacionEmpresa_MenuOfertadorLayout.setVerticalGroup(
             P_InformacionEmpresa_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -903,6 +917,10 @@ public class Vehiculos extends javax.swing.JFrame {
 
         TF_Nickname_MenuOfertador_Modificar.setEditable(false);
 
+        jLabel100.setText("Latitud");
+
+        jLabel101.setText("Longitud");
+
         javax.swing.GroupLayout P_ModificarDatos_MenuOfertadorLayout = new javax.swing.GroupLayout(P_ModificarDatos_MenuOfertador);
         P_ModificarDatos_MenuOfertador.setLayout(P_ModificarDatos_MenuOfertadorLayout);
         P_ModificarDatos_MenuOfertadorLayout.setHorizontalGroup(
@@ -931,30 +949,51 @@ public class Vehiculos extends javax.swing.JFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(PF_password_MenuOfertador_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                             .addComponent(TF_Nickname_MenuOfertador_Modificar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
-                        .addComponent(B_ObtenerDatos_ModificarDatos_MenuOfertador)
-                        .addGap(45, 45, 45)
-                        .addComponent(B_ModificarDatos_MenuOfertador_Modificar)
-                        .addGap(49, 49, 49))))
+                        .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(B_ModificarDatos_MenuOfertador_Modificar)
+                                    .addComponent(B_ObtenerDatos_ModificarDatos_MenuOfertador))
+                                .addGap(122, 122, 122))
+                            .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
+                                .addGap(207, 207, 207)
+                                .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel100)
+                                    .addComponent(jLabel101))
+                                .addGap(74, 74, 74)
+                                .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TF_Latitud_MenuOfertador)
+                                    .addComponent(TF_Longitud_MenuOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                                .addContainerGap(88, Short.MAX_VALUE))))))
         );
         P_ModificarDatos_MenuOfertadorLayout.setVerticalGroup(
             P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(35, 35, 35)
                 .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(B_ModificarDatos_MenuOfertador_Modificar)
-                    .addComponent(B_ObtenerDatos_ModificarDatos_MenuOfertador)
-                    .addComponent(TF_Nickname_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                    .addComponent(TF_Nickname_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel100)
+                    .addComponent(TF_Latitud_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(PF_password_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                    .addComponent(PF_password_MenuOfertador_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel101)
+                    .addComponent(TF_Longitud_MenuOfertador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel19)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                    .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(B_ObtenerDatos_ModificarDatos_MenuOfertador)
+                        .addGap(34, 34, 34)
+                        .addComponent(B_ModificarDatos_MenuOfertador_Modificar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(P_ModificarDatos_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_ModificarDatos_MenuOfertadorLayout.createSequentialGroup()
                         .addComponent(jLabel20)
@@ -1139,7 +1178,7 @@ public class Vehiculos extends javax.swing.JFrame {
             D_MenuOfertadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(D_MenuOfertadorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(TB_MenuOfertador, javax.swing.GroupLayout.DEFAULT_SIZE, 943, Short.MAX_VALUE)
+                .addComponent(TB_MenuOfertador)
                 .addGap(109, 109, 109))
         );
         D_MenuOfertadorLayout.setVerticalGroup(
@@ -1281,6 +1320,10 @@ public class Vehiculos extends javax.swing.JFrame {
             }
         });
 
+        jLabel98.setText("Latitud");
+
+        jLabel99.setText("Longitud");
+
         javax.swing.GroupLayout P_Modificar_MenuClienteLayout = new javax.swing.GroupLayout(P_Modificar_MenuCliente);
         P_Modificar_MenuCliente.setLayout(P_Modificar_MenuClienteLayout);
         P_Modificar_MenuClienteLayout.setHorizontalGroup(
@@ -1295,11 +1338,7 @@ public class Vehiculos extends javax.swing.JFrame {
                         .addGap(58, 58, 58)
                         .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(PF_password_MenuCliente_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                            .addComponent(L_Nickname_MenuCliente_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 482, Short.MAX_VALUE)
-                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(B_ObtenerDatos_Modificar_MenuCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(B_ModificarDatos_Modificar_MenuCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(L_Nickname_MenuCliente_Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
                         .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel30)
@@ -1312,48 +1351,72 @@ public class Vehiculos extends javax.swing.JFrame {
                             .addComponent(TF_Correo_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(DC_Birthday_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(86, 86, 86))
+                .addGap(192, 192, 192)
+                .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel98)
+                    .addComponent(jLabel99))
+                .addGap(79, 79, 79)
+                .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TF_Latitud_MenuCliente)
+                    .addComponent(TF_longitud_MenuCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Modificar_MenuClienteLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(B_ModificarDatos_Modificar_MenuCliente)
+                    .addComponent(B_ObtenerDatos_Modificar_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71))
         );
         P_Modificar_MenuClienteLayout.setVerticalGroup(
             P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
-                .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel33)
-                            .addComponent(L_Nickname_MenuCliente_Modificar)))
-                    .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(B_ModificarDatos_Modificar_MenuCliente)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(27, 27, 27)
                 .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel34)
-                    .addComponent(PF_password_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel33)
+                    .addComponent(L_Nickname_MenuCliente_Modificar))
                 .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel34)
+                            .addComponent(PF_password_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel30)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(B_ObtenerDatos_Modificar_MenuCliente)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
-                .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
-                        .addComponent(jLabel31)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel32))
-                    .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
-                        .addComponent(DC_Birthday_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                                .addComponent(jLabel31)
+                                .addGap(29, 29, 29)
+                                .addComponent(jLabel32))
+                            .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                                .addComponent(DC_Birthday_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(TF_Correo_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(TF_Correo_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel35)
-                    .addComponent(TF_NombreCompleto_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(77, 77, 77))
+                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel35)
+                            .addComponent(TF_NombreCompleto_MenuCliente_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(77, 77, 77))
+                    .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TF_Latitud_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel98))
+                        .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addGroup(P_Modificar_MenuClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel99)
+                                    .addComponent(TF_longitud_MenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(P_Modificar_MenuClienteLayout.createSequentialGroup()
+                                .addGap(171, 171, 171)
+                                .addComponent(B_ModificarDatos_Modificar_MenuCliente)
+                                .addGap(35, 35, 35)
+                                .addComponent(B_ObtenerDatos_Modificar_MenuCliente)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
 
         TP_MenuCliente.addTab("Modificar datos", P_Modificar_MenuCliente);
@@ -1615,6 +1678,10 @@ public class Vehiculos extends javax.swing.JFrame {
             .addGap(0, 291, Short.MAX_VALUE)
         );
 
+        jLabel13.setText("Latitud");
+
+        jLabel26.setText("Longitud");
+
         javax.swing.GroupLayout P_Empresa_MenuAdminLayout = new javax.swing.GroupLayout(P_Empresa_MenuAdmin);
         P_Empresa_MenuAdmin.setLayout(P_Empresa_MenuAdminLayout);
         P_Empresa_MenuAdminLayout.setHorizontalGroup(
@@ -1627,27 +1694,11 @@ public class Vehiculos extends javax.swing.JFrame {
                     .addComponent(jLabel42)
                     .addComponent(jLabel43)
                     .addComponent(jLabel44)
-                    .addComponent(jLabel45))
+                    .addComponent(jLabel45)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel26))
                 .addGap(32, 32, 32)
                 .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, P_Empresa_MenuAdminLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(B_ModificarDatos_Empresa_MenuAdmin)
-                        .addGap(189, 189, 189))
-                    .addGroup(P_Empresa_MenuAdminLayout.createSequentialGroup()
-                        .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TF_Nombre_Empresa_MenuAdmin)
-                            .addComponent(TF_Mision_Empresa_MenuAdmin)
-                            .addComponent(TF_Vision_Empresa_MenuAdmin))
-                        .addGap(103, 103, 103)
-                        .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel46)
-                            .addComponent(jLabel47))
-                        .addGap(62, 62, 62)
-                        .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TF_Correo_Empresa_MenuAdmin)
-                            .addComponent(TF_Direccion_Empresa_MenuAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
-                        .addContainerGap(125, Short.MAX_VALUE))
                     .addGroup(P_Empresa_MenuAdminLayout.createSequentialGroup()
                         .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -1657,7 +1708,29 @@ public class Vehiculos extends javax.swing.JFrame {
                             .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(P_ViewMap_Empresa_MenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94))))
+                        .addGap(94, 94, 94))
+                    .addGroup(P_Empresa_MenuAdminLayout.createSequentialGroup()
+                        .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(P_Empresa_MenuAdminLayout.createSequentialGroup()
+                                .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TF_Nombre_Empresa_MenuAdmin)
+                                    .addComponent(TF_Mision_Empresa_MenuAdmin)
+                                    .addComponent(TF_Vision_Empresa_MenuAdmin))
+                                .addGap(103, 103, 103)
+                                .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel46)
+                                    .addComponent(jLabel47))
+                                .addGap(62, 62, 62)
+                                .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TF_Correo_Empresa_MenuAdmin)
+                                    .addComponent(TF_Direccion_Empresa_MenuAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)))
+                            .addGroup(P_Empresa_MenuAdminLayout.createSequentialGroup()
+                                .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(TF_Longitud_Empresa, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                    .addComponent(TF_Latitud_Empresa))
+                                .addGap(397, 397, 397)
+                                .addComponent(B_ModificarDatos_Empresa_MenuAdmin)))
+                        .addContainerGap(125, Short.MAX_VALUE))))
         );
         P_Empresa_MenuAdminLayout.setVerticalGroup(
             P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1701,13 +1774,20 @@ public class Vehiculos extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel45)
-                            .addComponent(TF_Telefono1_Empresa_MenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(TF_Telefono1_Empresa_MenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TF_Telefono2_Empresa_MenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(P_ViewMap_Empresa_MenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(TF_Latitud_Empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
-                .addComponent(TF_Telefono2_Empresa_MenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(B_ModificarDatos_Empresa_MenuAdmin)
-                .addGap(36, 36, 36))
+                .addGroup(P_Empresa_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(B_ModificarDatos_Empresa_MenuAdmin)
+                    .addComponent(jLabel26)
+                    .addComponent(TF_Longitud_Empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         TB_MenuAdmin.addTab("Empresa", P_Empresa_MenuAdmin);
@@ -2261,7 +2341,7 @@ public class Vehiculos extends javax.swing.JFrame {
         );
         D_MenuAdminLayout.setVerticalGroup(
             D_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TB_MenuAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+            .addComponent(TB_MenuAdmin, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         TP_Vehiculos_VentaDirecta.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -2699,6 +2779,8 @@ public class Vehiculos extends javax.swing.JFrame {
         DC_Birthday_MenuOfertador_Modificar.setDate(ofertadorActual.getBirthday());
         TF_Correo_MenuOfertador_Modificar.setText(ofertadorActual.getCorreo());
         TF_NombreCompleto_MenuOfertador_Modificar.setText(ofertadorActual.getNombre());
+        TF_Latitud_MenuOfertador.setText("" + ofertadorActual.getLatitud());
+        TF_Longitud_MenuOfertador.setText("" + ofertadorActual.getLongitud());
     }//GEN-LAST:event_B_ObtenerDatos_ModificarDatos_MenuOfertadorMouseClicked
 
     private void B_ModificarDatos_MenuOfertador_ModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_ModificarDatos_MenuOfertador_ModificarMouseClicked
@@ -2709,6 +2791,8 @@ public class Vehiculos extends javax.swing.JFrame {
         ofertadorActual.setBirthday(DC_Birthday_MenuOfertador_Modificar.getDate());
         ofertadorActual.setCorreo(TF_Correo_MenuOfertador_Modificar.getText());
         ofertadorActual.setNombre(TF_NombreCompleto_MenuOfertador_Modificar.getText());
+        ofertadorActual.setLatitud(Double.parseDouble(TF_Latitud_MenuOfertador.getText()));
+        ofertadorActual.setLongitud(Double.parseDouble(TF_Longitud_MenuOfertador.getText()));
         
         guardarOfertadores(ofertadores);
         
@@ -2720,6 +2804,8 @@ public class Vehiculos extends javax.swing.JFrame {
         DC_Birthday_MenuOfertador_Modificar.setDate(new Date()); // a revisar
         TF_Correo_MenuOfertador_Modificar.setText("");
         TF_NombreCompleto_MenuOfertador_Modificar.setText("");
+        TF_Latitud_MenuOfertador.setText("");
+        TF_Longitud_MenuOfertador.setText("");
         
     }//GEN-LAST:event_B_ModificarDatos_MenuOfertador_ModificarMouseClicked
 
@@ -3122,6 +3208,8 @@ public class Vehiculos extends javax.swing.JFrame {
         DC_Birthday_MenuCliente_Modificar.setDate(clienteActual.getBirthday());
         TF_Correo_MenuCliente_Modificar.setText(clienteActual.getCorreo());
         TF_NombreCompleto_MenuCliente_Modificar.setText(clienteActual.getNombre());
+        TF_Latitud_MenuCliente.setText("" + clienteActual.getLatitud());
+        TF_longitud_MenuCliente.setText("" + clienteActual.getLongitud());
     }//GEN-LAST:event_B_ObtenerDatos_Modificar_MenuClienteMouseClicked
 
     private void B_ModificarDatos_Modificar_MenuClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_ModificarDatos_Modificar_MenuClienteMouseClicked
@@ -3132,12 +3220,16 @@ public class Vehiculos extends javax.swing.JFrame {
         Date birthday = DC_Birthday_MenuCliente_Modificar.getDate();
         String correo = TF_Correo_MenuCliente_Modificar.getText();
         String nombre = TF_NombreCompleto_MenuCliente_Modificar.getText();
+        double latitud = Double.parseDouble(TF_Latitud_MenuCliente.getText());
+        double longitud = Double.parseDouble(TF_longitud_MenuCliente.getText());
         
         clienteActual.setPassword(password);
         clienteActual.setPais(pais);
         clienteActual.setBirthday(birthday);
         clienteActual.setCorreo(correo);
         clienteActual.setNombre(nombre);
+        clienteActual.setLatitud(latitud);
+        clienteActual.setLongitud(longitud);
         
         guardarClientes(clientes);
         
@@ -3148,6 +3240,8 @@ public class Vehiculos extends javax.swing.JFrame {
         DC_Birthday_ModificarCliente.setDate(new Date());
         TF_Correo_MenuCliente_Modificar.setText("");
         TF_NombreCompleto_MenuCliente_Modificar.setText("");
+        TF_Latitud_MenuCliente.setText("");
+        TF_longitud_MenuCliente.setText("");
     }//GEN-LAST:event_B_ModificarDatos_Modificar_MenuClienteMouseClicked
 
     private void TP_MenuClienteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TP_MenuClienteStateChanged
@@ -3453,6 +3547,8 @@ public class Vehiculos extends javax.swing.JFrame {
             ArrayList<String> telefonos = empresa.getContactNumbers();
             TF_Telefono1_Empresa_MenuAdmin.setText(telefonos.get(0));
             TF_Telefono2_Empresa_MenuAdmin.setText(telefonos.get(1));
+            TF_Latitud_Empresa.setText("" + empresa.getLatitud());
+            TF_Longitud_Empresa.setText("" + empresa.getLongitud());
             TF_Correo_Empresa_MenuAdmin.setText(empresa.getCorreo());
             TF_Direccion_Empresa_MenuAdmin.setText(empresa.getDireccion());
         }
@@ -3469,8 +3565,10 @@ public class Vehiculos extends javax.swing.JFrame {
         String telefono2 = TF_Telefono2_Empresa_MenuAdmin.getText();
         String correo = TF_Correo_Empresa_MenuAdmin.getText();
         String direccion = TF_Direccion_Empresa_MenuAdmin.getText();
+        double latitud = Double.parseDouble(TF_Latitud_Empresa.getText());
+        double longitud = Double.parseDouble(TF_Longitud_Empresa.getText());
         
-        empresa = new Empresa(mision, vision, objetivos, politicas, direccion,0.0,0.0, correo, nombre);
+        empresa = new Empresa(mision, vision, objetivos, politicas, direccion,latitud,longitud, correo, nombre);
         empresa.getContactNumbers().clear();
         empresa.getContactNumbers().add(telefono1);
         empresa.getContactNumbers().add(telefono2);
@@ -3479,6 +3577,53 @@ public class Vehiculos extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog(D_MenuAdmin, "Modificado exitosamente");
     }//GEN-LAST:event_B_ModificarDatos_Empresa_MenuAdminMouseClicked
+
+    private void B_RetrievePassword_LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_RetrievePassword_LoginMouseClicked
+        // TODO add your handling code here:
+        
+        D_LogIn.setVisible(false);
+        
+        D_RetrievePassword.pack();
+        D_RetrievePassword.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        D_RetrievePassword.setVisible(true);
+    }//GEN-LAST:event_B_RetrievePassword_LoginMouseClicked
+
+    private void B_RetrievePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_RetrievePasswordMouseClicked
+        // TODO add your handling code here:
+        String usuario = (String) CB_TipoUsuario_RetrievePassword.getSelectedItem();
+        String nickname = "";
+        String password = "";
+        String correo = TF_Correo_RetrievePassword.getText();
+        boolean pass = false;
+        
+        if (usuario.equals("Cliente")) {
+            for (Cliente cliente : clientes) {
+                if (cliente.getCorreo().equals(correo)) {
+                    nickname = cliente.getNickname();
+                    password = cliente.getPassword();
+                    sendMail(correo, nickname, password);
+                    pass = true;
+                    break;
+                }
+            }
+        } else {
+            for (Ofertador ofertador : ofertadores) {
+                if (ofertador.getCorreo().equals(correo)) {
+                    nickname = ofertador.getNickname();
+                    password = ofertador.getPassword();
+                    sendMail(correo, nickname, password);
+                    pass = true;
+                    break;
+                }
+            }
+        }
+        
+        if (!pass) {
+            JOptionPane.showMessageDialog(D_RetrievePassword, "No existe una cuenta con el correo ingresado");
+        }
+        
+        //sendMail();
+    }//GEN-LAST:event_B_RetrievePasswordMouseClicked
 
     /**
      * @param args the command line arguments
@@ -3526,11 +3671,8 @@ public class Vehiculos extends javax.swing.JFrame {
         leerVehiculos(vehiculos);
         
         //Leer Empresa
-        leerEmpresa(empresa);
-        System.out.println(empresa);
-        empresa.getContactNumbers().add("+504 78580757");
-        empresa.getContactNumbers().add("+504 65765868");
-        System.out.println(empresa);
+        empresa = leerEmpresa();
+        System.out.println("Empresa aquí:" + empresa);
         
         if (empresa == null) {
             
@@ -3572,6 +3714,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JButton B_Register;
     private javax.swing.JButton B_Register_RegisterNaA;
     private javax.swing.JButton B_Register_RegistrarAdmin;
+    private javax.swing.JButton B_RetrievePassword;
     private javax.swing.JButton B_RetrievePassword_Login;
     private javax.swing.JButton B_Salir;
     private javax.swing.JButton B_VentaDirecta_MenuOfertador;
@@ -3581,6 +3724,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JComboBox<Integer> CB_Posicion_Compra_MenuCliente;
     private javax.swing.JComboBox<String> CB_TipoUsuario_LogIn;
     private javax.swing.JComboBox<String> CB_TipoUsuario_RegisterNaA;
+    private javax.swing.JComboBox<String> CB_TipoUsuario_RetrievePassword;
     private javax.swing.JComboBox<Vehiculo> CB_Vehiculos_VentaDirecta;
     private com.toedter.calendar.JDateChooser DC_Birthday_MenuCliente_Modificar;
     private com.toedter.calendar.JDateChooser DC_Birthday_MenuOfertador_Modificar;
@@ -3602,7 +3746,6 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel L_EstadoMembresia_Ofertador;
     private javax.swing.JLabel L_Nickname;
     private javax.swing.JLabel L_Nickname_MenuCliente_Modificar;
-    private javax.swing.JLabel L_Nickname_RetrievePassword;
     private javax.swing.JList<String> L_PaisDeNacimiento_MenuCliente_Modificar;
     private javax.swing.JList<String> L_PaisDeNacimiento_ModificarAdmin;
     private javax.swing.JList<String> L_PaisDeNacimiento_ModificarCliente;
@@ -3610,7 +3753,6 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JList<String> L_PaisDeNacimiento_RegisterNaA;
     private javax.swing.JList<String> L_PaisDeNacimiento_RegistrarAdmin;
     private javax.swing.JList<String> L_Pais_MenuOfertador_Modificar;
-    private javax.swing.JLabel L_Password_RetrievePassword;
     private javax.swing.JLabel L_SignIn;
     private javax.swing.JMenuBar MB_Admin;
     private javax.swing.JMenuBar MB_Cliente;
@@ -3691,7 +3833,12 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JTextField TF_FechaV_Compra_MenuCliente;
     private javax.swing.JTextField TF_FechaV_Membresia_MenuCliente;
     private javax.swing.JTextField TF_FechaV_Membresia_MenuOfertador;
+    private javax.swing.JTextField TF_Latitud_Empresa;
+    private javax.swing.JTextField TF_Latitud_MenuCliente;
+    private javax.swing.JTextField TF_Latitud_MenuOfertador;
     private javax.swing.JTextField TF_Latitud_RegisterNaA;
+    private javax.swing.JTextField TF_Longitud_Empresa;
+    private javax.swing.JTextField TF_Longitud_MenuOfertador;
     private javax.swing.JTextField TF_Longitud_RegisterNaA;
     private javax.swing.JTextField TF_Marca_VentaDirecta;
     private javax.swing.JTextField TF_Mision_Empresa_MenuAdmin;
@@ -3723,6 +3870,7 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Telefono2_Empresa_MenuOfertador;
     private javax.swing.JTextField TF_Vision_Empresa_MenuAdmin;
     private javax.swing.JTextField TF_Vision_Empresa_MenuOfertador;
+    private javax.swing.JTextField TF_longitud_MenuCliente;
     private javax.swing.JTabbedPane TP_ClienteOfertador_MenuAdmin;
     private javax.swing.JTabbedPane TP_MenuCliente;
     private javax.swing.JTabbedPane TP_Vehiculos_VentaDirecta;
@@ -3731,6 +3879,8 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JTable T_Vehiculos_CompraDirecta_MenuCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel100;
+    private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -3826,6 +3976,8 @@ public class Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
+    private javax.swing.JLabel jLabel98;
+    private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -4023,15 +4175,19 @@ public class Vehiculos extends javax.swing.JFrame {
         }
     }
     
-    public static void leerEmpresa(Empresa empresa) {
+    public static Empresa leerEmpresa() {
+        Empresa empresa = null;
+        
         try (XMLDecoder d = new XMLDecoder(new BufferedInputStream(new FileInputStream("Empresa.xml")));) {
            
                 empresa = (Empresa) d.readObject();
+                //System.out.println(empresa.toString());
              
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("Error leer empresa");
         }
-        
+        return empresa;
     }
     
     public static String consultarBanco(String tarjeta, String nombre, String vencimiento, String codigoSeguridad, int precio) {
@@ -4094,4 +4250,61 @@ public class Vehiculos extends javax.swing.JFrame {
         
         return outcome;
     }
+    
+   public static void sendMail(String correo, String nickname, String password) {
+       String miUsuario = "";
+       String mipassword = "";
+       try (BufferedReader br = new BufferedReader(new FileReader("../../myMail.txt"))) {
+           String line;
+           String[] tokens;
+           line = br.readLine();
+           tokens = line.split(";");
+           miUsuario = tokens[0];
+           mipassword = tokens[1];
+       } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+       
+         Properties propiedad = new Properties();
+        propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
+        propiedad.setProperty("mail.smtp.starttls.enable", "true");
+        propiedad.setProperty("mail.smtp.port", "587");
+        propiedad.setProperty("mail.smtp.auth","true");
+        
+
+        
+        Session sesion = Session.getDefaultInstance(propiedad);
+        String correoEnvia = miUsuario;
+        String contrasena = mipassword;
+        String receptor = correo;
+        String asunto = "Recuperacion de credenciales Vehiculos.com";
+        String mensaje = "De parte del equipo de Vehiculos.com le saludamos \n"
+                + "Usted solicitó recuperar sus credenciales, se las proporcionamos a continuación: \n"
+                + "Nickname: " + nickname + "\n"
+                + "Contraseña: " + password + "\n"
+                + "Vehiculos.com le desea un buen día.";
+        
+        MimeMessage mail = new MimeMessage(sesion);
+        try {
+            mail.setFrom(new InternetAddress (correoEnvia));
+            mail.addRecipient(Message.RecipientType.TO, new InternetAddress (receptor));
+            mail.setSubject(asunto);
+            mail.setText(mensaje);
+
+            Transport transportar = sesion.getTransport("smtp");
+            transportar.connect(correoEnvia, contrasena);
+            transportar.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
+            transportar.close();
+            
+            JOptionPane.showMessageDialog(null, "Listo, revise su correo");
+
+        } catch (AddressException ex) {
+            System.out.println(ex);
+        } catch (MessagingException ex) {
+            System.out.println(ex);
+        }
+    }
+
 }

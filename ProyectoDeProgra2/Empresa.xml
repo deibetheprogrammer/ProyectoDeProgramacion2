@@ -34,5 +34,11 @@ No ingerir alcohol dentro de las instalaciones
   <void property="vision">
    <string>Innovar en los estandares de servicio al cliente</string>
   </void>
+  <void property="latitud">
+   <double>14.0778885</double>
+  </void>
+  <void property="longitud">
+   <double>-87.1937657</double>
+  </void>
  </object>
 </java>
