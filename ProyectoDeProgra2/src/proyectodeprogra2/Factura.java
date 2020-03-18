@@ -7,6 +7,7 @@ package proyectodeprogra2;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -17,14 +18,14 @@ public class Factura implements Serializable {
     private String cliente;
     private String ofertador;
     private String descripcion;
-    private String precio;
-    private LocalDate fecha;
+    private int precio;
+    private Date fecha;
     private int numero;
 
     public Factura() {
     }
 
-    public Factura(String cliente, String ofertador, String descripcion, String precio, LocalDate fecha, int numero) {
+    public Factura(String cliente, String ofertador, String descripcion, int precio, Date fecha, int numero) {
         this.cliente = cliente;
         this.ofertador = ofertador;
         this.descripcion = descripcion;
@@ -57,19 +58,19 @@ public class Factura implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public String getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
